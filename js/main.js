@@ -1,19 +1,14 @@
-const getRandomInteger = (min, max) => {
-  if (max - min >= 0) {
-    return Math.floor(Math.random() * (max - min) + min);
+const getRange = (min, max) => {
+  if (max >= min) {
+    return Math.random() * (max - min) + min;
   }
-
-  return Math.floor(Math.random() * (min - max) + min);
+  return Math.random() * (min - max) + min;
 };
+const getRandomInteger = (min, max) => Math.floor(getRange(min, max));
 
-getRandomInteger(2, -10);
+getRandomInteger(2, 10);
 
-const getRandomIntlimitDecimalPlaces = (min, max, limitSigns) => {
-  if (max - min >= 0) {
-    return (Math.random() * (max - min) + min).toFixed(limitSigns);
-  }
 
-  return (Math.random() * (min - max) + min).toFixed(limitSigns);
-};
+const getRandomIntlimitDecimalPlaces = (min, max, limitSigns) => getRange(min, max).toFixed(limitSigns);
 
-getRandomIntlimitDecimalPlaces(10, 25, 4);
+getRandomIntlimitDecimalPlaces(15, 2.5, 5);
