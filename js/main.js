@@ -69,13 +69,13 @@ const getRandomNumber = (min, max) => getRandomFloat(min, max, 0);
 const padLeft = (index) => String(index).padStart(2, '0');
 const createAuthorUrl = (index) => `img/avatars/user${padLeft(index)}.png`;
 
-const getRandomItem = (object) => object[getRandomNumber(NUMBER_MIN, object.length - 1)];
+const getRandomItem = (items) => items[getRandomNumber(NUMBER_MIN, items.length - 1)];
 
 const random = () => Math.random() < 0.5;
-const createArrayRandom = (object) => {
-  const array = object.filter(random);
+const createArrayRandom = (items) => {
+  const array = items.filter(random);
   if (array.length < 1) {
-    Math.random() * (object.length);
+    Math.random() * (items.length);
   }
   return array;
 };
