@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг»
 
 * Студент: [Дмитрий Хлобощин](https://up.htmlacademy.ru/javascript/23/user/661093).
-* Наставник: [Егор Дьяченко](https://htmlacademy.ru/profile/semperhomolupus).
+* Наставник: [Андрей Карякин](https://htmlacademy.ru/profile/id133011).
 
 ---
 
