@@ -3,7 +3,7 @@ const NUMBER_MIN = 1;
 const STRUNG_INDEX = 2;
 const ROOM_MAX = 3;
 const GUESTS_MAX = 3;
-const AVATAR_LENGTH = 8;
+const NUMBER_OBJECTS = 10;
 const PRICE_MAX = 1000000;
 const LIMIT_SINGS = 5;
 const PHOTO_PATH = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/';
@@ -56,13 +56,12 @@ const Location = {
 const isPositiveNumber = (value) => typeof value === 'number' && value >= 0;
 
 const getRandomFloat = (...args) => {
-  const [min, max, dec] = args;
   const errorIndex = args.findIndex((value) => !isPositiveNumber(value));
 
   if (errorIndex >= 0) {
     throw new Error(`Неверный тип по индексу ${errorIndex}.`);
   }
-
+  const [min, max, dec] = args;
   const pow = Math.pow(10, dec);
 
   return Math.round((Math.random() * (max - min) + min) * pow) / pow;
@@ -88,15 +87,14 @@ const createArrayRandom = (items) => {
   return array;
 };
 
-
-const getData = () => {
+const getAd = (index) => {
   const lat = getRandomFloat(Location.LAT_MIN, Location.LAT_MAX, LIMIT_SINGS);
   const lng = getRandomFloat(Location.LNG_MIN, Location.LNG_MAX, LIMIT_SINGS);
   const timiming = getRandomItem(TIMING);
 
   return {
     author: {
-      avatar: createAuthorUrl(AVATAR_LENGTH),
+      avatar: createAuthorUrl(index),
     },
     offer: {
       title: getRandomItem(TITLES),
@@ -105,8 +103,8 @@ const getData = () => {
       type: getRandomItem(TYPES),
       rooms: getRandomNumber(NUMBER_MIN, ROOM_MAX),
       guests: getRandomNumber(NUMBER_MIN, GUESTS_MAX),
-      checkin: timiming ,
-      checkout: timiming ,
+      checkin: timiming,
+      checkout: timiming,
       features: createArrayRandom(FEATURES),
       description: getRandomItem(DESCRIPTIONS),
       photos: createArrayRandom(PHOTOS),
@@ -118,4 +116,11 @@ const getData = () => {
   };
 };
 
-getData();
+const getAds = () => {
+  const ads = [];
+  for (let idx = 0; idx < NUMBER_OBJECTS; idx++) {
+    ads.push(getAd(idx+1));
+  }
+  return ads;
+};
+getAds();
