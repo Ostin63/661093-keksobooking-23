@@ -6,7 +6,7 @@ const GUESTS_MAX = 3;
 const AVATAR_LENGTH = 8;
 const PRICE_MAX = 1000000;
 const LIMIT_SINGS = 5;
-const STRING_PATERN = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/';
+const PHOTO_PATH = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/';
 const TITLES = [
   'Уютная квартира',
   'Квартира в ценре города',
@@ -42,9 +42,9 @@ const DESCRIPTIONS = [
   'Все соседи умерли',
 ];
 const PHOTOS = [
-  `${STRING_PATERN}duonguyen-8LrGtIxxa4w.jpg`,
-  `${STRING_PATERN}brandon-hoogenboom-SNxQGWxZQi0.jpg`,
-  `${STRING_PATERN}claire-rendall-b6kAwr1i0Iw.jpg`,
+  `${PHOTO_PATH}duonguyen-8LrGtIxxa4w.jpg`,
+  `${PHOTO_PATH}brandon-hoogenboom-SNxQGWxZQi0.jpg`,
+  `${PHOTO_PATH}claire-rendall-b6kAwr1i0Iw.jpg`,
 ];
 const Location = {
   LAT_MIN: 35.65000,
@@ -74,7 +74,7 @@ const padLeft = (index) => String(index).padStart(STRUNG_INDEX, '0');
 
 const createAuthorUrl = (index) => `img/avatars/user${padLeft(index)}.png`;
 
-const getRandomItems = (items) => items[getRandomNumber(NUMBER_MIN, items.length - 1)];
+const getRandomItem = (items) => items[getRandomNumber(NUMBER_MIN, items.length - 1)];
 
 const getRandomBoolean = () => Math.random() < 0.5;
 
@@ -88,24 +88,27 @@ const createArrayRandom = (items) => {
   return array;
 };
 
+
 const getData = () => {
   const lat = getRandomFloat(Location.LAT_MIN, Location.LAT_MAX, LIMIT_SINGS);
   const lng = getRandomFloat(Location.LNG_MIN, Location.LNG_MAX, LIMIT_SINGS);
+  const timiming = getRandomItem(TIMING);
+
   return {
     author: {
       avatar: createAuthorUrl(AVATAR_LENGTH),
     },
     offer: {
-      title: getRandomItems(TITLES),
+      title: getRandomItem(TITLES),
       address: `${lat} , ${lng}`,
       price: getRandomNumber(MIN_INDEX, PRICE_MAX),
-      type: getRandomItems(TYPES),
+      type: getRandomItem(TYPES),
       rooms: getRandomNumber(NUMBER_MIN, ROOM_MAX),
       guests: getRandomNumber(NUMBER_MIN, GUESTS_MAX),
-      checkin: getRandomItems(TIMING),
-      checkout: getRandomItems(TIMING),
+      checkin: timiming ,
+      checkout: timiming ,
       features: createArrayRandom(FEATURES),
-      description: getRandomItems(DESCRIPTIONS),
+      description: getRandomItem(DESCRIPTIONS),
       photos: createArrayRandom(PHOTOS),
     },
     location: {
