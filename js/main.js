@@ -120,7 +120,7 @@ const getAds = () => {
   const ads = [];
   for (let idx = 0; idx < NUMBER_OBJECTS; idx++) {
     ads.push(getAd(idx));
-    return ads;
   }
+  return ads;
 };
 getAds();
