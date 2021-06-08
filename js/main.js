@@ -119,7 +119,7 @@ const getAd = (index) => {
 const getAds = () => {
   const ads = [];
   for (let idx = 0; idx < NUMBER_OBJECTS; idx++) {
-    ads.push(getAd(idx));
+    ads.push(getAd(idx+1));
   }
   return ads;
 };
