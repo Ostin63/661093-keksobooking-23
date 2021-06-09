@@ -1,7 +1,7 @@
 import {
   STRUNG_INDEX,
   NUMBER_MIN
-} from './constant.js';
+} from './constants.js';
 
 const isPositiveNumber = (value) => typeof value === 'number' && value >= 0;
 
