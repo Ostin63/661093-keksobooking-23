@@ -26,7 +26,7 @@ import {
 const getAd = (index) => {
   const lat = getRandomFloat(Location.LAT_MIN, Location.LAT_MAX, LIMIT_SINGS);
   const lng = getRandomFloat(Location.LNG_MIN, Location.LNG_MAX, LIMIT_SINGS);
-  const timiming = getRandomItem(TIMING);
+  const timing = getRandomItem(TIMING);
 
   return {
     author: {
@@ -39,8 +39,8 @@ const getAd = (index) => {
       type: getRandomItem(TYPES),
       rooms: getRandomNumber(NUMBER_MIN, ROOM_MAX),
       guests: getRandomNumber(NUMBER_MIN, GUESTS_MAX),
-      checkin: timiming,
-      checkout: timiming,
+      checkin: timing,
+      checkout: timing,
       features: createArrayRandom(FEATURES),
       description: getRandomItem(DESCRIPTIONS),
       photos: createArrayRandom(PHOTOS),
