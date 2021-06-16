@@ -9,6 +9,7 @@ const similarCardTemplate = document.querySelector('#card')
 
 const getData = getAds();
 
+
 getData.forEach((items) => {
   const cardElement = similarCardTemplate.cloneNode(true);
 
@@ -22,18 +23,16 @@ getData.forEach((items) => {
   cardElement.querySelector('.popup__description').textContent = items.offer.description;
 
   const modifiers = items.offer.features.map((features) => `popup__features--${features}`);
-  const popupFeatures = cardElement.querySelectorAll('.popup__features');
-  popupFeatures.forEach((item) => {
-    const popupFeature = item.querySelectorAll('.popup__feature');
+  const popupFeature = cardElement.querySelectorAll('.popup__feature');
 
-    popupFeature.forEach((list) => {
-      const modifier = list;
+  popupFeature.forEach((item) => {
 
-      if (!modifiers.includes(modifier)) {
+    const modifier = item.classList[1];
 
-        item.remove();
-      }
-    });
+    if (!modifiers.includes(modifier)) {
+
+      item.remove();
+    }
   });
 
   footer.appendChild(cardElement);
