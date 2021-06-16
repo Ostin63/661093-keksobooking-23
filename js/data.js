@@ -46,8 +46,8 @@ const getAd = (index) => {
       photos: createArrayRandom(PHOTOS),
     },
     location: {
-      lat: lat,
-      lng: lng,
+      lat,
+      lng,
     },
   };
 };
