@@ -3,17 +3,16 @@ import {
 } from './data.js';
 
 
-const footer = document.querySelector('#map-canvas');
+const mapCanvas = document.querySelector('#map-canvas');
 const similarCardTemplate = document.querySelector('#card')
   .content
   .querySelector('.popup');
 
 const getData = getAds();
-
 const cardElement = similarCardTemplate.cloneNode(true);
 
 getData.forEach((items) => {
-  const itemType  = {
+  const itemType = {
     palace: 'Дворец',
     flat: 'Квартира',
     house: 'Дом',
@@ -39,12 +38,26 @@ getData.forEach((items) => {
       item.remove();
     }
   });
-
   cardElement.querySelector('.popup__description').textContent = items.offer.description;
-  cardElement.querySelector('.popup__photo').src = items.offer.photos;
 
+  const popupPhoto = cardElement.querySelector('.popup__photo');
 
-  footer.appendChild(cardElement);
+  if (items.offer.photos.length === 1) {
+    popupPhoto.src = items.offer.photos;
+  } else if (items.offer.photos.length === 0) {
+    popupPhoto.remove();
+  } else {
+    const clonePhotos = popupPhoto.cloneNode(true);
+
+    items.offer.photos.forEach((list) => {
+      // console.log(list)
+      clonePhotos.querySelector('.popup__photo').src = list;
+      popupPhoto.appendChild(clonePhotos);
+      popupPhoto.remove();
+    });
+  }
+
+  mapCanvas.appendChild(cardElement);
 });
 
 export {
