@@ -52,6 +52,13 @@ const Location = {
   LNG_MIN: 139.70000,
   LNG_MAX: 139.80000,
 };
+const ITEM_TYPES = {
+  palace: 'Дворец',
+  flat: 'Квартира',
+  house: 'Дом',
+  bungalow: 'Бунгало',
+  hotel: 'Отель',
+};
 
 export {
   MIN_INDEX,
@@ -62,14 +69,12 @@ export {
   NUMBER_OBJECTS,
   PRICE_MAX,
   LIMIT_SINGS,
-  DESCRIPTIONS
-};
-
-export {
+  DESCRIPTIONS,
   TITLES,
   TYPES,
   TIMING,
   FEATURES,
   PHOTOS,
+  ITEM_TYPES,
   Location
 };

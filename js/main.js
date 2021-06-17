@@ -1,9 +1,10 @@
 import {
   getAds
 } from './data.js';
+
 import {
-  getData
+  renderAds
 } from './popup.js';
 
 getAds();
-getData;
+renderAds(getAds[0]);
