@@ -40,21 +40,20 @@ getData.forEach((items) => {
   });
   cardElement.querySelector('.popup__description').textContent = items.offer.description;
 
-  const popupPhoto = cardElement.querySelector('.popup__photo');
+  const popupPhotos = cardElement.querySelector('.popup__photos');
+  const popupPhoto = popupPhotos.querySelector('.popup__photo');
 
   if (items.offer.photos.length === 1) {
     popupPhoto.src = items.offer.photos;
   } else if (items.offer.photos.length === 0) {
     popupPhoto.remove();
   } else {
-    const clonePhotos = popupPhoto.cloneNode(true);
-
-    items.offer.photos.forEach((list) => {
-      // console.log(list)
-      clonePhotos.querySelector('.popup__photo').src = list;
-      popupPhoto.appendChild(clonePhotos);
-      popupPhoto.remove();
-    });
+    for (let idx = 0; idx < items.offer.photos.length; idx++) {
+      const clonePhoto = popupPhoto.cloneNode(true);
+      clonePhoto.src = items.offer.photos[idx];
+      popupPhotos.appendChild(clonePhoto);
+    }
+    popupPhoto.remove();
   }
 
   mapCanvas.appendChild(cardElement);
