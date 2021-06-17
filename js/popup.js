@@ -2,6 +2,11 @@ import {
   ITEM_TYPES
 } from './constants.js';
 
+import {
+  isPresenceElement,
+  createUrlPhoto
+} from './util.js';
+
 const mapCanvas = document.querySelector('#map-canvas');
 const similarCardTemplate = document.querySelector('#card')
   .content
@@ -22,31 +27,14 @@ const renderAds = (data) => {
   const modifiers = data.offer.features.map((features) => `popup__feature--${features}`);
   const popupFeature = cardElement.querySelectorAll('.popup__feature');
 
-  popupFeature.forEach((item) => {
-    const modifier = item.classList[1];
+  isPresenceElement(popupFeature, modifiers);
 
-    if (!modifiers.includes(modifier)) {
-      item.remove();
-    }
-  });
   cardElement.querySelector('.popup__description').textContent = data.offer.description;
 
   const popupPhotos = cardElement.querySelector('.popup__photos');
   const popupPhoto = popupPhotos.querySelector('.popup__photo');
 
-  if (data.offer.photos.length === 1) {
-    popupPhoto.src = data.offer.photos;
-  } else if (data.offer.photos.length === 0) {
-    popupPhoto.remove();
-  } else {
-    for (let idx = 0; idx < data.offer.photos.length; idx++) {
-      const clonePhoto = popupPhoto.cloneNode(true);
-      clonePhoto.src = data.offer.photos[idx];
-      popupPhotos.appendChild(clonePhoto);
-    }
-    popupPhoto.remove();
-  }
-
+  createUrlPhoto(data, popupPhotos, popupPhoto);
   mapCanvas.appendChild(cardElement);
 };
 

@@ -37,10 +37,38 @@ const createArrayRandom = (items) => {
   return array;
 };
 
+const isPresenceElement = (element, isElement) => {
+  element.forEach((item) => {
+
+    const modifier = item.classList[1];
+
+    if (!isElement.includes(modifier)) {
+      item.remove();
+    }
+  });
+};
+
+const createUrlPhoto = (ads, block, element) => {
+  if (ads.offer.photos.length === 1) {
+    element.src = ads.offer.photos;
+  } else if (ads.offer.photos.length === 0) {
+    element.remove();
+  } else {
+    for (let idx = 0; idx < ads.offer.photos.length; idx++) {
+      const clonePhoto = element.cloneNode(true);
+      clonePhoto.src = ads.offer.photos[idx];
+      block.appendChild(clonePhoto);
+    }
+    element.remove();
+  }
+};
+
 export {
   getRandomFloat,
   getRandomNumber,
   createAuthorUrl,
   getRandomItem,
-  createArrayRandom
+  createArrayRandom,
+  isPresenceElement,
+  createUrlPhoto
 };
