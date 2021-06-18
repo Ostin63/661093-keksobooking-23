@@ -10,6 +10,6 @@ import {
   renderAds
 } from './popup.js';
 
-const detAd = getAds(NUMBER_OBJECTS);
+const getNewArr = getAds(NUMBER_OBJECTS);
 
-renderAds(detAd[0]);
+renderAds(getNewArr[0]);

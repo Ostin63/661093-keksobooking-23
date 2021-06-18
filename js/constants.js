@@ -60,6 +60,11 @@ const ITEM_TYPES = {
   hotel: 'Отель',
 };
 
+const MAP_CANVAS = document.querySelector('#map-canvas');
+const SIMILAR_CARD_TEMPLATE = document.querySelector('#card')
+  .content
+  .querySelector('.popup');
+
 export {
   MIN_INDEX,
   NUMBER_MIN,
@@ -76,5 +81,7 @@ export {
   FEATURES,
   PHOTOS,
   ITEM_TYPES,
-  Location
+  Location,
+  MAP_CANVAS,
+  SIMILAR_CARD_TEMPLATE
 };

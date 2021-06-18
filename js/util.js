@@ -39,7 +39,6 @@ const createArrayRandom = (items) => {
 
 const isPresenceElement = (element, isElement) => {
   element.forEach((item) => {
-
     const modifier = item.classList[1];
 
     if (!isElement.includes(modifier)) {
@@ -48,19 +47,28 @@ const isPresenceElement = (element, isElement) => {
   });
 };
 
-const createUrlPhoto = (ads, block, element) => {
-  if (ads.offer.photos.length === 1) {
-    element.src = ads.offer.photos;
-  } else if (ads.offer.photos.length === 0) {
+const addUrlPhoto = (data, block, element) => {
+  if (data.offer.photos.length === 1) {
+    element.src = data.offer.photos;
+  } else if (data.offer.photos.length === 0) {
     element.remove();
   } else {
-    for (let idx = 0; idx < ads.offer.photos.length; idx++) {
+    data.offer.photos.forEach((item) => {
       const clonePhoto = element.cloneNode(true);
-      clonePhoto.src = ads.offer.photos[idx];
+      clonePhoto.src = item;
       block.appendChild(clonePhoto);
-    }
+    });
     element.remove();
   }
+};
+
+const creatPluralNames = (value, words) => {
+  value = Math.abs(value) % 100;
+  const num = value % 10;
+  if (value > 10 && value < 20) { return words[2]; }
+  if (num > 1 && num < 5) { return words[1]; }
+  if (num === 1) { return words[0]; }
+  return words[2];
 };
 
 export {
@@ -70,5 +78,6 @@ export {
   getRandomItem,
   createArrayRandom,
   isPresenceElement,
-  createUrlPhoto
+  addUrlPhoto,
+  creatPluralNames
 };
