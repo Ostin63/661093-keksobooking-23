@@ -37,31 +37,6 @@ const createArrayRandom = (items) => {
   return array;
 };
 
-const isPresenceElement = (element, isElement) => {
-  element.forEach((item) => {
-    const modifier = item.classList[1];
-
-    if (!isElement.includes(modifier)) {
-      item.remove();
-    }
-  });
-};
-
-const addUrlPhoto = (data, block, element) => {
-  if (data.offer.photos.length === 1) {
-    element.src = data.offer.photos;
-  } else if (data.offer.photos.length === 0) {
-    element.remove();
-  } else {
-    data.offer.photos.forEach((item) => {
-      const clonePhoto = element.cloneNode(true);
-      clonePhoto.src = item;
-      block.appendChild(clonePhoto);
-    });
-    element.remove();
-  }
-};
-
 const creatPluralNames = (value, words) => {
   value = Math.abs(value) % 100;
   const num = value % 10;
@@ -77,7 +52,5 @@ export {
   createAuthorUrl,
   getRandomItem,
   createArrayRandom,
-  isPresenceElement,
-  addUrlPhoto,
   creatPluralNames
 };

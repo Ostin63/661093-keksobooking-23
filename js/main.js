@@ -7,9 +7,9 @@ import {
 } from './data.js';
 
 import {
-  renderAds
+  renderAd
 } from './popup.js';
 
 const getNewArr = getAds(NUMBER_OBJECTS);
 
-renderAds(getNewArr[0]);
+renderAd(getNewArr[0]);
