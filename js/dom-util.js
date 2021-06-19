@@ -1,21 +1,20 @@
 
-const removeExtra = (elements, isElement) => {
-  elements.forEach((item) => {
-    const modifier = item.classList[1];
-
-    if (!isElement.includes(modifier)) {
-      item.remove();
+const removeExtra = (elements, elementClasses) => {
+  elements.forEach((element) => {
+    const elementClass = element.classList[1];
+    if (!elementClasses.includes(elementClass)) {
+      element.remove();
     }
   });
 };
 
-const fillPhotoOrDelete = (data, block, element) => {
-  if (data.length === 0) {
+const fillPhotoOrDelete = (photos, block, element) => {
+  if (photos.length === 0) {
     element.remove();
   } else {
-    data.forEach((item) => {
+    photos.forEach((photo) => {
       const clonePhoto = element.cloneNode(true);
-      clonePhoto.src = item;
+      clonePhoto.src = photo;
       block.appendChild(clonePhoto);
     });
     element.remove();

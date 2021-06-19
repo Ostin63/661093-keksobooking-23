@@ -3,7 +3,7 @@ import {
 } from './constants.js';
 
 import {
-  creatPluralNames
+  creatsPluralNames
 } from './util.js';
 
 import {
@@ -25,13 +25,13 @@ const renderAd = (data) => {
   cardElement.querySelector('.popup__text--address').textContent = data.offer.address;
   cardElement.querySelector('.popup__text--price').textContent = `${data.offer.price} ₽/ночь`;
 
-  cardElement.querySelector('.popup__text--capacity').textContent = `${data.offer.rooms} ${creatPluralNames(data.offer.rooms, ['комната', 'комнаты', 'комнат'])} для ${data.offer.guests} ${creatPluralNames(data.offer.guests, ['гостя', 'гостей', 'гостей'])}`;
+  cardElement.querySelector('.popup__text--capacity').textContent = `${data.offer.rooms} ${creatsPluralNames(data.offer.rooms, ['комната', 'комнаты', 'комнат'])} для ${data.offer.guests} ${creatsPluralNames(data.offer.guests, ['гостя', 'гостей', 'гостей'])}`;
   cardElement.querySelector('.popup__text--time').textContent = `Заезд после ${data.offer.checkin} выезд до ${data.offer.checkout}`;
 
-  const modifiers = data.offer.features.map((features) => `popup__feature--${features}`);
-  const popupFeature = cardElement.querySelectorAll('.popup__feature');
+  const offerFeatureClasses = data.offer.features.map((features) => `popup__feature--${features}`);
+  const featureElementList = cardElement.querySelectorAll('.popup__feature');
 
-  removeExtra(popupFeature, modifiers);
+  removeExtra(featureElementList, offerFeatureClasses);
 
   cardElement.querySelector('.popup__description').textContent = data.offer.description;
 
