@@ -3,7 +3,7 @@ import {
 } from './constants.js';
 
 import {
-  creatsPluralNames
+  createPluralNames
 } from './util.js';
 
 import {
@@ -25,7 +25,7 @@ const renderAd = (data) => {
   cardElement.querySelector('.popup__text--address').textContent = data.offer.address;
   cardElement.querySelector('.popup__text--price').textContent = `${data.offer.price} ₽/ночь`;
 
-  cardElement.querySelector('.popup__text--capacity').textContent = `${data.offer.rooms} ${creatsPluralNames(data.offer.rooms, ['комната', 'комнаты', 'комнат'])} для ${data.offer.guests} ${creatsPluralNames(data.offer.guests, ['гостя', 'гостей', 'гостей'])}`;
+  cardElement.querySelector('.popup__text--capacity').textContent = `${data.offer.rooms} ${createPluralNames(data.offer.rooms, ['комната', 'комнаты', 'комнат'])} для ${data.offer.guests} ${createPluralNames(data.offer.guests, ['гостя', 'гостей', 'гостей'])}`;
   cardElement.querySelector('.popup__text--time').textContent = `Заезд после ${data.offer.checkin} выезд до ${data.offer.checkout}`;
 
   const offerFeatureClasses = data.offer.features.map((features) => `popup__feature--${features}`);
