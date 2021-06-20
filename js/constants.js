@@ -71,6 +71,11 @@ const GUESTS = [
   'гостей',
 ];
 
+
+const MIN_NAME_LENGTH = 30;
+const MAX_NAME_LENGTH = 100;
+const MAX_PRICE = 1000000;
+
 export {
   MIN_INDEX,
   NUMBER_MIN,
@@ -89,5 +94,8 @@ export {
   ITEM_TYPES,
   Location,
   ROOMS,
-  GUESTS
+  GUESTS,
+  MIN_NAME_LENGTH,
+  MAX_NAME_LENGTH,
+  MAX_PRICE
 };

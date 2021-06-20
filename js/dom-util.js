@@ -5,6 +5,8 @@ const SIMILAR_CARD_TEMPLATE = document.querySelector('#card')
 
 const AD_FORM = document.querySelector('.ad-form');
 const MAP_FILTERS = document.querySelector('.map__filters');
+const TITLE = AD_FORM.querySelector('#title');
+const PRICE = AD_FORM.querySelector('#price');
 
 const FORMS = [{
   element: AD_FORM,
@@ -70,6 +72,8 @@ const activeForms = () => toggleForms(true);
 export {
   MAP_CANVAS,
   SIMILAR_CARD_TEMPLATE,
+  TITLE,
+  PRICE,
   removeExtra,
   fillPhotoOrDelete,
   deactiveForms,
