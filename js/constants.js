@@ -60,6 +60,17 @@ const ITEM_TYPES = {
   hotel: 'Отель',
 };
 
+const ROOMS = [
+  'комната',
+  'комнаты',
+  'комнат',
+];
+const GUESTS = [
+  'гостя',
+  'гостей',
+  'гостей',
+];
+
 export {
   MIN_INDEX,
   NUMBER_MIN,
@@ -76,5 +87,7 @@ export {
   FEATURES,
   PHOTOS,
   ITEM_TYPES,
-  Location
+  Location,
+  ROOMS,
+  GUESTS
 };

@@ -1,5 +1,7 @@
 import {
-  ITEM_TYPES
+  ITEM_TYPES,
+  ROOMS,
+  GUESTS
 } from './constants.js';
 
 import {
@@ -8,24 +10,10 @@ import {
 
 import {
   removeExtra,
-  fillPhotoOrDelete
+  fillPhotoOrDelete,
+  MAP_CANVAS,
+  SIMILAR_CARD_TEMPLATE
 } from './dom-util.js';
-
-const ROOMS = [
-  'комната',
-  'комнаты',
-  'комнат',
-];
-const GUESTS = [
-  'гостя',
-  'гостей',
-  'гостей',
-];
-
-const MAP_CANVAS = document.querySelector('#map-canvas');
-const SIMILAR_CARD_TEMPLATE = document.querySelector('#card')
-  .content
-  .querySelector('.popup');
 
 const renderAd = (data) => {
   const { offer, author } = data;

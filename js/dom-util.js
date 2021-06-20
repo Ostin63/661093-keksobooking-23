@@ -1,3 +1,8 @@
+const MAP_CANVAS = document.querySelector('#map-canvas');
+const SIMILAR_CARD_TEMPLATE = document.querySelector('#card')
+  .content
+  .querySelector('.popup');
+
 const AD_FORM = document.querySelector('.ad-form');
 const MAP_FILTERS = document.querySelector('.map__filters');
 
@@ -63,6 +68,8 @@ const deactivationForms = () => toggleForms(false);
 const activationForms = () => toggleForms(true);
 
 export {
+  MAP_CANVAS,
+  SIMILAR_CARD_TEMPLATE,
   removeExtra,
   fillPhotoOrDelete,
   deactivationForms,
