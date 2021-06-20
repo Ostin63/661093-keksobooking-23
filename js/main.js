@@ -12,13 +12,13 @@ import {
 
 
 import {
-  deactivationForms,
-  activationForms
+  deactiveForms,
+  activeForms
 } from './dom-util.js';
 
 const getNewArr = getAds(NUMBER_OBJECTS);
 
 renderAd(getNewArr[0]);
 
-deactivationForms();
-setTimeout(activationForms, 3000);
+deactiveForms();
+setTimeout(activeForms, 3000);

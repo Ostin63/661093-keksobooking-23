@@ -64,14 +64,14 @@ const toggleForms = (enable) => {
   });
 };
 
-const deactivationForms = () => toggleForms(false);
-const activationForms = () => toggleForms(true);
+const deactiveForms = () => toggleForms(false);
+const activeForms = () => toggleForms(true);
 
 export {
   MAP_CANVAS,
   SIMILAR_CARD_TEMPLATE,
   removeExtra,
   fillPhotoOrDelete,
-  deactivationForms,
-  activationForms
+  deactiveForms,
+  activeForms
 };
