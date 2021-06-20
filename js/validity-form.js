@@ -2,7 +2,7 @@ const ROOM_NUMBER = document.querySelector('#room_number');
 const GUESTS_NUMBER = document.querySelector('#capacity');
 
 
-const validatyform = (item) => {
+const validateform = (item) => {
   item.addEventListener('invalid', () => {
     if (item.validity.valueMissing) {
       item.setCustomValidity('Обязательное поле');
@@ -12,7 +12,7 @@ const validatyform = (item) => {
   });
 };
 
-const validatyTitleElement = (item, minLength, maxLength) => {
+const validateTitleElement = (item, minLength, maxLength) => {
   item.addEventListener('input', () => {
     const valueLength = item.value.length;
     if (valueLength < minLength) {
@@ -26,7 +26,7 @@ const validatyTitleElement = (item, minLength, maxLength) => {
   });
 };
 
-const validatyNumberElement = (item, max) => {
+const validateNumberElement = (item, max) => {
   item.addEventListener('input', () => {
     const value = item.value;
     if (value >= max) {
@@ -59,7 +59,7 @@ ROOM_NUMBER.addEventListener('change', validityRooms);
 ROOM_NUMBER.addEventListener('change', validityRooms);
 
 export {
-  validatyform,
-  validatyTitleElement,
-  validatyNumberElement
+  validateform,
+  validateTitleElement,
+  validateNumberElement
 };

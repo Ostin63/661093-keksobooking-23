@@ -22,19 +22,19 @@ import {
 } from './dom-util.js';
 
 import {
-  validatyform,
-  validatyTitleElement,
-  validatyNumberElement
+  validateform,
+  validateTitleElement,
+  validateNumberElement
 } from './validity-form.js';
 
-const getNewArr = getAds(NUMBER_OBJECTS);
+const data = getAds(NUMBER_OBJECTS);
 
-renderAd(getNewArr[0]);
+renderAd(data[0]);
 
 deactiveForms();
 setTimeout(activeForms, 3000);
 
-validatyform(TITLE);
-validatyform(PRICE);
-validatyTitleElement(TITLE, MIN_NAME_LENGTH, MAX_NAME_LENGTH),
-validatyNumberElement(PRICE, MAX_PRICE);
+validateform(TITLE);
+validateform(PRICE);
+validateTitleElement(TITLE, MIN_NAME_LENGTH, MAX_NAME_LENGTH),
+validateNumberElement(PRICE, MAX_PRICE);
