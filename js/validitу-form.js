@@ -38,25 +38,25 @@ const validateNumberElement = (item, max) => {
   });
 };
 
-const validityRooms = () => {
-  const guests = GUESTS_NUMBER.selectedIndex;
-  const rooms = ROOM_NUMBER.selectedIndex;
-  if (rooms === 0 && guests !== 1) {
-    ROOM_NUMBER.setCustomValidity('для 1 гостя');
-  } else if (rooms === 1 && guests === 0 || rooms === 2 && guests === 3) {
-    ROOM_NUMBER.setCustomValidity('для 2 гостей или для 1 гостя');
-  } else if (rooms === 2 && guests === 0) {
-    ROOM_NUMBER.setCustomValidity('для 3 гостей, для 2 гостей или для 1 гостя');
-  } else if (rooms === 3 && guests !== 0) {
-    ROOM_NUMBER.setCustomValidity('не для гостей');
+const validiteRooms = () => {
+  const guests = GUESTS_NUMBER.value;
+  const rooms = ROOM_NUMBER.value;
+  if (rooms === '100' && guests !== '0') {
+    GUESTS_NUMBER.setCustomValidity('Значение только «не для гостей»');
+  } else if (rooms === '3' && guests === '0') {
+    GUESTS_NUMBER.setCustomValidity('Значение только «для 3 гостей», «для 2 гостей» или «для 1 гостя»');
+  } else if (rooms === '1' && guests !== '1') {
+    GUESTS_NUMBER.setCustomValidity('Значение только «для 1 гостя»');
+  } else if (rooms === '2' && guests === '0' || rooms === '2' && guests === '3') {
+    GUESTS_NUMBER.setCustomValidity('Значение только «для 2 гостей» или «для 1 гостя»');
   } else {
-    ROOM_NUMBER.setCustomValidity('');
+    GUESTS_NUMBER.setCustomValidity('');
   }
-  ROOM_NUMBER.reportValidity();
+  GUESTS_NUMBER.reportValidity();
 };
 
-ROOM_NUMBER.addEventListener('change', validityRooms);
-ROOM_NUMBER.addEventListener('change', validityRooms);
+ROOM_NUMBER.addEventListener('change', validiteRooms);
+GUESTS_NUMBER.addEventListener('change', validiteRooms);
 
 export {
   validateform,
