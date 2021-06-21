@@ -74,6 +74,8 @@ const MAX_NAME_LENGTH = 100;
 const MAX_PRICE = 1000000;
 
 const AD_FORM = document.querySelector('.ad-form');
+const TITLE = AD_FORM.querySelector('#title');
+const PRICE = AD_FORM.querySelector('#price');
 
 export {
   MIN_INDEX,
@@ -97,5 +99,7 @@ export {
   MIN_NAME_LENGTH,
   MAX_NAME_LENGTH,
   MAX_PRICE,
-  AD_FORM
+  AD_FORM,
+  TITLE,
+  PRICE
 };

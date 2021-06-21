@@ -1,10 +1,14 @@
 import {
-  AD_FORM
+  AD_FORM,
+  MIN_NAME_LENGTH,
+  MAX_NAME_LENGTH,
+  MAX_PRICE,
+  TITLE,
+  PRICE
 } from './constants.js';
 
 const ROOM_NUMBER = AD_FORM.querySelector('#room_number');
 const GUESTS_NUMBER = AD_FORM.querySelector('#capacity');
-
 
 const validateform = (item) => {
   item.addEventListener('invalid', () => {
@@ -16,31 +20,29 @@ const validateform = (item) => {
   });
 };
 
-const validateTitleElement = (item, minLength, maxLength) => {
-  item.addEventListener('input', () => {
-    const valueLength = item.value.length;
-    if (valueLength < minLength) {
-      item.setCustomValidity(`Ещё ${minLength - valueLength} символов`);
-    } else if (valueLength > maxLength) {
-      item.setCustomValidity(`Удалите лишние ${valueLength - maxLength} символов`);
-    } else {
-      item.setCustomValidity('');
-    }
-    item.reportValidity();
-  });
+TITLE.addEventListener('input', () => {
+  const valueLength = TITLE.value.length;
+  if (valueLength < MIN_NAME_LENGTH) {
+    TITLE.setCustomValidity(`Ещё ${MIN_NAME_LENGTH - valueLength} символов`);
+  } else if (valueLength > MAX_NAME_LENGTH) {
+    TITLE.setCustomValidity(`Удалите лишние ${valueLength - MAX_NAME_LENGTH} символов`);
+  } else {
+    TITLE.setCustomValidity('');
+  }
+  TITLE.reportValidity();
+});
+
+const validitePrice = () => {
+  const value = PRICE.value;
+  if (value >= MAX_PRICE) {
+    PRICE.setCustomValidity(`Цена не может превышать ${MAX_PRICE}`);
+  } else {
+    PRICE.setCustomValidity('');
+  }
+  PRICE.reportValidity();
 };
 
-const validateNumberElement = (item, max) => {
-  item.addEventListener('input', () => {
-    const value = item.value;
-    if (value >= max) {
-      item.setCustomValidity(`Цена не может превышать ${max}`);
-    } else {
-      item.setCustomValidity('');
-    }
-    item.reportValidity();
-  });
-};
+PRICE.addEventListener('input', validitePrice);
 
 const validiteRooms = () => {
   const guests = GUESTS_NUMBER.value;
@@ -62,8 +64,5 @@ const validiteRooms = () => {
 ROOM_NUMBER.addEventListener('change', validiteRooms);
 GUESTS_NUMBER.addEventListener('change', validiteRooms);
 
-export {
-  validateform,
-  validateTitleElement,
-  validateNumberElement
-};
+validateform(TITLE);
+validateform(PRICE);

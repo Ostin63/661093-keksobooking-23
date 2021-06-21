@@ -1,8 +1,5 @@
 import {
-  NUMBER_OBJECTS,
-  MIN_NAME_LENGTH,
-  MAX_NAME_LENGTH,
-  MAX_PRICE
+  NUMBER_OBJECTS
 } from './constants.js';
 
 import {
@@ -16,16 +13,10 @@ import {
 
 import {
   deactiveForms,
-  activeForms,
-  TITLE,
-  PRICE
+  activeForms
 } from './dom-util.js';
 
-import {
-  validateform,
-  validateTitleElement,
-  validateNumberElement
-} from './form.js';
+import'./form.js';
 
 const data = getAds(NUMBER_OBJECTS);
 
@@ -33,8 +24,3 @@ renderAd(data[0]);
 
 deactiveForms();
 setTimeout(activeForms, 3000);
-
-validateform(TITLE);
-validateform(PRICE);
-validateTitleElement(TITLE, MIN_NAME_LENGTH, MAX_NAME_LENGTH);
-validateNumberElement(PRICE, MAX_PRICE);
