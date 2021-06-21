@@ -1,5 +1,9 @@
-const ROOM_NUMBER = document.querySelector('#room_number');
-const GUESTS_NUMBER = document.querySelector('#capacity');
+import {
+  AD_FORM
+} from './constants.js';
+
+const ROOM_NUMBER = AD_FORM.querySelector('#room_number');
+const GUESTS_NUMBER = AD_FORM.querySelector('#capacity');
 
 
 const validateform = (item) => {

@@ -1,9 +1,12 @@
+import {
+  AD_FORM
+} from './constants.js';
+
 const MAP_CANVAS = document.querySelector('#map-canvas');
 const SIMILAR_CARD_TEMPLATE = document.querySelector('#card')
   .content
   .querySelector('.popup');
 
-const AD_FORM = document.querySelector('.ad-form');
 const MAP_FILTERS = document.querySelector('.map__filters');
 const TITLE = AD_FORM.querySelector('#title');
 const PRICE = AD_FORM.querySelector('#price');

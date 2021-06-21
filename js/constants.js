@@ -76,6 +76,8 @@ const MIN_NAME_LENGTH = 30;
 const MAX_NAME_LENGTH = 100;
 const MAX_PRICE = 1000000;
 
+const AD_FORM = document.querySelector('.ad-form');
+
 export {
   MIN_INDEX,
   NUMBER_MIN,
@@ -97,5 +99,6 @@ export {
   GUESTS,
   MIN_NAME_LENGTH,
   MAX_NAME_LENGTH,
-  MAX_PRICE
+  MAX_PRICE,
+  AD_FORM
 };
