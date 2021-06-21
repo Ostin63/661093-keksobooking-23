@@ -59,7 +59,6 @@ const ITEM_TYPES = {
   bungalow: 'Бунгало',
   hotel: 'Отель',
 };
-
 const ROOMS = [
   'комната',
   'комнаты',
@@ -70,8 +69,6 @@ const GUESTS = [
   'гостей',
   'гостей',
 ];
-
-
 const MIN_NAME_LENGTH = 30;
 const MAX_NAME_LENGTH = 100;
 const MAX_PRICE = 1000000;

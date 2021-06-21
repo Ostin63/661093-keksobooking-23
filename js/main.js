@@ -25,7 +25,7 @@ import {
   validateform,
   validateTitleElement,
   validateNumberElement
-} from './validitу-form.js';
+} from './form.js';
 
 const data = getAds(NUMBER_OBJECTS);
 
