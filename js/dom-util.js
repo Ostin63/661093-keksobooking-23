@@ -2,11 +2,6 @@ import {
   AD_FORM
 } from './constants.js';
 
-const MAP_CANVAS = document.querySelector('#map-canvas');
-const SIMILAR_CARD_TEMPLATE = document.querySelector('#card')
-  .content
-  .querySelector('.popup');
-
 const MAP_FILTERS = document.querySelector('.map__filters');
 
 const FORMS = [
@@ -72,8 +67,6 @@ const deactiveForms = () => toggleForms(false);
 const activeForms = () => toggleForms(true);
 
 export {
-  MAP_CANVAS,
-  SIMILAR_CARD_TEMPLATE,
   removeExtra,
   fillPhotoOrDelete,
   deactiveForms,

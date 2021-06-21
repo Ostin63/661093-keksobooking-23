@@ -48,7 +48,7 @@ const PHOTOS = [
   `${PHOTO_PATH}brandon-hoogenboom-SNxQGWxZQi0.jpg`,
   `${PHOTO_PATH}claire-rendall-b6kAwr1i0Iw.jpg`,
 ];
-const location = {
+const Location = {
   LAT_MIN: 35.65000,
   LAT_MAX: 35.70000,
   LNG_MIN: 139.70000,
@@ -76,7 +76,7 @@ const AD_FORM = document.querySelector('.ad-form');
 const TITLE = AD_FORM.querySelector('#title');
 const PRICE = AD_FORM.querySelector('#price');
 
-const TypePrices = {
+const PRICE_TYPE = {
   bungalow: 0,
   flat: 1000,
   hotel: 3000,
@@ -99,7 +99,7 @@ export {
   FEATURES,
   PHOTOS,
   ITEM_TYPES,
-  location,
+  Location,
   ROOMS,
   GUESTS,
   MIN_NAME_LENGTH,
@@ -108,5 +108,5 @@ export {
   AD_FORM,
   TITLE,
   PRICE,
-  TypePrices
+  PRICE_TYPE
 };

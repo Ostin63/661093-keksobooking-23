@@ -5,7 +5,7 @@ import {
   MIN_NAME_LENGTH,
   MAX_NAME_LENGTH,
   MAX_PRICE,
-  TypePrices
+  PRICE_TYPE
 } from './constants.js';
 
 const ROOM_NUMBER = AD_FORM.querySelector('#room_number');
@@ -57,8 +57,8 @@ ROOM_NUMBER.addEventListener('change', validiteRooms);
 GUESTS_NUMBER.addEventListener('change', validiteRooms);
 
 TYPE.addEventListener('change', () => {
-  PRICE.min = TypePrices[TYPE.value];
-  PRICE.placeholder = TypePrices[TYPE.value];
+  PRICE.min = PRICE_TYPE[TYPE.value];
+  PRICE.placeholder = PRICE_TYPE[TYPE.value];
 });
 
 TIME_IN.addEventListener('change', () => {

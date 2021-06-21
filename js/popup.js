@@ -10,10 +10,13 @@ import {
 
 import {
   removeExtra,
-  fillPhotoOrDelete,
-  MAP_CANVAS,
-  SIMILAR_CARD_TEMPLATE
+  fillPhotoOrDelete
 } from './dom-util.js';
+
+const MAP_CANVAS = document.querySelector('#map-canvas');
+const SIMILAR_CARD_TEMPLATE = document.querySelector('#card')
+  .content
+  .querySelector('.popup');
 
 const renderAd = (data) => {
   const { offer, author } = data;

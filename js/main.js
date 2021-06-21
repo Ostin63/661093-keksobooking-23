@@ -10,7 +10,6 @@ import {
   renderAd
 } from './popup.js';
 
-
 import {
   deactiveForms,
   activeForms
