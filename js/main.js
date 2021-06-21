@@ -16,11 +16,11 @@ import {
   activeForms
 } from './dom-util.js';
 
-import'./form.js';
+import './form.js';
 
 const data = getAds(NUMBER_OBJECTS);
 
 renderAd(data[0]);
 
 deactiveForms();
-setTimeout(activeForms, 3000);
+setTimeout(activeForms, 1000);

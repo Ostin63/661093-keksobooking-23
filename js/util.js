@@ -33,7 +33,6 @@ const createArrayRandom = (items) => {
   if (array.length < 1) {
     Math.random() * (items.length);
   }
-
   return array;
 };
 

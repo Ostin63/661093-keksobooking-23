@@ -4,7 +4,9 @@ const STRUNG_INDEX = 2;
 const ROOM_MAX = 3;
 const GUESTS_MAX = 3;
 const NUMBER_OBJECTS = 10;
-const PRICE_MAX = 1000000;
+const MIN_NAME_LENGTH = 30;
+const MAX_NAME_LENGTH = 100;
+const MAX_PRICE = 1000000;
 const LIMIT_SINGS = 5;
 const PHOTO_PATH = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/';
 const TITLES = [
@@ -46,7 +48,7 @@ const PHOTOS = [
   `${PHOTO_PATH}brandon-hoogenboom-SNxQGWxZQi0.jpg`,
   `${PHOTO_PATH}claire-rendall-b6kAwr1i0Iw.jpg`,
 ];
-const Location = {
+const location = {
   LAT_MIN: 35.65000,
   LAT_MAX: 35.70000,
   LNG_MIN: 139.70000,
@@ -69,13 +71,18 @@ const GUESTS = [
   'гостей',
   'гостей',
 ];
-const MIN_NAME_LENGTH = 30;
-const MAX_NAME_LENGTH = 100;
-const MAX_PRICE = 1000000;
 
 const AD_FORM = document.querySelector('.ad-form');
 const TITLE = AD_FORM.querySelector('#title');
 const PRICE = AD_FORM.querySelector('#price');
+
+const TypePrices = {
+  bungalow: 0,
+  flat: 1000,
+  hotel: 3000,
+  house: 5000,
+  palace: 10000,
+};
 
 export {
   MIN_INDEX,
@@ -84,7 +91,6 @@ export {
   ROOM_MAX,
   GUESTS_MAX,
   NUMBER_OBJECTS,
-  PRICE_MAX,
   LIMIT_SINGS,
   DESCRIPTIONS,
   TITLES,
@@ -93,7 +99,7 @@ export {
   FEATURES,
   PHOTOS,
   ITEM_TYPES,
-  Location,
+  location,
   ROOMS,
   GUESTS,
   MIN_NAME_LENGTH,
@@ -101,5 +107,6 @@ export {
   MAX_PRICE,
   AD_FORM,
   TITLE,
-  PRICE
+  PRICE,
+  TypePrices
 };

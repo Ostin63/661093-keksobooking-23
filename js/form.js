@@ -1,19 +1,23 @@
 import {
   AD_FORM,
+  TITLE,
+  PRICE,
   MIN_NAME_LENGTH,
   MAX_NAME_LENGTH,
   MAX_PRICE,
-  TITLE,
-  PRICE
+  TypePrices
 } from './constants.js';
 
 const ROOM_NUMBER = AD_FORM.querySelector('#room_number');
 const GUESTS_NUMBER = AD_FORM.querySelector('#capacity');
+const TYPE = AD_FORM.querySelector('#type');
+const TIME_IN = AD_FORM.querySelector('#timein');
+const TIME_OUT = AD_FORM.querySelector('#timeout');
 
 const validateform = (item) => {
   item.addEventListener('invalid', () => {
     if (item.validity.valueMissing) {
-      item.setCustomValidity('Обязательное поле');
+      item.setCustomValidity('Обязательное поле Вася');
     } else {
       item.setCustomValidity('');
     }
@@ -23,7 +27,7 @@ const validateform = (item) => {
 TITLE.addEventListener('input', () => {
   const valueLength = TITLE.value.length;
   if (valueLength < MIN_NAME_LENGTH) {
-    TITLE.setCustomValidity(`Ещё ${MIN_NAME_LENGTH - valueLength} символов`);
+    TITLE.setCustomValidity(`Еще ${MIN_NAME_LENGTH - valueLength} символов`);
   } else if (valueLength > MAX_NAME_LENGTH) {
     TITLE.setCustomValidity(`Удалите лишние ${valueLength - MAX_NAME_LENGTH} символов`);
   } else {
@@ -32,7 +36,7 @@ TITLE.addEventListener('input', () => {
   TITLE.reportValidity();
 });
 
-const validitePrice = () => {
+PRICE.addEventListener('input', () => {
   const value = PRICE.value;
   if (value >= MAX_PRICE) {
     PRICE.setCustomValidity(`Цена не может превышать ${MAX_PRICE}`);
@@ -40,9 +44,7 @@ const validitePrice = () => {
     PRICE.setCustomValidity('');
   }
   PRICE.reportValidity();
-};
-
-PRICE.addEventListener('input', validitePrice);
+});
 
 const validiteRooms = () => {
   const guests = GUESTS_NUMBER.value;
@@ -63,6 +65,19 @@ const validiteRooms = () => {
 
 ROOM_NUMBER.addEventListener('change', validiteRooms);
 GUESTS_NUMBER.addEventListener('change', validiteRooms);
+
+TYPE.addEventListener('change', () => {
+  PRICE.min = TypePrices[TYPE.value];
+  PRICE.placeholder = TypePrices[TYPE.value];
+});
+
+TIME_IN.addEventListener('change', () => {
+  TIME_OUT.value = TIME_IN.value;
+});
+
+TIME_OUT.addEventListener('change', () => {
+  TIME_IN.value = TIME_OUT.value;
+});
 
 validateform(TITLE);
 validateform(PRICE);

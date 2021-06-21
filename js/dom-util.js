@@ -9,16 +9,17 @@ const SIMILAR_CARD_TEMPLATE = document.querySelector('#card')
 
 const MAP_FILTERS = document.querySelector('.map__filters');
 
-const FORMS = [{
-  element: AD_FORM,
-  disabledClass: 'ad-form--disabled',
-  selector: 'fieldset.ad-form__element',
-},
-{
-  element: MAP_FILTERS,
-  disabledClass: 'map__filters--disabled',
-  selector: 'select, fieldset',
-},
+const FORMS = [
+  {
+    element: AD_FORM,
+    disabledClass: 'ad-form--disabled',
+    selector: 'fieldset.ad-form__element',
+  },
+  {
+    element: MAP_FILTERS,
+    disabledClass: 'map__filters--disabled',
+    selector: 'select, fieldset',
+  },
 ];
 
 const removeExtra = (elements, elementClasses) => {
@@ -62,7 +63,7 @@ const toggleForm = (form, className, selector, enable) => {
 };
 
 const toggleForms = (enable) => {
-  FORMS.forEach(({ element, disabledClass, selector}) => {
+  FORMS.forEach(({ element, disabledClass, selector }) => {
     toggleForm(element, disabledClass, selector, enable);
   });
 };

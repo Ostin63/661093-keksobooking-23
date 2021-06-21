@@ -3,7 +3,7 @@ import {
   NUMBER_MIN,
   ROOM_MAX,
   GUESTS_MAX,
-  PRICE_MAX,
+  MAX_PRICE,
   LIMIT_SINGS,
   DESCRIPTIONS,
   NUMBER_OBJECTS,
@@ -12,7 +12,7 @@ import {
   TIMING,
   FEATURES,
   PHOTOS,
-  Location
+  location
 } from './constants.js';
 
 import {
@@ -24,8 +24,8 @@ import {
 } from './util.js';
 
 const getAd = (index) => {
-  const lat = getRandomFloat(Location.LAT_MIN, Location.LAT_MAX, LIMIT_SINGS);
-  const lng = getRandomFloat(Location.LNG_MIN, Location.LNG_MAX, LIMIT_SINGS);
+  const lat = getRandomFloat(location.LAT_MIN, location.LAT_MAX, LIMIT_SINGS);
+  const lng = getRandomFloat(location.LNG_MIN, location.LNG_MAX, LIMIT_SINGS);
   const timing = getRandomItem(TIMING);
 
   return {
@@ -35,7 +35,7 @@ const getAd = (index) => {
     offer: {
       title: getRandomItem(TITLES),
       address: `${lat} , ${lng}`,
-      price: getRandomNumber(MIN_INDEX, PRICE_MAX),
+      price: getRandomNumber(MIN_INDEX, MAX_PRICE),
       type: getRandomItem(TYPES),
       rooms: getRandomNumber(NUMBER_MIN, ROOM_MAX),
       guests: getRandomNumber(NUMBER_MIN, GUESTS_MAX),
