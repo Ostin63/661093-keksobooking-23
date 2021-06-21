@@ -36,5 +36,5 @@ setTimeout(activeForms, 3000);
 
 validateform(TITLE);
 validateform(PRICE);
-validateTitleElement(TITLE, MIN_NAME_LENGTH, MAX_NAME_LENGTH),
+validateTitleElement(TITLE, MIN_NAME_LENGTH, MAX_NAME_LENGTH);
 validateNumberElement(PRICE, MAX_PRICE);
