@@ -14,7 +14,7 @@ const TYPE = AD_FORM.querySelector('#type');
 const TIME_IN = AD_FORM.querySelector('#timein');
 const TIME_OUT = AD_FORM.querySelector('#timeout');
 
-TITLE.addEventListener('input', () => {
+const validiteTitle = () => {
   const valueLength = TITLE.value.length;
   if (valueLength < MIN_NAME_LENGTH) {
     TITLE.setCustomValidity(`Еще ${MIN_NAME_LENGTH - valueLength} символов`);
@@ -24,9 +24,9 @@ TITLE.addEventListener('input', () => {
     TITLE.setCustomValidity('');
   }
   TITLE.reportValidity();
-});
+};
 
-PRICE.addEventListener('input', () => {
+const validitePrice = () => {
   const value = PRICE.value;
   if (value >= MAX_PRICE) {
     PRICE.setCustomValidity(`Цена не может превышать ${MAX_PRICE}`);
@@ -34,7 +34,7 @@ PRICE.addEventListener('input', () => {
     PRICE.setCustomValidity('');
   }
   PRICE.reportValidity();
-});
+};
 
 const validiteRooms = () => {
   const guests = GUESTS_NUMBER.value;
@@ -53,18 +53,28 @@ const validiteRooms = () => {
   GUESTS_NUMBER.reportValidity();
 };
 
-ROOM_NUMBER.addEventListener('change', validiteRooms);
-GUESTS_NUMBER.addEventListener('change', validiteRooms);
-
-TYPE.addEventListener('change', () => {
+const validiteType = () => {
   PRICE.min = PRICE_TYPE[TYPE.value];
   PRICE.placeholder = PRICE_TYPE[TYPE.value];
-});
+};
 
-TIME_IN.addEventListener('change', () => {
+const validiteTimein = () => {
   TIME_OUT.value = TIME_IN.value;
-});
+};
 
-TIME_OUT.addEventListener('change', () => {
+const validiteTimeout = () => {
   TIME_IN.value = TIME_OUT.value;
-});
+};
+const addEventListeners = () => {
+  TITLE.addEventListener('input', validiteTitle);
+  PRICE.addEventListener('input', validitePrice);
+  ROOM_NUMBER.addEventListener('change', validiteRooms);
+  GUESTS_NUMBER.addEventListener('change', validiteRooms);
+  TYPE.addEventListener('change', validiteType);
+  TIME_IN.addEventListener('change', validiteTimein);
+  TIME_OUT.addEventListener('change', validiteTimeout);
+};
+
+export {
+  addEventListeners
+};

@@ -15,7 +15,9 @@ import {
   activeForms
 } from './dom-util.js';
 
-import './form.js';
+import {
+  addEventListeners
+} from './form.js';
 
 const data = getAds(NUMBER_OBJECTS);
 
@@ -23,3 +25,4 @@ renderAd(data[0]);
 
 deactiveForms();
 setTimeout(activeForms, 1000);
+addEventListeners();
