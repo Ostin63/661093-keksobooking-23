@@ -14,16 +14,6 @@ const TYPE = AD_FORM.querySelector('#type');
 const TIME_IN = AD_FORM.querySelector('#timein');
 const TIME_OUT = AD_FORM.querySelector('#timeout');
 
-const validateform = (item) => {
-  item.addEventListener('invalid', () => {
-    if (item.validity.valueMissing) {
-      item.setCustomValidity('Обязательное поле Вася');
-    } else {
-      item.setCustomValidity('');
-    }
-  });
-};
-
 TITLE.addEventListener('input', () => {
   const valueLength = TITLE.value.length;
   if (valueLength < MIN_NAME_LENGTH) {
@@ -78,6 +68,3 @@ TIME_IN.addEventListener('change', () => {
 TIME_OUT.addEventListener('change', () => {
   TIME_IN.value = TIME_OUT.value;
 });
-
-validateform(TITLE);
-validateform(PRICE);
