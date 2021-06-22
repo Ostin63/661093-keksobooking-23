@@ -4,7 +4,9 @@ const STRUNG_INDEX = 2;
 const ROOM_MAX = 3;
 const GUESTS_MAX = 3;
 const NUMBER_OBJECTS = 10;
-const PRICE_MAX = 1000000;
+const MIN_NAME_LENGTH = 30;
+const MAX_NAME_LENGTH = 100;
+const MAX_PRICE = 1000000;
 const LIMIT_SINGS = 5;
 const PHOTO_PATH = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/';
 const TITLES = [
@@ -59,6 +61,28 @@ const ITEM_TYPES = {
   bungalow: 'Бунгало',
   hotel: 'Отель',
 };
+const ROOMS = [
+  'комната',
+  'комнаты',
+  'комнат',
+];
+const GUESTS = [
+  'гостя',
+  'гостей',
+  'гостей',
+];
+
+const AD_FORM = document.querySelector('.ad-form');
+const TITLE = AD_FORM.querySelector('#title');
+const PRICE = AD_FORM.querySelector('#price');
+
+const PRICE_TYPE = {
+  bungalow: 0,
+  flat: 1000,
+  hotel: 3000,
+  house: 5000,
+  palace: 10000,
+};
 
 export {
   MIN_INDEX,
@@ -67,7 +91,6 @@ export {
   ROOM_MAX,
   GUESTS_MAX,
   NUMBER_OBJECTS,
-  PRICE_MAX,
   LIMIT_SINGS,
   DESCRIPTIONS,
   TITLES,
@@ -76,5 +99,14 @@ export {
   FEATURES,
   PHOTOS,
   ITEM_TYPES,
-  Location
+  Location,
+  ROOMS,
+  GUESTS,
+  MIN_NAME_LENGTH,
+  MAX_NAME_LENGTH,
+  MAX_PRICE,
+  AD_FORM,
+  TITLE,
+  PRICE,
+  PRICE_TYPE
 };

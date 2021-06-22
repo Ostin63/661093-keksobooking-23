@@ -10,15 +10,19 @@ import {
   renderAd
 } from './popup.js';
 
-
 import {
-  deactivationForms,
-  activationForms
+  deactiveForms,
+  activeForms
 } from './dom-util.js';
 
-const getNewArr = getAds(NUMBER_OBJECTS);
+import {
+  addEventListeners
+} from './form.js';
 
-renderAd(getNewArr[0]);
+const data = getAds(NUMBER_OBJECTS);
 
-deactivationForms();
-setTimeout(activationForms, 3000);
+renderAd(data[0]);
+
+deactiveForms();
+setTimeout(activeForms, 1000);
+addEventListeners();

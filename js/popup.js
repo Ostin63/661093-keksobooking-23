@@ -1,5 +1,7 @@
 import {
-  ITEM_TYPES
+  ITEM_TYPES,
+  ROOMS,
+  GUESTS
 } from './constants.js';
 
 import {
@@ -10,17 +12,6 @@ import {
   removeExtra,
   fillPhotoOrDelete
 } from './dom-util.js';
-
-const ROOMS = [
-  'комната',
-  'комнаты',
-  'комнат',
-];
-const GUESTS = [
-  'гостя',
-  'гостей',
-  'гостей',
-];
 
 const MAP_CANVAS = document.querySelector('#map-canvas');
 const SIMILAR_CARD_TEMPLATE = document.querySelector('#card')
