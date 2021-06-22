@@ -55,34 +55,36 @@ const validiteRooms = () => {
     GUESTS_NUMBER.setCustomValidity('');
   }
   GUESTS_NUMBER.reportValidity();
+  // return result;
 };
-
+validiteRooms();
 const addPriceValue = () => {
   PRICE.value = PRICE_TYPE[TYPE.value];
 };
 addPriceValue();
 
-const validiteType = () => {
+const synchronizeType = () => {
   PRICE.min = PRICE_TYPE[TYPE.value];
   PRICE.placeholder = PRICE_TYPE[TYPE.value];
   addPriceValue();
 };
 
-const synzronizationTimein = () => {
+const synchronizeTimein = () => {
   TIMEOUT.value = TIMEIN.value;
 };
 
-const synzronizationTimeout = () => {
+const synchronizeTimeout = () => {
   TIMEIN.value = TIMEOUT.value;
 };
+
 const addEventListeners = () => {
   TITLE.addEventListener('input', validiteTitle);
   PRICE.addEventListener('input', validitePrice);
   ROOM_NUMBER.addEventListener('change', validiteRooms);
   GUESTS_NUMBER.addEventListener('change', validiteRooms);
-  TYPE.addEventListener('change', validiteType);
-  TIMEIN.addEventListener('change', synzronizationTimein);
-  TIMEOUT.addEventListener('change', synzronizationTimeout);
+  TYPE.addEventListener('change', synchronizeType);
+  TIMEIN.addEventListener('change', synchronizeTimein);
+  TIMEOUT.addEventListener('change', synchronizeTimeout);
 };
 
 export {
