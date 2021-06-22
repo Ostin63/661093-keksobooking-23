@@ -10,8 +10,8 @@ import {
 const ROOM_NUMBER = AD_FORM.querySelector('#room_number');
 const GUESTS_NUMBER = AD_FORM.querySelector('#capacity');
 const TYPE = AD_FORM.querySelector('#type');
-const TIME_IN = AD_FORM.querySelector('#timein');
-const TIME_OUT = AD_FORM.querySelector('#timeout');
+const TIMEIN = AD_FORM.querySelector('#timein');
+const TIMEOUT = AD_FORM.querySelector('#timeout');
 
 const validiteTitle = () => {
   const valueLength = TITLE.value.length;
@@ -58,11 +58,11 @@ const validiteType = () => {
 };
 
 const validiteTimein = () => {
-  TIME_OUT.value = TIME_IN.value;
+  TIMEOUT.value = TIMEIN.value;
 };
 
 const validiteTimeout = () => {
-  TIME_IN.value = TIME_OUT.value;
+  TIMEIN.value = TIMEOUT.value;
 };
 const addEventListeners = () => {
   TITLE.addEventListener('input', validiteTitle);
@@ -70,8 +70,8 @@ const addEventListeners = () => {
   ROOM_NUMBER.addEventListener('change', validiteRooms);
   GUESTS_NUMBER.addEventListener('change', validiteRooms);
   TYPE.addEventListener('change', validiteType);
-  TIME_IN.addEventListener('change', validiteTimein);
-  TIME_OUT.addEventListener('change', validiteTimeout);
+  TIMEIN.addEventListener('change', validiteTimein);
+  TIMEOUT.addEventListener('change', validiteTimeout);
 };
 
 export {
