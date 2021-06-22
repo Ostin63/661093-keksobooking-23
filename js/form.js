@@ -69,6 +69,7 @@ const addEventListeners = () => {
   PRICE.addEventListener('input', validitePrice);
   ROOM_NUMBER.addEventListener('change', validiteRooms);
   GUESTS_NUMBER.addEventListener('change', validiteRooms);
+  GUESTS_NUMBER.addEventListener('input', validiteRooms);
   TYPE.addEventListener('change', validiteType);
   TIMEIN.addEventListener('change', validiteTimein);
   TIMEOUT.addEventListener('change', validiteTimeout);
