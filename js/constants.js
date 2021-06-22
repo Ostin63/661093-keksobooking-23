@@ -4,8 +4,6 @@ const STRUNG_INDEX = 2;
 const ROOM_MAX = 3;
 const GUESTS_MAX = 3;
 const NUMBER_OBJECTS = 10;
-const MIN_NAME_LENGTH = 30;
-const MAX_NAME_LENGTH = 100;
 const MAX_PRICE = 1000000;
 const LIMIT_SINGS = 5;
 const PHOTO_PATH = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/';
@@ -48,6 +46,10 @@ const PHOTOS = [
   `${PHOTO_PATH}brandon-hoogenboom-SNxQGWxZQi0.jpg`,
   `${PHOTO_PATH}claire-rendall-b6kAwr1i0Iw.jpg`,
 ];
+const NameLength = {
+  MIN: 30,
+  MAX: 100,
+};
 const Location = {
   LAT_MIN: 35.65000,
   LAT_MAX: 35.70000,
@@ -102,8 +104,7 @@ export {
   Location,
   ROOMS,
   GUESTS,
-  MIN_NAME_LENGTH,
-  MAX_NAME_LENGTH,
+  NameLength,
   MAX_PRICE,
   AD_FORM,
   TITLE,
