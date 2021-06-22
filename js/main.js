@@ -16,7 +16,8 @@ import {
 } from './dom-util.js';
 
 import {
-  addEventListeners
+  addEventListeners,
+  randomAddress
 } from './form.js';
 
 const data = getAds(NUMBER_OBJECTS);
@@ -27,3 +28,4 @@ renderAd(data[0]);
 deactiveForms();
 setTimeout(activeForms, TIME_OUT);
 addEventListeners();
+randomAddress(data[0].offer.address);
