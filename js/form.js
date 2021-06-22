@@ -2,8 +2,7 @@ import {
   AD_FORM,
   TITLE,
   PRICE,
-  MIN_NAME_LENGTH,
-  MAX_NAME_LENGTH,
+  NameLength,
   MAX_PRICE,
   PRICE_TYPE
 } from './constants.js';
@@ -16,10 +15,10 @@ const TIME_OUT = AD_FORM.querySelector('#timeout');
 
 const validiteTitle = () => {
   const valueLength = TITLE.value.length;
-  if (valueLength < MIN_NAME_LENGTH) {
-    TITLE.setCustomValidity(`Еще ${MIN_NAME_LENGTH - valueLength} символов`);
-  } else if (valueLength > MAX_NAME_LENGTH) {
-    TITLE.setCustomValidity(`Удалите лишние ${valueLength - MAX_NAME_LENGTH} символов`);
+  if (valueLength < NameLength.MIN) {
+    TITLE.setCustomValidity(`Еще ${NameLength.MIN - valueLength} символов`);
+  } else if (valueLength > NameLength.MAX) {
+    TITLE.setCustomValidity(`Удалите лишние ${valueLength -NameLength. MAX} символов`);
   } else {
     TITLE.setCustomValidity('');
   }

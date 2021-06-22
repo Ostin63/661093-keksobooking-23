@@ -20,9 +20,10 @@ import {
 } from './form.js';
 
 const data = getAds(NUMBER_OBJECTS);
+const TIME_OUT = 1000;
 
 renderAd(data[0]);
 
 deactiveForms();
-setTimeout(activeForms, 1000);
+setTimeout(activeForms, TIME_OUT);
 addEventListeners();
