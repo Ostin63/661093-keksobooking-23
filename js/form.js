@@ -14,7 +14,7 @@ const TIMEIN = AD_FORM.querySelector('#timein');
 const TIMEOUT = AD_FORM.querySelector('#timeout');
 const ADDRESS = AD_FORM.querySelector('#address');
 
-const randomAddress = (data) => {
+const addRandomAddress = (data) => {
   ADDRESS.value = data;
 };
 
@@ -68,11 +68,11 @@ const validiteType = () => {
   addPriceValue();
 };
 
-const validiteTimein = () => {
+const synzronizationTimein = () => {
   TIMEOUT.value = TIMEIN.value;
 };
 
-const validiteTimeout = () => {
+const synzronizationTimeout = () => {
   TIMEIN.value = TIMEOUT.value;
 };
 const addEventListeners = () => {
@@ -80,13 +80,12 @@ const addEventListeners = () => {
   PRICE.addEventListener('input', validitePrice);
   ROOM_NUMBER.addEventListener('change', validiteRooms);
   GUESTS_NUMBER.addEventListener('change', validiteRooms);
-  GUESTS_NUMBER.addEventListener('input', validiteRooms);
   TYPE.addEventListener('change', validiteType);
-  TIMEIN.addEventListener('change', validiteTimein);
-  TIMEOUT.addEventListener('change', validiteTimeout);
+  TIMEIN.addEventListener('change', synzronizationTimein);
+  TIMEOUT.addEventListener('change', synzronizationTimeout);
 };
 
 export {
   addEventListeners,
-  randomAddress
+  addRandomAddress
 };

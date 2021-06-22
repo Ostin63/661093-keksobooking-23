@@ -17,7 +17,7 @@ import {
 
 import {
   addEventListeners,
-  randomAddress
+  addRandomAddress
 } from './form.js';
 
 const data = getAds(NUMBER_OBJECTS);
@@ -28,4 +28,4 @@ renderAd(data[0]);
 deactiveForms();
 setTimeout(activeForms, TIME_OUT);
 addEventListeners();
-randomAddress(data[0].offer.address);
+addRandomAddress(data[0].offer.address);
