@@ -12,11 +12,6 @@ const GUESTS_NUMBER = AD_FORM.querySelector('#capacity');
 const TYPE = AD_FORM.querySelector('#type');
 const TIMEIN = AD_FORM.querySelector('#timein');
 const TIMEOUT = AD_FORM.querySelector('#timeout');
-const ADDRESS = AD_FORM.querySelector('#address');
-
-const addRandomAddress = (data) => {
-  ADDRESS.value = data;
-};
 
 const validiteTitle = () => {
   const valueLength = TITLE.value.length;
@@ -88,6 +83,5 @@ const addEventListeners = () => {
 };
 
 export {
-  addEventListeners,
-  addRandomAddress
+  addEventListeners
 };
