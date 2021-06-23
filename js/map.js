@@ -1,11 +1,16 @@
 // eslint-disable-next-line no-redeclare
 /* global L:readonly */
 import {
-  START_COoRDS,
+  START_COORDS,
   AD_FORM
 } from './constants.js';
 
+// import {
+//   getAds
+// } from './data.js';
+
 const ADDRESS = AD_FORM.querySelector('#address');
+const BUTTON_RESET = AD_FORM.querySelector('.ad-form__reset');
 
 const map = L.map('map-canvas');
 const addMaps = () => {
@@ -28,7 +33,7 @@ const mainPinIcon = L.icon({
   iconAnchor: [26, 52],
 });
 
-const pinMarker = L.marker(
+const pinMarkerRed = L.marker(
   {
     lat: START_COORDS.LAT,
     lng: START_COORDS.LNG,
@@ -38,7 +43,7 @@ const pinMarker = L.marker(
     icon: mainPinIcon,
   },
 );
-pinMarker.addTo(map);
+pinMarkerRed.addTo(map);
 
 ADDRESS.value = `${START_COORDS.LAT},  ${START_COORDS.LNG}`;
 
@@ -47,11 +52,73 @@ const addAddress = (markerName) => {
   ADDRESS.value = `${(pinCoords.lat).toFixed(5)}, ${(pinCoords.lng).toFixed(5)}`;
 };
 
-pinMarker.on('moveend', (evt) => {
+pinMarkerRed.on('moveend', (evt) => {
   addAddress(evt.target);
 });
 
+BUTTON_RESET.addEventListener('click', () => {
+  ADDRESS.value = `${START_COORDS.LAT},  ${START_COORDS.LNG}`;
+  pinMarkerRed.setLatLng({
+    lat: START_COORDS.LAT,
+    lng: START_COORDS.LNG,
+  });
+
+  map.setView({
+    lat: START_COORDS.LAT,
+    lng: START_COORDS.LNG,
+  }, 9);
+});
+
+const points = [
+  {
+    title: 'Футура',
+    lat: 59.96925,
+    lng: 30.31730,
+  },
+  {
+    title: 'Шаверма',
+    lat: 59.96783,
+    lng: 30.31258,
+  },
+  {
+    title: 'Франк',
+    lat: 59.95958,
+    lng: 30.30228,
+  },
+  {
+    title: 'Ginza',
+    lat: 59.97292,
+    lng: 30.31982,
+  },
+];
+
+const iconPIn = L.icon({
+  iconUrl: '../img/pin.svg',
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
+
+// const addPinArr = () => {
+points.forEach(({ lat, lng }) => {
+
+  const markerPin = L.marker(
+    {
+      lat,
+      lng,
+    },
+    {
+      iconPIn,
+    });
+
+  markerPin.addTo(map);
+});
+// };
+
+
 export {
+
+  pinMarkerRed,
   addMaps,
   addAddress
+  // addPinArr
 };

@@ -59,6 +59,7 @@ const getAds = () => {
   }
   return ads;
 };
+
 export {
   getAds
 };
