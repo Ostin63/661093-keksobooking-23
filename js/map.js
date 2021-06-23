@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-redeclare
 /* global L:readonly */
 import {
-  START_CORDS,
+  START_COoRDS,
   AD_FORM
 } from './constants.js';
 
@@ -10,8 +10,8 @@ const ADDRESS = AD_FORM.querySelector('#address');
 const map = L.map('map-canvas');
 const addMaps = () => {
   map.setView({
-    lat: START_CORDS.LAT,
-    lng: START_CORDS.LNG,
+    lat: START_COORDS.LAT,
+    lng: START_COORDS.LNG,
   }, 10);
 
   L.tileLayer(
@@ -30,8 +30,8 @@ const mainPinIcon = L.icon({
 
 const pinMarker = L.marker(
   {
-    lat: START_CORDS.LAT,
-    lng: START_CORDS.LNG,
+    lat: START_COORDS.LAT,
+    lng: START_COORDS.LNG,
   },
   {
     draggable: true,
@@ -40,7 +40,7 @@ const pinMarker = L.marker(
 );
 pinMarker.addTo(map);
 
-ADDRESS.value = `${START_CORDS.LAT},  ${START_CORDS.LNG}`;
+ADDRESS.value = `${START_COORDS.LAT},  ${START_COORDS.LNG}`;
 
 const addAddress = (markerName) => {
   const pinCoords = markerName.getLatLng();

@@ -86,7 +86,7 @@ const PRICE_TYPE = {
   palace: 10000,
 };
 
-const START_CORDS = {
+const START_COORDS = {
   LAT: 35.6895,
   LNG: 139.6917,
 };
@@ -115,5 +115,5 @@ export {
   TITLE,
   PRICE,
   PRICE_TYPE,
-  START_CORDS
+  START_COORDS
 };
