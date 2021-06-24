@@ -13,7 +13,10 @@ const ADDRESS = AD_FORM.querySelector('#address');
 const BUTTON_RESET = AD_FORM.querySelector('.ad-form__reset');
 
 const map = L.map('map-canvas');
-const addMaps = () => {
+const addMaps = (active) => {
+  map.on('load', () => {
+    active;
+  });
   map.setView({
     lat: START_COORDS.LAT,
     lng: START_COORDS.LNG,
@@ -98,27 +101,25 @@ const iconPIn = L.icon({
   iconAnchor: [20, 40],
 });
 
-// const addPinArr = () => {
-points.forEach(({ lat, lng }) => {
+const addPinArr = () => {
+  points.forEach(({ lat, lng }) => {
 
-  const markerPin = L.marker(
-    {
-      lat,
-      lng,
-    },
-    {
-      iconPIn,
-    });
+    const markerPin = L.marker(
+      {
+        lat,
+        lng,
+      },
+      {
+        iconPIn,
+      });
 
-  markerPin.addTo(map);
-});
-// };
-
+    markerPin.addTo(map);
+  });
+};
 
 export {
-
   pinMarkerRed,
   addMaps,
-  addAddress
-  // addPinArr
+  addAddress,
+  addPinArr
 };
