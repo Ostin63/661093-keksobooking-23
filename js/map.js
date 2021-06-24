@@ -5,10 +5,6 @@ import {
   AD_FORM
 } from './constants.js';
 
-// import {
-//   getAds
-// } from './data.js';
-
 const ADDRESS = AD_FORM.querySelector('#address');
 const BUTTON_RESET = AD_FORM.querySelector('.ad-form__reset');
 
@@ -20,7 +16,7 @@ const addMaps = (active) => {
   map.setView({
     lat: START_COORDS.LAT,
     lng: START_COORDS.LNG,
-  }, 10);
+  }, 12);
 
   L.tileLayer(
     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -72,48 +68,25 @@ BUTTON_RESET.addEventListener('click', () => {
   }, 9);
 });
 
-const points = [
-  {
-    title: 'Футура',
-    lat: 59.96925,
-    lng: 30.31730,
-  },
-  {
-    title: 'Шаверма',
-    lat: 59.96783,
-    lng: 30.31258,
-  },
-  {
-    title: 'Франк',
-    lat: 59.95958,
-    lng: 30.30228,
-  },
-  {
-    title: 'Ginza',
-    lat: 59.97292,
-    lng: 30.31982,
-  },
-];
+const addPinArr = (points, cart) => {
 
-const iconPIn = L.icon({
-  iconUrl: '../img/pin.svg',
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
-});
-
-const addPinArr = () => {
-  points.forEach(({ lat, lng }) => {
-
+  points.forEach(({ location }) => {
+    const iconPin = L.icon({
+      iconUrl: '../img/pin.svg',
+      iconSize: [40, 40],
+      iconAnchor: [20, 40],
+    });
     const markerPin = L.marker(
       {
-        lat,
-        lng,
+        lat: location.lat,
+        lng: location.lng,
       },
       {
-        iconPIn,
+        iconPin,
       });
 
     markerPin.addTo(map);
+    markerPin.bindPopup(cart);
   });
 };
 

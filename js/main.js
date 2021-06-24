@@ -1,10 +1,10 @@
-// import {
-//   NUMBER_OBJECTS
-// } from './constants.js';
+import {
+  NUMBER_OBJECTS
+} from './constants.js';
 
-// import {
-//   getAds
-// } from './data.js';
+import {
+  getAds
+} from './data.js';
 
 import {
   deactiveForms,
@@ -22,9 +22,13 @@ import {
   addPinArr
 } from './map.js';
 
+import {
+  renderAd
+} from './popup.js';
+
 // const TIME_OUT = 1000;
-// const data = getAds(NUMBER_OBJECTS);
-// console.log((getAds(NUMBER_OBJECTS)));
+const data = getAds(NUMBER_OBJECTS);
+const cart = renderAd(data[0]);
 
 deactiveForms();
 // setTimeout(activeForms, TIME_OUT);
@@ -33,4 +37,4 @@ addEventListeners();
 // addRandomAddress(data[0].offer.address);
 addMaps(active);
 addAddress(pinMarkerRed);
-addPinArr();
+addPinArr(data, cart);

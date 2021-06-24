@@ -13,7 +13,7 @@ import {
   fillPhotoOrDelete
 } from './dom-util.js';
 
-const MAP_CANVAS = document.querySelector('#map-canvas');
+// const MAP_CANVAS = document.querySelector('#map-canvas');
 const SIMILAR_CARD_TEMPLATE = document.querySelector('#card')
   .content
   .querySelector('.popup');
@@ -42,7 +42,8 @@ const renderAd = (data) => {
   const POPUP_PHOTO = POPUP_PHOTOS.querySelector('.popup__photo');
 
   fillPhotoOrDelete(offer.photos, POPUP_PHOTOS, POPUP_PHOTO);
-  MAP_CANVAS.appendChild(cardElement);
+  // MAP_CANVAS.appendChild(cardElement);
+  return cardElement;
 };
 
 export {
