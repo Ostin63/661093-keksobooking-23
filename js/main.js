@@ -31,10 +31,12 @@ import {
 } from './util.js';
 
 // const TIME_OUT = 1000;
-const data = getAds(NUMBER_OBJECTS);
-const getAd = createGetItem(data);
+const ads = getAds(NUMBER_OBJECTS);
+const getAd = createGetItem(ads);
+
 
 const renderCart = (idx) => renderAd(getAd(idx));
+console.log(ads[0]);
 deactiveForms();
 // setTimeout(activeForms, TIME_OUT);
 const active = activeForms();
@@ -42,4 +44,4 @@ addEventListeners();
 // addRandomAddress(data[0].offer.address);
 addMaps(active);
 addAddress(pinMarkerRed);
-addPinArr(data.offer, renderCart);
+addPinArr(ads, renderCart);
