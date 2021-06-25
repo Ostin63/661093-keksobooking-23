@@ -6,7 +6,6 @@ import {
   MAX_PRICE,
   LIMIT_SINGS,
   DESCRIPTIONS,
-  NUMBER_OBJECTS,
   TITLES,
   TYPES,
   TIMING,
@@ -52,9 +51,9 @@ const getAd = (index) => {
   };
 };
 
-const getAds = () => {
+const getAds = (number) => {
   const ads = [];
-  for (let idx = 0; idx < NUMBER_OBJECTS; idx++) {
+  for (let idx = 0; idx < number; idx++) {
     ads.push(getAd(idx + 1));
   }
   return ads;
