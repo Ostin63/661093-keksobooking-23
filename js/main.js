@@ -35,7 +35,6 @@ const data = getAds(NUMBER_OBJECTS);
 const getAd = createGetItem(data);
 
 const renderCart = (idx) => renderAd(getAd(idx));
-console.log(renderCart);
 deactiveForms();
 // setTimeout(activeForms, TIME_OUT);
 const active = activeForms();
