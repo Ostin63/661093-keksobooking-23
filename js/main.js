@@ -29,7 +29,12 @@ import {
 // const TIME_OUT = 1000;
 const data = getAds(NUMBER_OBJECTS);
 
-const cart = renderAd(data);
+const renderCart = (idx) => {
+  // eslint-disable-next-line no-console
+  console.log(idx);
+};
+
+const cart = renderAd(data[renderCart]);
 
 deactiveForms();
 // setTimeout(activeForms, TIME_OUT);

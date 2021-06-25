@@ -68,12 +68,8 @@ BUTTON_RESET.addEventListener('click', () => {
   }, 9);
 });
 
-
-const createGetItem = (points) => (index) => points[index];
 const addPinArr = (points) => {
-
   points.forEach(({ location, index }) => {
-
     const iconPin = L.icon({
       iconUrl: '../img/pin.svg',
       iconSize: [40, 40],
@@ -89,7 +85,7 @@ const addPinArr = (points) => {
       });
 
     markerPin.addTo(map);
-    markerPin.bindPopup(createGetItem[index]);
+    markerPin.bindPopup(index);
   });
 };
 
@@ -97,6 +93,5 @@ export {
   pinMarkerRed,
   addMaps,
   addAddress,
-  createGetItem,
   addPinArr
 };
