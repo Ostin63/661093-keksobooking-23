@@ -36,7 +36,7 @@ const getAd = createGetItem(ads);
 
 
 const renderCart = (idx) => renderAd(getAd(idx));
-console.log(ads[0]);
+
 deactiveForms();
 // setTimeout(activeForms, TIME_OUT);
 const active = activeForms();
