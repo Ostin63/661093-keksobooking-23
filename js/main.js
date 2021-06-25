@@ -28,7 +28,6 @@ import {
 
 // const TIME_OUT = 1000;
 const data = getAds(NUMBER_OBJECTS);
-console.log(data);
 
 const cart = renderAd(data);
 
