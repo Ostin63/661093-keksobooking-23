@@ -42,4 +42,4 @@ addEventListeners();
 // addRandomAddress(data[0].offer.address);
 addMaps(active);
 addAddress(pinMarkerRed);
-addPinArr(renderCart());
+addPinArr(data.offer, renderCart);
