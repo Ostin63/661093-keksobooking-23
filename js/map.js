@@ -68,7 +68,7 @@ BUTTON_RESET.addEventListener('click', () => {
   }, 9);
 });
 
-const addPinArr = (points) => {
+const addPinArr = (points, onPinClick) => {
   points.forEach(({ location, index }) => {
     const iconPin = L.icon({
       iconUrl: '../img/pin.svg',
@@ -85,7 +85,7 @@ const addPinArr = (points) => {
       });
 
     markerPin.addTo(map);
-    markerPin.bindPopup(index);
+    markerPin.bindPopup(()=> onPinClick(index));
   });
 };
 
