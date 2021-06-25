@@ -28,7 +28,9 @@ import {
 
 // const TIME_OUT = 1000;
 const data = getAds(NUMBER_OBJECTS);
-const cart = renderAd(data[0]);
+console.log(data);
+
+const cart = renderAd(data);
 
 deactiveForms();
 // setTimeout(activeForms, TIME_OUT);
@@ -37,4 +39,4 @@ addEventListeners();
 // addRandomAddress(data[0].offer.address);
 addMaps(active);
 addAddress(pinMarkerRed);
-addPinArr(data, cart);
+addPinArr(cart);
