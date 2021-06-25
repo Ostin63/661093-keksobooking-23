@@ -69,7 +69,8 @@ BUTTON_RESET.addEventListener('click', () => {
 });
 
 const addPinArr = (points, onPinClick) => {
-  points.forEach(({ location, index }) => {
+  points.forEach((point) => {
+    const { lat, lng, index } = point.location;
     const iconPin = L.icon({
       iconUrl: '../img/pin.svg',
       iconSize: [40, 40],
@@ -77,8 +78,8 @@ const addPinArr = (points, onPinClick) => {
     });
     const markerPin = L.marker(
       {
-        lat: location.lat,
-        lng: location.lng,
+        lat,
+        lng,
       },
       {
         iconPin,
