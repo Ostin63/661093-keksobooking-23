@@ -45,11 +45,20 @@ const createPluralNames = (value, words) => {
   return words[2];
 };
 
+const fillBy = (object, number) => {
+  const value = [];
+  for (let idx = 0; idx < number; idx++) {
+    value.push(object(idx + 1));
+  }
+  return value;
+};
+
 export {
   getRandomFloat,
   getRandomNumber,
   createAuthorUrl,
   getRandomItem,
   createArrayRandom,
-  createPluralNames
+  createPluralNames,
+  fillBy
 };

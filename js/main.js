@@ -1,8 +1,4 @@
 import {
-  NUMBER_OBJECTS
-} from './constants.js';
-
-import {
   getAds
 } from './data.js';
 
@@ -27,7 +23,7 @@ import {
 } from './popup.js';
 
 // const TIME_OUT = 1000;
-const data = getAds(NUMBER_OBJECTS);
+const data = getAds();
 deactiveForms();
 // setTimeout(activeForms, TIME_OUT);
 const active = activeForms();

@@ -1,6 +1,7 @@
 import {
   MIN_INDEX,
   NUMBER_MIN,
+  NUMBER_OBJECTS,
   ROOM_MAX,
   GUESTS_MAX,
   MAX_PRICE,
@@ -19,8 +20,10 @@ import {
   getRandomNumber,
   createAuthorUrl,
   getRandomItem,
-  createArrayRandom
+  createArrayRandom,
+  fillBy
 } from './util.js';
+
 
 const getAd = (index) => {
   const lat = getRandomFloat(Location.LAT_MIN, Location.LAT_MAX, LIMIT_SINGS);
@@ -51,13 +54,8 @@ const getAd = (index) => {
   };
 };
 
-const getAds = (number) => {
-  const ads = [];
-  for (let idx = 0; idx < number; idx++) {
-    ads.push(getAd(idx + 1));
-  }
-  return ads;
-};
+const getAds =()=> fillBy(getAd, NUMBER_OBJECTS);
+
 
 export {
   getAds
