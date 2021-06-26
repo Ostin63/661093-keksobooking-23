@@ -86,7 +86,7 @@ const addPinArr = (points, cart) => {
       });
 
     markerPin.addTo(map);
-    markerPin.bindPopup((cart(point)),
+    markerPin.bindPopup(cart(point),
       {
         keepInView: true,
       },
