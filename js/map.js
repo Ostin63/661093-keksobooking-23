@@ -90,7 +90,11 @@ const addPinArr = (points) => {
       });
 
     markerPin.addTo(map);
-    markerPin.bindPopup(cart);
+    markerPin.bindPopup((cart),
+      {
+        keepInView: true,
+      },
+    );
   });
 };
 
