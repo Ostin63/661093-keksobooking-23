@@ -45,14 +45,11 @@ const createPluralNames = (value, words) => {
   return words[2];
 };
 
-const createGetItem = (points) => (index) => points[index];
-
 export {
   getRandomFloat,
   getRandomNumber,
   createAuthorUrl,
   getRandomItem,
   createArrayRandom,
-  createPluralNames,
-  createGetItem
+  createPluralNames
 };

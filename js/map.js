@@ -4,9 +4,6 @@ import {
   START_COORDS,
   AD_FORM
 } from './constants.js';
-import {
-  renderAd
-} from './popup.js';
 
 const ADDRESS = AD_FORM.querySelector('#address');
 const BUTTON_RESET = AD_FORM.querySelector('.ad-form__reset');
@@ -71,10 +68,9 @@ BUTTON_RESET.addEventListener('click', () => {
   }, 9);
 });
 
-const addPinArr = (points) => {
+const addPinArr = (points, cart) => {
   points.forEach((point) => {
-    const cart = renderAd(point);
-    const { lat, lng} = point.location;
+    const { lat, lng } = point.location;
     const iconPin = L.icon({
       iconUrl: '../img/pin.svg',
       iconSize: [40, 40],
@@ -90,7 +86,7 @@ const addPinArr = (points) => {
       });
 
     markerPin.addTo(map);
-    markerPin.bindPopup((cart),
+    markerPin.bindPopup((cart(point)),
       {
         keepInView: true,
       },
