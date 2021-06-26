@@ -22,20 +22,20 @@ import {
   addPinArr
 } from './map.js';
 
-import {
-  renderAd
-} from './popup.js';
+// import {
+// renderAd
+// } from './popup.js';
 
-import {
-  createGetItem
-} from './util.js';
+// import {
+// createGetItem
+// } from './util.js';
 
 // const TIME_OUT = 1000;
 const ads = getAds(NUMBER_OBJECTS);
-const getAd = createGetItem(ads);
+// const getAd = createGetItem(ads);
 
 
-const renderCart = (idx) => renderAd(getAd(idx));
+// const renderCart = (idx) => renderAd(getAd(idx));
 
 deactiveForms();
 // setTimeout(activeForms, TIME_OUT);
@@ -44,4 +44,5 @@ addEventListeners();
 // addRandomAddress(data[0].offer.address);
 addMaps(active);
 addAddress(pinMarkerRed);
-addPinArr(ads, renderCart);
+// addPinArr(ads, renderCart);
+addPinArr(ads);
