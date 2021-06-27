@@ -1,14 +1,6 @@
 import {
-  NUMBER_OBJECTS
-} from './constants.js';
-
-import {
   getAds
 } from './data.js';
-
-import {
-  renderAd
-} from './popup.js';
 
 import {
   deactiveForms,
@@ -16,16 +8,24 @@ import {
 } from './dom-util.js';
 
 import {
-  addEventListeners,
-  addRandomAddress
+  addEventListeners
 } from './form.js';
 
-const data = getAds(NUMBER_OBJECTS);
-const TIME_OUT = 1000;
+import {
+  pinMarkerRed,
+  addMaps,
+  addAddress,
+  addPinArr
+} from './map.js';
 
-renderAd(data[0]);
+import {
+  renderAd
+} from './popup.js';
 
+const data = getAds();
 deactiveForms();
-setTimeout(activeForms, TIME_OUT);
+const active = activeForms();
 addEventListeners();
-addRandomAddress(data[0].offer.address);
+addMaps(active);
+addAddress(pinMarkerRed);
+addPinArr(data, renderAd);
