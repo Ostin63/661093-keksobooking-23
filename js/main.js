@@ -22,13 +22,10 @@ import {
   renderAd
 } from './popup.js';
 
-// const TIME_OUT = 1000;
 const data = getAds();
 deactiveForms();
-// setTimeout(activeForms, TIME_OUT);
 const active = activeForms();
 addEventListeners();
-// addRandomAddress(data[0].offer.address);
 addMaps(active);
 addAddress(pinMarkerRed);
 addPinArr(data, renderAd);

@@ -55,11 +55,11 @@ const validiteRooms = () => {
 validiteRooms();
 const addPriceValue = () => {
   PRICE.value = PRICE_TYPE[TYPE.value];
+  PRICE.min = PRICE_TYPE[TYPE.value];
 };
 addPriceValue();
 
 const synchronizeType = () => {
-  PRICE.min = PRICE_TYPE[TYPE.value];
   PRICE.placeholder = PRICE_TYPE[TYPE.value];
   addPriceValue();
 };
