@@ -87,8 +87,8 @@ const PRICE_TYPE = {
 };
 
 const START_COORDS = {
-  LAT: 35.6895,
-  LNG: 139.6917,
+  LAT: 35.68378,
+  LNG: 139.75423,
 };
 
 export {
