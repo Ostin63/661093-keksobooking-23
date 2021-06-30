@@ -44,7 +44,7 @@ const pinMarkerRed = L.marker(
 );
 pinMarkerRed.addTo(map);
 
-ADDRESS.value = `${START_COORDS.LAT},  ${START_COORDS.LNG}`;
+ADDRESS.value = `${START_COORDS.LAT}, ${START_COORDS.LNG}`;
 
 const addAddress = (markerName) => {
   const pinCoords = markerName.getLatLng();
@@ -56,7 +56,7 @@ pinMarkerRed.on('moveend', (evt) => {
 });
 
 BUTTON_RESET.addEventListener('click', () => {
-  ADDRESS.value = `${START_COORDS.LAT},  ${START_COORDS.LNG}`;
+  ADDRESS.value = `${START_COORDS.LAT}, ${START_COORDS.LNG}`;
   pinMarkerRed.setLatLng({
     lat: START_COORDS.LAT,
     lng: START_COORDS.LNG,

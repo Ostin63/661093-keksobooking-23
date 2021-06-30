@@ -101,7 +101,7 @@ const alertSuccess = () => {
 const alertError = () => {
   const cloneError = ERROR.cloneNode(true);
   BODY.append(cloneError);
-  const error = document.querySelector('.success');
+  const error = document.querySelector('.error');
   clikeydown(error);
 };
 
