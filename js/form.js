@@ -18,7 +18,7 @@ const validiteTitle = () => {
   if (valueLength < NameLength.MIN) {
     TITLE.setCustomValidity(`Еще ${NameLength.MIN - valueLength} символов`);
   } else if (valueLength > NameLength.MAX) {
-    TITLE.setCustomValidity(`Удалите лишние ${valueLength -NameLength. MAX} символов`);
+    TITLE.setCustomValidity(`Удалите лишние ${valueLength - NameLength.MAX} символов`);
   } else {
     TITLE.setCustomValidity('');
   }
@@ -82,6 +82,18 @@ const addEventListeners = () => {
   TIMEOUT.addEventListener('change', synchronizeTimeout);
 };
 
+const submitForm = (sendForm, alertSuccess, alertError) => {
+  AD_FORM.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+
+    const formData = new FormData(evt.target);
+
+    sendForm(formData, alertSuccess, alertError);
+  });
+};
+
+
 export {
-  addEventListeners
+  addEventListeners,
+  submitForm
 };

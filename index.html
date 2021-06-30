@@ -192,12 +192,6 @@
       </form>
     </section>
 
-    <!-- Сообщение об ошибке при загрузке -->
-    <div class="error-loading hidden">
-      <p class="error-loading__messege">
-        Произошла ошибка при загрузке данных с сервера :<br>( Обновите страницу!)
-      </p>
-    </div>
   </main>
 
   <footer class="footer container">
@@ -256,6 +250,15 @@
     <div class="error">
       <p class="error__message">Ошибка размещения объявления</p>
       <button type="button" class="error__button">Попробовать снова</button>
+    </div>
+  </template>
+
+  <!-- Сообщение об ошибке при загрузке -->
+  <template id="error-loading">
+    <div class="error-loading hidden">
+      <p class="error-loading__messege">
+        Произошла ошибка при загрузке данных с сервера :<br>( Обновите страницу!)
+      </p>
     </div>
   </template>
 

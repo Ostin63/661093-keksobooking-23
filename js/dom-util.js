@@ -2,8 +2,13 @@ import {
   AD_FORM
 } from './constants.js';
 
+const SHOW__TIME = 5000;
+
 const MAP_FILTERS = document.querySelector('.map__filters');
-const ERROR = document.querySelector('.error-loading');
+const ERROR__LOAD = document.querySelector('#error-loading').content;
+const SUCCESS = document.querySelector('#success').content;
+const ERROR = document.querySelector('#error').content;
+const BODY = document.querySelector('body');
 
 const FORMS = [
   {
@@ -67,8 +72,37 @@ const toggleForms = (enable) => {
 const deactiveForms = () => toggleForms(false);
 const activeForms = () => toggleForms(true);
 
+
+const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
+
 const onError = () => {
-  setTimeout(ERROR.classList.remove('hidden'), 5000);
+  const cloneError = ERROR__LOAD.cloneNode(true);
+  setTimeout(BODY.append(cloneError), SHOW__TIME);
+};
+
+const clikeydown = (item) => {
+  document.addEventListener('keydown', () => {
+    if (isEscEvent) {
+      item.remove();
+    }
+  });
+  document.addEventListener('click', () => {
+    item.remove();
+  });
+};
+
+const alertSuccess = () => {
+  const cloneSuccess = SUCCESS.cloneNode(true);
+  BODY.append(cloneSuccess);
+  const success = document.querySelector('.success');
+  clikeydown(success);
+};
+
+const alertError = () => {
+  const cloneError = ERROR.cloneNode(true);
+  BODY.append(cloneError);
+  const error = document.querySelector('.success');
+  clikeydown(error);
 };
 
 export {
@@ -76,5 +110,8 @@ export {
   fillPhotoOrDelete,
   deactiveForms,
   activeForms,
-  onError
+  onError,
+  alertSuccess,
+  alertError,
+  isEscEvent
 };
