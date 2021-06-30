@@ -45,10 +45,10 @@ const createPluralNames = (value, words) => {
   return words[2];
 };
 
-const fillBy = (object, number) => {
+const fillBy = (callBack, number) => {
   const value = [];
   for (let idx = 0; idx < number; idx++) {
-    value.push(object(idx + 1));
+    value.push(callBack(idx + 1));
   }
   return value;
 };

@@ -68,7 +68,7 @@ BUTTON_RESET.addEventListener('click', () => {
   }, 9);
 });
 
-const addPinArr = (points, cart) => {
+const addPins = (points, cart) => {
   points.forEach((point) => {
     const { lat, lng } = point.location;
     const iconPin = L.icon({
@@ -85,8 +85,7 @@ const addPinArr = (points, cart) => {
         iconPin,
       });
 
-    markerPin.addTo(map);
-    markerPin.bindPopup(cart(point),
+    markerPin.addTo(map).bindPopup(cart(point),
       {
         keepInView: true,
       },
@@ -98,5 +97,5 @@ export {
   pinMarkerRed,
   addMaps,
   addAddress,
-  addPinArr
+  addPins
 };

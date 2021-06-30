@@ -1,10 +1,11 @@
 import {
   getAds
-} from './data.js';
+} from './api.js';
 
 import {
   deactiveForms,
-  activeForms
+  activeForms,
+  onError
 } from './dom-util.js';
 
 import {
@@ -15,17 +16,17 @@ import {
   pinMarkerRed,
   addMaps,
   addAddress,
-  addPinArr
+  addPins
 } from './map.js';
 
 import {
   renderAd
 } from './popup.js';
 
-const data = getAds();
+const renderPins = (data) => addPins(data, renderAd);
 deactiveForms();
 const active = activeForms();
 addEventListeners();
 addMaps(active);
 addAddress(pinMarkerRed);
-addPinArr(data, renderAd);
+getAds(renderPins, onError);

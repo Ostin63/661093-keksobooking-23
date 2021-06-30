@@ -3,6 +3,7 @@ import {
 } from './constants.js';
 
 const MAP_FILTERS = document.querySelector('.map__filters');
+const ERROR = document.querySelector('.error-loading');
 
 const FORMS = [
   {
@@ -27,7 +28,7 @@ const removeExtra = (elements, elementClasses) => {
 };
 
 const fillPhotoOrDelete = (photos, block, element) => {
-  if (photos.length === 0) {
+  if (!photos || photos.length === 0) {
     element.remove();
   } else {
     photos.forEach((photo) => {
@@ -66,9 +67,14 @@ const toggleForms = (enable) => {
 const deactiveForms = () => toggleForms(false);
 const activeForms = () => toggleForms(true);
 
+const onError = () => {
+  setTimeout(ERROR.classList.remove('hidden'), 5000);
+};
+
 export {
   removeExtra,
   fillPhotoOrDelete,
   deactiveForms,
-  activeForms
+  activeForms,
+  onError
 };
