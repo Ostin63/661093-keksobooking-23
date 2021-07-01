@@ -1,9 +1,13 @@
 // eslint-disable-next-line no-redeclare
 /* global L:readonly */
 import {
-  START_COORDS,
   AD_FORM
 } from './constants.js';
+
+const START_COORDS = {
+  LAT: 35.68378,
+  LNG: 139.75423,
+};
 
 const ADDRESS = AD_FORM.querySelector('#address');
 const BUTTON_RESET = AD_FORM.querySelector('.ad-form__reset');
@@ -27,7 +31,7 @@ const addMaps = (active) => {
 };
 
 const mainPinIcon = L.icon({
-  iconUrl: '../img/main-pin.svg',
+  iconUrl: 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg',
   iconSize: [52, 52],
   iconAnchor: [26, 52],
 });
@@ -43,9 +47,6 @@ const pinMarkerRed = L.marker(
   },
 );
 pinMarkerRed.addTo(map);
-
-ADDRESS.value = `${START_COORDS.LAT}, ${START_COORDS.LNG}`;
-
 const addAddress = (markerName) => {
   const pinCoords = markerName.getLatLng();
   ADDRESS.value = `${(pinCoords.lat).toFixed(5)}, ${(pinCoords.lng).toFixed(5)}`;
@@ -55,8 +56,15 @@ pinMarkerRed.on('moveend', (evt) => {
   addAddress(evt.target);
 });
 
-BUTTON_RESET.addEventListener('click', () => {
+const resetPopup = () => {
+  document.querySelector('.leaflet-popup').remove();
+};
+
+const addAddressValue = () => {
   ADDRESS.value = `${START_COORDS.LAT}, ${START_COORDS.LNG}`;
+};
+
+const resetForm = () => {
   pinMarkerRed.setLatLng({
     lat: START_COORDS.LAT,
     lng: START_COORDS.LNG,
@@ -65,8 +73,13 @@ BUTTON_RESET.addEventListener('click', () => {
   map.setView({
     lat: START_COORDS.LAT,
     lng: START_COORDS.LNG,
-  }, 9);
-});
+  }, 12);
+
+  resetPopup();
+  addAddressValue();
+};
+
+BUTTON_RESET.addEventListener('click', resetForm);
 
 const addPins = (points, cart) => {
   points.forEach((point) => {

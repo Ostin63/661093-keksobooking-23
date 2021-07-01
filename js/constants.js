@@ -86,11 +86,6 @@ const PRICE_TYPE = {
   palace: 10000,
 };
 
-const START_COORDS = {
-  LAT: 35.68378,
-  LNG: 139.75423,
-};
-
 export {
   MIN_INDEX,
   NUMBER_MIN,
@@ -114,6 +109,5 @@ export {
   AD_FORM,
   TITLE,
   PRICE,
-  PRICE_TYPE,
-  START_COORDS
+  PRICE_TYPE
 };
