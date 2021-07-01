@@ -4,21 +4,20 @@ import {
   PRICE,
   NameLength,
   MAX_PRICE,
-  PRICE_TYPE
+  PRICE_TYPE,
+  ROOM_NUMBER,
+  GUESTS_NUMBER,
+  TYPE,
+  TIMEIN,
+  TIMEOUT
 } from './constants.js';
-
-const ROOM_NUMBER = AD_FORM.querySelector('#room_number');
-const GUESTS_NUMBER = AD_FORM.querySelector('#capacity');
-const TYPE = AD_FORM.querySelector('#type');
-const TIMEIN = AD_FORM.querySelector('#timein');
-const TIMEOUT = AD_FORM.querySelector('#timeout');
 
 const validiteTitle = () => {
   const valueLength = TITLE.value.length;
   if (valueLength < NameLength.MIN) {
     TITLE.setCustomValidity(`Еще ${NameLength.MIN - valueLength} символов`);
   } else if (valueLength > NameLength.MAX) {
-    TITLE.setCustomValidity(`Удалите лишние ${valueLength -NameLength. MAX} символов`);
+    TITLE.setCustomValidity(`Удалите лишние ${valueLength - NameLength.MAX} символов`);
   } else {
     TITLE.setCustomValidity('');
   }
@@ -82,6 +81,17 @@ const addEventListeners = () => {
   TIMEOUT.addEventListener('change', synchronizeTimeout);
 };
 
+const addsFormSubmitHandler = (sendForm, alertSuccess, alertError) => {
+  AD_FORM.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+
+    const formData = new FormData(evt.target);
+
+    sendForm(formData, alertSuccess, alertError);
+  });
+};
+
 export {
-  addEventListeners
+  addEventListeners,
+  addsFormSubmitHandler
 };

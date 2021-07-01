@@ -1007,6 +1007,18 @@ fieldset {
   opacity: 0.6;
 }
 
+.error-loading {
+  position: absolute;
+  top: 10px;
+  left: 250px;
+  background: rgb(236, 11, 11);
+}
+
+.error-loading__messege{
+  margin: 10px;
+  color: #ffffff;
+}
+
 .visually-hidden {
   position: absolute;
 

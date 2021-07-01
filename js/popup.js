@@ -30,7 +30,7 @@ const renderAd = (data) => {
   cardElement.querySelector('.popup__text--capacity').textContent = `${offer.rooms} ${createPluralNames(offer.rooms, ROOMS)} для ${offer.guests} ${createPluralNames(offer.guests, GUESTS)}`;
   cardElement.querySelector('.popup__text--time').textContent = `Заезд после ${offer.checkin} выезд до ${offer.checkout}`;
 
-  const offerFeatureClasses = offer.features.map((features) => `popup__feature--${features}`);
+  const offerFeatureClasses = offer.features && offer.features.map((features) => `popup__feature--${features}`) || [];
   const featureElementList = cardElement.querySelectorAll('.popup__feature');
 
   removeExtra(featureElementList, offerFeatureClasses);

@@ -77,6 +77,13 @@ const GUESTS = [
 const AD_FORM = document.querySelector('.ad-form');
 const TITLE = AD_FORM.querySelector('#title');
 const PRICE = AD_FORM.querySelector('#price');
+const DESCRIPTION = AD_FORM.querySelector('#description');
+const ROOM_NUMBER = AD_FORM.querySelector('#room_number');
+const GUESTS_NUMBER = AD_FORM.querySelector('#capacity');
+const TYPE = AD_FORM.querySelector('#type');
+const TIMEIN = AD_FORM.querySelector('#timein');
+const TIMEOUT = AD_FORM.querySelector('#timeout');
+
 
 const PRICE_TYPE = {
   bungalow: 0,
@@ -84,11 +91,6 @@ const PRICE_TYPE = {
   hotel: 3000,
   house: 5000,
   palace: 10000,
-};
-
-const START_COORDS = {
-  LAT: 35.68378,
-  LNG: 139.75423,
 };
 
 export {
@@ -115,5 +117,10 @@ export {
   TITLE,
   PRICE,
   PRICE_TYPE,
-  START_COORDS
+  DESCRIPTION,
+  ROOM_NUMBER,
+  GUESTS_NUMBER,
+  TYPE,
+  TIMEIN,
+  TIMEOUT
 };

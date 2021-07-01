@@ -1,12 +1,23 @@
 // eslint-disable-next-line no-redeclare
 /* global L:readonly */
 import {
-  START_COORDS,
-  AD_FORM
+  AD_FORM,
+  TITLE,
+  DESCRIPTION,
+  PRICE,
+  ROOM_NUMBER,
+  GUESTS_NUMBER,
+  TYPE,
+  TIMEIN,
+  TIMEOUT
 } from './constants.js';
 
+const START_COORDS = {
+  LAT: 35.68378,
+  LNG: 139.75423,
+};
+
 const ADDRESS = AD_FORM.querySelector('#address');
-const BUTTON_RESET = AD_FORM.querySelector('.ad-form__reset');
 
 const map = L.map('map-canvas');
 const addMaps = (active) => {
@@ -43,9 +54,6 @@ const pinMarkerRed = L.marker(
   },
 );
 pinMarkerRed.addTo(map);
-
-ADDRESS.value = `${START_COORDS.LAT},  ${START_COORDS.LNG}`;
-
 const addAddress = (markerName) => {
   const pinCoords = markerName.getLatLng();
   ADDRESS.value = `${(pinCoords.lat).toFixed(5)}, ${(pinCoords.lng).toFixed(5)}`;
@@ -55,8 +63,20 @@ pinMarkerRed.on('moveend', (evt) => {
   addAddress(evt.target);
 });
 
-BUTTON_RESET.addEventListener('click', () => {
-  ADDRESS.value = `${START_COORDS.LAT},  ${START_COORDS.LNG}`;
+const resetPopup = () => {
+  const popap = document.querySelector('.leaflet-popup');
+  if (popap) {
+    popap.remove();
+  }
+};
+
+const addAddressValue = () => {
+  ADDRESS.value = `${START_COORDS.LAT}, ${START_COORDS.LNG}`;
+};
+
+const resetForm = (evt) => {
+  evt.preventDefault();
+
   pinMarkerRed.setLatLng({
     lat: START_COORDS.LAT,
     lng: START_COORDS.LNG,
@@ -65,10 +85,22 @@ BUTTON_RESET.addEventListener('click', () => {
   map.setView({
     lat: START_COORDS.LAT,
     lng: START_COORDS.LNG,
-  }, 9);
-});
+  }, 12);
 
-const addPinArr = (points, cart) => {
+  TITLE.value = '';
+  DESCRIPTION.value = '';
+  PRICE.value = '';
+  ROOM_NUMBER.value = '1';
+  GUESTS_NUMBER.value = '1';
+  TYPE.value = 'flat';
+  TIMEIN.value = '12:00';
+  TIMEOUT.value = '12:00';
+
+  resetPopup();
+  addAddressValue();
+};
+
+const addPins = (points, cart) => {
   points.forEach((point) => {
     const { lat, lng } = point.location;
     const iconPin = L.icon({
@@ -85,8 +117,7 @@ const addPinArr = (points, cart) => {
         iconPin,
       });
 
-    markerPin.addTo(map);
-    markerPin.bindPopup(cart(point),
+    markerPin.addTo(map).bindPopup(cart(point),
       {
         keepInView: true,
       },
@@ -98,5 +129,6 @@ export {
   pinMarkerRed,
   addMaps,
   addAddress,
-  addPinArr
+  addPins,
+  resetForm
 };
