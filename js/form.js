@@ -92,7 +92,6 @@ const addsFormSubmitHandler = (sendForm, alertSuccess, alertError) => {
   });
 };
 
-
 export {
   addEventListeners,
   addsFormSubmitHandler

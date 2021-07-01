@@ -31,7 +31,7 @@ const addMaps = (active) => {
 };
 
 const mainPinIcon = L.icon({
-  iconUrl: 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg',
+  iconUrl: '../img/main-pin.svg',
   iconSize: [52, 52],
   iconAnchor: [26, 52],
 });
@@ -57,14 +57,18 @@ pinMarkerRed.on('moveend', (evt) => {
 });
 
 const resetPopup = () => {
-  document.querySelector('.leaflet-popup').remove();
+  const popap = document.querySelector('.leaflet-popup');
+  if (popap) {
+    popap.remove();
+  }
 };
 
 const addAddressValue = () => {
   ADDRESS.value = `${START_COORDS.LAT}, ${START_COORDS.LNG}`;
 };
 
-const resetForm = () => {
+const resetForm = (evt) => {
+  evt.preventDefault();
   pinMarkerRed.setLatLng({
     lat: START_COORDS.LAT,
     lng: START_COORDS.LNG,
