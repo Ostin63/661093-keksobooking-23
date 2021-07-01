@@ -77,6 +77,13 @@ const GUESTS = [
 const AD_FORM = document.querySelector('.ad-form');
 const TITLE = AD_FORM.querySelector('#title');
 const PRICE = AD_FORM.querySelector('#price');
+const DESCRIPTION = AD_FORM.querySelector('#description');
+const ROOM_NUMBER = AD_FORM.querySelector('#room_number');
+const GUESTS_NUMBER = AD_FORM.querySelector('#capacity');
+const TYPE = AD_FORM.querySelector('#type');
+const TIMEIN = AD_FORM.querySelector('#timein');
+const TIMEOUT = AD_FORM.querySelector('#timeout');
+
 
 const PRICE_TYPE = {
   bungalow: 0,
@@ -109,5 +116,11 @@ export {
   AD_FORM,
   TITLE,
   PRICE,
-  PRICE_TYPE
+  PRICE_TYPE,
+  DESCRIPTION,
+  ROOM_NUMBER,
+  GUESTS_NUMBER,
+  TYPE,
+  TIMEIN,
+  TIMEOUT
 };

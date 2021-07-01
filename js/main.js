@@ -1,5 +1,6 @@
 import {
-  NUMBER_OBJECTS
+  NUMBER_OBJECTS,
+  AD_FORM
 } from './constants.js';
 
 import {
@@ -25,7 +26,8 @@ import {
   pinMarkerRed,
   addMaps,
   addAddress,
-  addPins
+  addPins,
+  resetForm
 } from './map.js';
 
 import {
@@ -33,8 +35,11 @@ import {
 } from './popup.js';
 
 const renderPins = (data) => addPins(data, renderAd);
+const BUTTON_RESET = AD_FORM.querySelector('.ad-form__reset');
 
 deactiveForms();
+
+BUTTON_RESET.addEventListener('click', resetForm);
 
 const active = activeForms();
 

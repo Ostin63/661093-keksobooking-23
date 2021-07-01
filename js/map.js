@@ -1,7 +1,15 @@
 // eslint-disable-next-line no-redeclare
 /* global L:readonly */
 import {
-  AD_FORM
+  AD_FORM,
+  TITLE,
+  DESCRIPTION,
+  PRICE,
+  ROOM_NUMBER,
+  GUESTS_NUMBER,
+  TYPE,
+  TIMEIN,
+  TIMEOUT
 } from './constants.js';
 
 const START_COORDS = {
@@ -10,7 +18,6 @@ const START_COORDS = {
 };
 
 const ADDRESS = AD_FORM.querySelector('#address');
-const BUTTON_RESET = AD_FORM.querySelector('.ad-form__reset');
 
 const map = L.map('map-canvas');
 const addMaps = (active) => {
@@ -69,6 +76,7 @@ const addAddressValue = () => {
 
 const resetForm = (evt) => {
   evt.preventDefault();
+
   pinMarkerRed.setLatLng({
     lat: START_COORDS.LAT,
     lng: START_COORDS.LNG,
@@ -79,11 +87,18 @@ const resetForm = (evt) => {
     lng: START_COORDS.LNG,
   }, 12);
 
+  TITLE.value = '';
+  DESCRIPTION.value = '';
+  PRICE.value = '';
+  ROOM_NUMBER.value = '1';
+  GUESTS_NUMBER.value = '1';
+  TYPE.value = 'flat';
+  TIMEIN.value = '12:00';
+  TIMEOUT.value = '12:00';
+
   resetPopup();
   addAddressValue();
 };
-
-BUTTON_RESET.addEventListener('click', resetForm);
 
 const addPins = (points, cart) => {
   points.forEach((point) => {
@@ -114,5 +129,6 @@ export {
   pinMarkerRed,
   addMaps,
   addAddress,
-  addPins
+  addPins,
+  resetForm
 };
