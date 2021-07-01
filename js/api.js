@@ -1,8 +1,8 @@
-const getAds = (onSuccess, onError) => {
+const getAds = (onSuccess, onError, length) => {
   fetch('https://23.javascript.pages.academy/keksobooking/data')
     .then((response) => response.json())
     .then((similarAds) => {
-      onSuccess(similarAds);
+      onSuccess(similarAds.slice(0, length));
     })
     .catch(() => onError());
 };

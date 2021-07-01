@@ -1,4 +1,8 @@
 import {
+  NUMBER_OBJECTS
+} from './constants.js';
+
+import {
   getAds,
   sendData
 } from './api.js';
@@ -37,5 +41,5 @@ const active = activeForms();
 addEventListeners();
 addMaps(active);
 addAddress(pinMarkerRed);
-getAds(renderPins, onError);
+getAds(renderPins, onError, NUMBER_OBJECTS);
 addsFormSubmitHandler(sendData, alertSuccess, alertError);
