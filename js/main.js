@@ -14,7 +14,7 @@ import {
 
 import {
   addEventListeners,
-  submitForm
+  addsFormSubmitHandler
 } from './form.js';
 
 import {
@@ -38,4 +38,4 @@ addEventListeners();
 addMaps(active);
 addAddress(pinMarkerRed);
 getAds(renderPins, onError);
-submitForm(sendData, alertSuccess, alertError);
+addsFormSubmitHandler(sendData, alertSuccess, alertError);

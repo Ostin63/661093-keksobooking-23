@@ -82,7 +82,7 @@ const addEventListeners = () => {
   TIMEOUT.addEventListener('change', synchronizeTimeout);
 };
 
-const submitForm = (sendForm, alertSuccess, alertError) => {
+const addsFormSubmitHandler = (sendForm, alertSuccess, alertError) => {
   AD_FORM.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
@@ -95,5 +95,5 @@ const submitForm = (sendForm, alertSuccess, alertError) => {
 
 export {
   addEventListeners,
-  submitForm
+  addsFormSubmitHandler
 };

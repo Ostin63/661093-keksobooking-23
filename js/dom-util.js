@@ -2,13 +2,22 @@ import {
   AD_FORM
 } from './constants.js';
 
+import {
+  isEscEvent
+} from './util.js';
+
 const SHOW__TIME = 5000;
 
-const MAP_FILTERS = document.querySelector('.map__filters');
-const ERROR__LOAD = document.querySelector('#error-loading').content;
-const SUCCESS = document.querySelector('#success').content;
-const ERROR = document.querySelector('#error').content;
 const BODY = document.querySelector('body');
+const MAP_FILTERS = BODY.querySelector('.map__filters');
+const ERROR__LOAD = BODY.querySelector('#error-loading').content;
+const SUCCESS = BODY.querySelector('#success')
+  .content
+  .querySelector('.success');
+const ERROR = BODY.querySelector('#error')
+  .content
+  .querySelector('.error');
+const ERROR_BUTTON = BODY.querySelector('.error__button');
 
 const FORMS = [
   {
@@ -72,37 +81,50 @@ const toggleForms = (enable) => {
 const deactiveForms = () => toggleForms(false);
 const activeForms = () => toggleForms(true);
 
-
-const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
-
 const onError = () => {
   const cloneError = ERROR__LOAD.cloneNode(true);
   setTimeout(BODY.append(cloneError), SHOW__TIME);
 };
 
-const clikeydown = (item) => {
-  document.addEventListener('keydown', () => {
-    if (isEscEvent) {
-      item.remove();
-    }
-  });
-  document.addEventListener('click', () => {
-    item.remove();
-  });
+const successElement = SUCCESS.cloneNode(true);
+const removeSuccess = () => {
+  successElement.remove();
+  document.removeEventListener('click', removeSuccess);
+};
+
+const removeElementEsc = () => {
+  if (isEscEvent) {
+    removeSuccess();
+    document.removeEventListener('keydown', removeElementEsc);
+  }
 };
 
 const alertSuccess = () => {
-  const cloneSuccess = SUCCESS.cloneNode(true);
-  BODY.append(cloneSuccess);
-  const success = document.querySelector('.success');
-  clikeydown(success);
+  BODY.append(successElement);
+  document.addEventListener('keydown', removeElementEsc);
+  document.addEventListener('click', removeSuccess);
+};
+
+const errorElement = ERROR.cloneNode(true);
+const removeError = () => {
+  errorElement.remove();
+  document.removeEventListener('click', removeError);
+  ERROR_BUTTON.removeEventListener('click', removeError);
+
+};
+
+const removeErrorEsc = () => {
+  if (isEscEvent) {
+    removeError();
+    document.removeEventListener('keydown', removeErrorEsc);
+  }
 };
 
 const alertError = () => {
-  const cloneError = ERROR.cloneNode(true);
-  BODY.append(cloneError);
-  const error = document.querySelector('.error');
-  clikeydown(error);
+  BODY.append(errorElement);
+  document.addEventListener('keydown', removeErrorEsc);
+  document.addEventListener('click', removeError);
+  ERROR_BUTTON.addEventListener('click', removeError);
 };
 
 export {
@@ -112,6 +134,5 @@ export {
   activeForms,
   onError,
   alertSuccess,
-  alertError,
-  isEscEvent
+  alertError
 };
