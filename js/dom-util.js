@@ -8,15 +8,16 @@ import {
 
 const SHOW__TIME = 5000;
 
+const getTemplateContent = (block, item) =>
+  block.querySelector(`#${item}`)
+    .content
+    .querySelector(`.${item}`);
+
 const BODY = document.querySelector('body');
 const MAP_FILTERS = BODY.querySelector('.map__filters');
-const ERROR__LOAD = BODY.querySelector('#error-loading').content;
-const SUCCESS = BODY.querySelector('#success')
-  .content
-  .querySelector('.success');
-const ERROR = BODY.querySelector('#error')
-  .content
-  .querySelector('.error');
+const SUCCESS = getTemplateContent(BODY, 'success');
+const ERROR__LOAD = getTemplateContent(BODY, 'error-loading');
+const ERROR = getTemplateContent(BODY, 'error');
 const ERROR_BUTTON = BODY.querySelector('.error__button');
 
 const FORMS = [

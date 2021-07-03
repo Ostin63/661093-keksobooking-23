@@ -1,5 +1,4 @@
 import {
-  AD_FORM,
   TITLE,
   PRICE,
   NameLength,
@@ -49,11 +48,11 @@ const validiteRooms = () => {
     GUESTS_NUMBER.setCustomValidity('');
   }
   GUESTS_NUMBER.reportValidity();
-  // return result;
 };
+
 validiteRooms();
 const addPriceValue = () => {
-  PRICE.value = PRICE_TYPE[TYPE.value];
+  PRICE.placeholder = PRICE_TYPE[TYPE.value];
   PRICE.min = PRICE_TYPE[TYPE.value];
 };
 addPriceValue();
@@ -81,17 +80,6 @@ const addEventListeners = () => {
   TIMEOUT.addEventListener('change', synchronizeTimeout);
 };
 
-const addsFormSubmitHandler = (sendForm, alertSuccess, alertError) => {
-  AD_FORM.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-
-    const formData = new FormData(evt.target);
-
-    sendForm(formData, alertSuccess, alertError);
-  });
-};
-
 export {
-  addEventListeners,
-  addsFormSubmitHandler
+  addEventListeners
 };

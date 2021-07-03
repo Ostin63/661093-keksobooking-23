@@ -8,7 +8,6 @@ import {
   sendData
 } from './api.js';
 
-
 import {
   deactiveForms,
   activeForms,
@@ -18,8 +17,7 @@ import {
 } from './dom-util.js';
 
 import {
-  addEventListeners,
-  addsFormSubmitHandler
+  addEventListeners
 } from './form.js';
 
 import {
@@ -37,8 +35,17 @@ import {
 const renderPins = (data) => addPins(data, renderAd);
 const BUTTON_RESET = AD_FORM.querySelector('.ad-form__reset');
 
+const sendForm = (evt) => {
+  evt.preventDefault();
+
+  const formData = new FormData(evt.target);
+
+  sendData(formData, alertSuccess, alertError);
+};
+
 deactiveForms();
 
+AD_FORM.addEventListener('submit', sendForm);
 BUTTON_RESET.addEventListener('click', resetForm);
 
 const active = activeForms();
@@ -47,4 +54,3 @@ addEventListeners();
 addMaps(active);
 addAddress(pinMarkerRed);
 getAds(renderPins, onError, NUMBER_OBJECTS);
-addsFormSubmitHandler(sendData, alertSuccess, alertError);
