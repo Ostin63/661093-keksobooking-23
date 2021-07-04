@@ -51,7 +51,7 @@ const checkPrice = (value, price) => {
 const filterAds = (ad) => {
   const selectKeys = Object.keys(selectValues);
 
-  for (const key in selectKeys) {
+  for (const key of selectKeys) {
     const value = selectValues[key];
 
     if (value !== 'any') {
