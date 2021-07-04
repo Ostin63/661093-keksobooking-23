@@ -129,7 +129,7 @@ const addPins = (points, cart) => {
 };
 
 const removePins = () => {
-  markers.forEach((marker) => map.removeLayer(marker));
+  markers.forEach((marker) => marker.remove());
 };
 
 export {
