@@ -20,10 +20,8 @@ const START_COORDS = {
 const ADDRESS = AD_FORM.querySelector('#address');
 
 const map = L.map('map-canvas');
-const addMaps = (active) => {
-  map.on('load', () => {
-    active;
-  });
+const addMaps = (activeMap) => {
+  map.on('load', activeMap);
   map.setView({
     lat: START_COORDS.LAT,
     lng: START_COORDS.LNG,
@@ -100,6 +98,8 @@ const resetForm = (evt) => {
   addAddressValue();
 };
 
+const markers = [];
+
 const addPins = (points, cart) => {
   points.forEach((point) => {
     const { lat, lng } = point.location;
@@ -117,12 +117,19 @@ const addPins = (points, cart) => {
         iconPin,
       });
 
-    markerPin.addTo(map).bindPopup(cart(point),
-      {
-        keepInView: true,
-      },
-    );
+    markerPin
+      .addTo(map)
+      .bindPopup(cart(point),
+        {
+          keepInView: true,
+        },
+      );
+    markers.push(markerPin);
   });
+};
+
+const removePins = () => {
+  markers.forEach((marker) => map.removeLayer(marker));
 };
 
 export {
@@ -130,5 +137,6 @@ export {
   addMaps,
   addAddress,
   addPins,
-  resetForm
+  resetForm,
+  removePins
 };

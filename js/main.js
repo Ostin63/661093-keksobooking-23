@@ -1,10 +1,11 @@
 import {
-  NUMBER_OBJECTS,
-  AD_FORM
+  AD_FORM,
+  DATA_URL,
+  DATA_SUBMIT_URL
 } from './constants.js';
 
 import {
-  getAds,
+  getData,
   sendData
 } from './api.js';
 
@@ -25,14 +26,35 @@ import {
   addMaps,
   addAddress,
   addPins,
-  resetForm
+  resetForm,
+  removePins
 } from './map.js';
 
 import {
   renderAd
 } from './popup.js';
 
-const renderPins = (data) => addPins(data, renderAd);
+import {
+  getInitData,
+  storeData,
+  prepareData
+} from './store.js';
+
+import {
+  filterAds
+} from './filter-map.js';
+
+const rerenderPins = () => {
+  prepareData(filterAds);
+  removePins();
+  addPins(getInitData(), renderAd);
+};
+
+const onLoadData = (data) => {
+  storeData(data);
+  prepareData();
+  addPins(getInitData(), renderAd);
+};
 const BUTTON_RESET = AD_FORM.querySelector('.ad-form__reset');
 
 const sendForm = (evt) => {
@@ -40,17 +62,18 @@ const sendForm = (evt) => {
 
   const formData = new FormData(evt.target);
 
-  sendData(formData, alertSuccess, alertError);
+  sendData(formData, alertSuccess, alertError, DATA_SUBMIT_URL);
 };
-
-deactiveForms();
 
 AD_FORM.addEventListener('submit', sendForm);
 BUTTON_RESET.addEventListener('click', resetForm);
 
-const active = activeForms();
+const onMapOk = () => {
+  activeForms();
+  addAddress(pinMarkerRed);
+  getData(onLoadData, onError, DATA_URL);
+};
 
-addEventListeners();
-addMaps(active);
-addAddress(pinMarkerRed);
-getAds(renderPins, onError, NUMBER_OBJECTS);
+deactiveForms();
+addEventListeners(rerenderPins);
+addMaps(onMapOk);

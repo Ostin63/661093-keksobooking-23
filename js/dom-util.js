@@ -1,5 +1,7 @@
 import {
-  AD_FORM
+  AD_FORM,
+  FILTER_MAP,
+  MAP_FEATURES
 } from './constants.js';
 
 import {
@@ -82,9 +84,21 @@ const toggleForms = (enable) => {
 const deactiveForms = () => toggleForms(false);
 const activeForms = () => toggleForms(true);
 
+const deactivateFilters = () => {
+  FILTER_MAP.classList.add('ad-form--disabled');
+  MAP_FEATURES.disabled = true;
+  MAP_FILTERS.forEach((filter) => {
+    filter.disabled = true;
+  });
+};
+
 const onError = () => {
   const cloneError = ERROR__LOAD.cloneNode(true);
-  setTimeout(BODY.append(cloneError), SHOW__TIME);
+  BODY.append(cloneError);
+  deactivateFilters();
+  setTimeout(() => {
+    cloneError.remove();
+  }, SHOW__TIME);
 };
 
 const successElement = SUCCESS.cloneNode(true);

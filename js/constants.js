@@ -7,6 +7,8 @@ const NUMBER_OBJECTS = 10;
 const MAX_PRICE = 1000000;
 const LIMIT_SINGS = 5;
 const PHOTO_PATH = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/';
+const DATA_URL = 'https://23.javascript.pages.academy/keksobooking/data';
+const DATA_SUBMIT_URL = 'https://23.javascript.pages.academy/keksobooking';
 const TITLES = [
   'Уютная квартира',
   'Квартира в ценре города',
@@ -83,7 +85,8 @@ const GUESTS_NUMBER = AD_FORM.querySelector('#capacity');
 const TYPE = AD_FORM.querySelector('#type');
 const TIMEIN = AD_FORM.querySelector('#timein');
 const TIMEOUT = AD_FORM.querySelector('#timeout');
-
+const FILTER_MAP = document.querySelector('.map__filters');
+const MAP_FEATURES = FILTER_MAP.querySelector('.map__features');
 
 const PRICE_TYPE = {
   bungalow: 0,
@@ -122,5 +125,9 @@ export {
   GUESTS_NUMBER,
   TYPE,
   TIMEIN,
-  TIMEOUT
+  TIMEOUT,
+  DATA_URL,
+  DATA_SUBMIT_URL,
+  FILTER_MAP,
+  MAP_FEATURES
 };

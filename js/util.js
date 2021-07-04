@@ -55,6 +55,8 @@ const fillBy = (callBack, number) => {
 
 const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
 
+const isFunction = (arg) => typeof arg === 'function';
+
 export {
   getRandomFloat,
   getRandomNumber,
@@ -63,5 +65,6 @@ export {
   createArrayRandom,
   createPluralNames,
   fillBy,
-  isEscEvent
+  isEscEvent,
+  isFunction
 };
