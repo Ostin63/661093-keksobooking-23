@@ -1,3 +1,11 @@
+import {
+  HOUSING_TYPE,
+  HOUSING_PRICE,
+  HOUSING_ROOMS,
+  HOUSING_GUESTS,
+  CHECKBOXES
+} from './constants.js';
+
 const selectValues = {
   type: 'any',
   price: 'any',
@@ -77,8 +85,18 @@ const filterAds = (ad) => {
   return true;
 };
 
+const resetFilter = () => {
+  HOUSING_TYPE.value = 'any';
+  HOUSING_PRICE.value = 'any';
+  HOUSING_ROOMS.value = 'any';
+  HOUSING_GUESTS.value = 'any';
+
+  CHECKBOXES.forEach((checkbox) => checkbox.checked = false);
+};
+
 export {
   filterAds,
   setSelectValue,
-  setFeatureValue
+  setFeatureValue,
+  resetFilter
 };

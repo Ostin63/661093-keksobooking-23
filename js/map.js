@@ -1,15 +1,7 @@
 // eslint-disable-next-line no-redeclare
 /* global L:readonly */
 import {
-  AD_FORM,
-  TITLE,
-  DESCRIPTION,
-  PRICE,
-  ROOM_NUMBER,
-  GUESTS_NUMBER,
-  TYPE,
-  TIMEIN,
-  TIMEOUT
+  AD_FORM
 } from './constants.js';
 
 const START_COORDS = {
@@ -72,9 +64,7 @@ const addAddressValue = () => {
   ADDRESS.value = `${START_COORDS.LAT}, ${START_COORDS.LNG}`;
 };
 
-const resetForm = (evt) => {
-  evt.preventDefault();
-
+const resetMap = () => {
   pinMarkerRed.setLatLng({
     lat: START_COORDS.LAT,
     lng: START_COORDS.LNG,
@@ -84,15 +74,6 @@ const resetForm = (evt) => {
     lat: START_COORDS.LAT,
     lng: START_COORDS.LNG,
   }, 12);
-
-  TITLE.value = '';
-  DESCRIPTION.value = '';
-  PRICE.value = '';
-  ROOM_NUMBER.value = '1';
-  GUESTS_NUMBER.value = '1';
-  TYPE.value = 'flat';
-  TIMEIN.value = '12:00';
-  TIMEOUT.value = '12:00';
 
   resetPopup();
   addAddressValue();
@@ -137,6 +118,6 @@ export {
   addMaps,
   addAddress,
   addPins,
-  resetForm,
+  resetMap,
   removePins
 };

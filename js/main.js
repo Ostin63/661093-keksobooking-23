@@ -18,7 +18,8 @@ import {
 } from './dom-util.js';
 
 import {
-  addEventListeners
+  addEventListeners,
+  resetForm
 } from './form.js';
 
 import {
@@ -26,7 +27,7 @@ import {
   addMaps,
   addAddress,
   addPins,
-  resetForm,
+  resetMap,
   removePins
 } from './map.js';
 
@@ -41,8 +42,22 @@ import {
 } from './store.js';
 
 import {
-  filterAds
+  filterAds,
+  resetFilter
 } from './filter-map.js';
+
+import {
+  addEventListenerFotos,
+  resetImage
+} from './avatar.js';
+
+const reset = (evt) => {
+  evt.preventDefault();
+  resetMap();
+  resetFilter();
+  resetForm();
+  resetImage();
+};
 
 const rerenderPins = () => {
   prepareData(filterAds);
@@ -55,7 +70,10 @@ const onLoadData = (data) => {
   prepareData();
   addPins(getInitData(), renderAd);
 };
+
 const BUTTON_RESET = AD_FORM.querySelector('.ad-form__reset');
+
+addEventListenerFotos();
 
 const sendForm = (evt) => {
   evt.preventDefault();
@@ -66,7 +84,7 @@ const sendForm = (evt) => {
 };
 
 AD_FORM.addEventListener('submit', sendForm);
-BUTTON_RESET.addEventListener('click', resetForm);
+BUTTON_RESET.addEventListener('click', reset);
 
 const onMapOk = () => {
   activeForms();

@@ -10,7 +10,9 @@ import {
   TIMEIN,
   TIMEOUT,
   FILTER_MAP,
-  MAP_FEATURES
+  MAP_FEATURES,
+  DESCRIPTION,
+  PREVIEW
 } from './constants.js';
 
 import {
@@ -98,6 +100,18 @@ const getOnFilterChange = (onChange) => (evt) => {
   onChange();
 };
 
+const resetForm = () => {
+  TITLE.value = '';
+  DESCRIPTION.value = '';
+  PRICE.value = '';
+  ROOM_NUMBER.value = '1';
+  GUESTS_NUMBER.value = '1';
+  TYPE.value = 'flat';
+  TIMEIN.value = '12:00';
+  TIMEOUT.value = '12:00';
+  PREVIEW.src = 'img/muffin-grey.svg';
+};
+
 const addEventListeners = (onFiltersChange) => {
   TITLE.addEventListener('input', сheckingTitle);
   PRICE.addEventListener('input', сheckingPrice);
@@ -115,5 +129,6 @@ const addEventListeners = (onFiltersChange) => {
 };
 
 export {
-  addEventListeners
+  addEventListeners,
+  resetForm
 };
