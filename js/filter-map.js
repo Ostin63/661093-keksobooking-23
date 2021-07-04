@@ -66,7 +66,7 @@ const filterAds = (ad) => {
   }
 
   const featureKeys = Object.keys(features);
-  const adFeatures = ad.offer.fwatures || [];
+  const adFeatures = ad.offer.features || [];
 
   for (const feature of featureKeys) {
     if (features[feature] && !adFeatures.includes(feature)) {

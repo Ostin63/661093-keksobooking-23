@@ -108,7 +108,7 @@ const addEventListeners = (onFiltersChange) => {
   TIMEOUT.addEventListener('change', synchronizeTimeout);
 
   const onFilterChange = getOnFilterChange(onFiltersChange);
-  const onFeatureChange = getOnFeatureChange(onFilterChange);
+  const onFeatureChange = getOnFeatureChange(onFiltersChange);
 
   FILTER_MAP.addEventListener('change', onFilterChange);
   MAP_FEATURES.addEventListener('change', onFeatureChange);
