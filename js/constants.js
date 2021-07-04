@@ -86,6 +86,7 @@ const GUESTS_NUMBER = AD_FORM.querySelector('#capacity');
 const TYPE = AD_FORM.querySelector('#type');
 const TIMEIN = AD_FORM.querySelector('#timein');
 const TIMEOUT = AD_FORM.querySelector('#timeout');
+const CHECKBOXES_FORM = AD_FORM.querySelectorAll('.features__checkbox');
 const FILTER_MAP = document.querySelector('.map__filters');
 const MAP_FEATURES = FILTER_MAP.querySelector('.map__features');
 const HOUSING_TYPE = FILTER_MAP.querySelector('#housing-type');
@@ -93,7 +94,6 @@ const HOUSING_PRICE = FILTER_MAP.querySelector('#housing-price');
 const HOUSING_ROOMS = FILTER_MAP.querySelector('#housing-rooms');
 const HOUSING_GUESTS = FILTER_MAP.querySelector('#housing-guests');
 const CHECKBOXES = FILTER_MAP.querySelectorAll('.map__checkbox');
-const CHECKBOXES_FORM = FILTER_MAP.querySelectorAll('.feature__checkbox');
 
 const PRICE_TYPE = {
   bungalow: 0,
