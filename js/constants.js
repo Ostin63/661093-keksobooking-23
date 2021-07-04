@@ -93,6 +93,7 @@ const HOUSING_PRICE = FILTER_MAP.querySelector('#housing-price');
 const HOUSING_ROOMS = FILTER_MAP.querySelector('#housing-rooms');
 const HOUSING_GUESTS = FILTER_MAP.querySelector('#housing-guests');
 const CHECKBOXES = FILTER_MAP.querySelectorAll('.map__checkbox');
+const CHECKBOXES_FORM = FILTER_MAP.querySelectorAll('.feature__checkbox');
 
 const PRICE_TYPE = {
   bungalow: 0,
@@ -141,5 +142,6 @@ export {
   HOUSING_ROOMS,
   HOUSING_GUESTS,
   CHECKBOXES,
+  CHECKBOXES_FORM,
   PREVIEW
 };

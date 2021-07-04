@@ -12,7 +12,8 @@ import {
   FILTER_MAP,
   MAP_FEATURES,
   DESCRIPTION,
-  PREVIEW
+  PREVIEW,
+  CHECKBOXES_FORM
 } from './constants.js';
 
 import {
@@ -110,6 +111,8 @@ const resetForm = () => {
   TIMEIN.value = '12:00';
   TIMEOUT.value = '12:00';
   PREVIEW.src = 'img/muffin-grey.svg';
+
+  CHECKBOXES_FORM.forEach((checkbox) => checkbox.checked = false);
 };
 
 const addEventListeners = (onFiltersChange) => {
