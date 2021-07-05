@@ -22,6 +22,9 @@ const ERROR__LOAD = getTemplateContent(BODY, 'error-loading');
 const ERROR = getTemplateContent(BODY, 'error');
 const ERROR_BUTTON = BODY.querySelector('.error__button');
 
+const successElement = SUCCESS.cloneNode(true);
+const errorElement = ERROR.cloneNode(true);
+
 const FORMS = [
   {
     element: AD_FORM,
@@ -101,7 +104,6 @@ const onError = () => {
   }, SHOW__TIME);
 };
 
-const successElement = SUCCESS.cloneNode(true);
 const removeSuccess = () => {
   successElement.remove();
   document.removeEventListener('click', removeSuccess);
@@ -120,7 +122,6 @@ const alertSuccess = () => {
   document.addEventListener('click', removeSuccess);
 };
 
-const errorElement = ERROR.cloneNode(true);
 const removeError = () => {
   errorElement.remove();
   document.removeEventListener('click', removeError);

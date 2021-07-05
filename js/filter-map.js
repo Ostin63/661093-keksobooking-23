@@ -21,6 +21,9 @@ const features = {
   conditioner: false,
 };
 
+const SELECR_KEYS = Object.keys(selectValues);
+const FEATURE_KEYS = Object.keys(features);
+
 const setSelectValue = (name, value) => {
   selectValues[name] = value;
 };
@@ -56,9 +59,8 @@ const checkPrice = (value, price) => {
 };
 
 const filterAds = (ad) => {
-  const selectKeys = Object.keys(selectValues);
 
-  for (const key of selectKeys) {
+  for (const key of SELECR_KEYS) {
     const value = selectValues[key];
 
     if (value !== 'any') {
@@ -72,10 +74,9 @@ const filterAds = (ad) => {
     }
   }
 
-  const featureKeys = Object.keys(features);
   const adFeatures = ad.offer.features || [];
 
-  for (const feature of featureKeys) {
+  for (const feature of FEATURE_KEYS) {
     if (features[feature] && !adFeatures.includes(feature)) {
       return false;
     }
