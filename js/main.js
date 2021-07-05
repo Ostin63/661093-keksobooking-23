@@ -1,7 +1,8 @@
 import {
   AD_FORM,
   DATA_URL,
-  DATA_SUBMIT_URL
+  DATA_SUBMIT_URL,
+  RERENDER_DELAY
 } from './constants.js';
 
 import {
@@ -51,6 +52,10 @@ import {
   resetImage
 } from './avatar.js';
 
+import {
+  debounce
+} from './utils/debounce.js';
+
 const rerenderPins = () => {
   prepareData(filterAds);
   removePins();
@@ -96,5 +101,5 @@ const onMapOk = () => {
 };
 
 deactiveForms();
-addEventListeners(rerenderPins);
+addEventListeners(debounce(rerenderPins), RERENDER_DELAY);
 addMaps(onMapOk);

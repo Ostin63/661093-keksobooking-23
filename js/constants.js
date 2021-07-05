@@ -5,6 +5,7 @@ const ROOM_MAX = 3;
 const GUESTS_MAX = 3;
 const NUMBER_OBJECTS = 10;
 const MAX_PRICE = 1000000;
+const RERENDER_DELAY = 500;
 const LIMIT_SINGS = 5;
 const PHOTO_PATH = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/';
 const DATA_URL = 'https://23.javascript.pages.academy/keksobooking/data';
@@ -141,5 +142,6 @@ export {
   HOUSING_ROOMS,
   HOUSING_GUESTS,
   CHECKBOXES,
-  PREVIEW
+  PREVIEW,
+  RERENDER_DELAY
 };
