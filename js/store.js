@@ -9,7 +9,7 @@ import {
 let importData = null;
 let preparedData = null;
 
-const getInitData = () => preparedData;
+const getData = () => preparedData;
 
 const prepareData = (filterFn) => {
   preparedData = [...importData];
@@ -27,7 +27,7 @@ const storeData = (data) => {
 };
 
 export {
-  getInitData,
+  getData,
   storeData,
   prepareData
 };

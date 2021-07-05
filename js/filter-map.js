@@ -21,7 +21,7 @@ const features = {
   conditioner: false,
 };
 
-const SELECR_KEYS = Object.keys(selectValues);
+const SELECTOR_KEYS = Object.keys(selectValues);
 const FEATURE_KEYS = Object.keys(features);
 
 const setSelectValue = (name, value) => {
@@ -60,7 +60,7 @@ const checkPrice = (value, price) => {
 
 const filterAds = (ad) => {
 
-  for (const key of SELECR_KEYS) {
+  for (const key of SELECTOR_KEYS) {
     const value = selectValues[key];
 
     if (value !== 'any') {

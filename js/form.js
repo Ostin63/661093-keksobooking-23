@@ -60,12 +60,10 @@ const сheckingRooms = () => {
   GUESTS_NUMBER.reportValidity();
 };
 
-сheckingRooms();
 const addPriceValue = () => {
   PRICE.placeholder = PRICE_TYPE[TYPE.value];
   PRICE.min = PRICE_TYPE[TYPE.value];
 };
-addPriceValue();
 
 const synchronizeType = () => {
   PRICE.placeholder = PRICE_TYPE[TYPE.value];
@@ -114,6 +112,9 @@ const resetForm = () => {
 
   CHECKBOXES.forEach((checkbox) => checkbox.checked = false);
 };
+
+сheckingRooms();
+addPriceValue();
 
 const addEventListeners = (onFiltersChange) => {
   TITLE.addEventListener('input', сheckingTitle);

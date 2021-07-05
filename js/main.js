@@ -6,7 +6,7 @@ import {
 } from './constants.js';
 
 import {
-  getData,
+  loadData,
   sendData
 } from './api.js';
 
@@ -37,7 +37,7 @@ import {
 } from './popup.js';
 
 import {
-  getInitData,
+  getData,
   storeData,
   prepareData
 } from './store.js';
@@ -59,13 +59,13 @@ import {
 const rerenderPins = () => {
   prepareData(filterAds);
   removePins();
-  addPins(getInitData(), renderAd);
+  addPins(getData(), renderAd);
 };
 
 const onLoadData = (data) => {
   storeData(data);
   prepareData();
-  addPins(getInitData(), renderAd);
+  addPins(getData(), renderAd);
 };
 
 const reset = (evt) => {
@@ -76,12 +76,10 @@ const reset = (evt) => {
   resetImage();
   removePins();
   prepareData();
-  addPins(getInitData(), renderAd);
+  addPins(getData(), renderAd);
 };
 
 const BUTTON_RESET = AD_FORM.querySelector('.ad-form__reset');
-
-addEventListenerFotos();
 
 const sendForm = (evt) => {
   evt.preventDefault();
@@ -97,9 +95,10 @@ BUTTON_RESET.addEventListener('click', reset);
 const onMapOk = () => {
   activeForms();
   addAddress(pinMarkerRed);
-  getData(onLoadData, onError, DATA_URL);
+  loadData(onLoadData, onError, DATA_URL);
 };
 
+addEventListenerFotos();
 deactiveForms();
 addEventListeners(debounce(rerenderPins), RERENDER_DELAY);
 addMaps(onMapOk);
