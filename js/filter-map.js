@@ -2,8 +2,7 @@ import {
   HOUSING_TYPE,
   HOUSING_PRICE,
   HOUSING_ROOMS,
-  HOUSING_GUESTS,
-  CHECKBOXES
+  HOUSING_GUESTS
 } from './constants.js';
 
 const selectValues = {
@@ -90,8 +89,6 @@ const resetFilter = () => {
   HOUSING_PRICE.value = 'any';
   HOUSING_ROOMS.value = 'any';
   HOUSING_GUESTS.value = 'any';
-
-  CHECKBOXES.forEach((checkbox) => checkbox.checked = false);
 };
 
 export {

@@ -51,14 +51,6 @@ import {
   resetImage
 } from './avatar.js';
 
-const reset = (evt) => {
-  evt.preventDefault();
-  resetMap();
-  resetFilter();
-  resetForm();
-  resetImage();
-};
-
 const rerenderPins = () => {
   prepareData(filterAds);
   removePins();
@@ -67,6 +59,17 @@ const rerenderPins = () => {
 
 const onLoadData = (data) => {
   storeData(data);
+  prepareData();
+  addPins(getInitData(), renderAd);
+};
+
+const reset = (evt) => {
+  evt.preventDefault();
+  resetMap();
+  resetFilter();
+  resetForm();
+  resetImage();
+  removePins();
   prepareData();
   addPins(getInitData(), renderAd);
 };
