@@ -9,6 +9,18 @@ const START_COORDS = {
   LNG: 139.75423,
 };
 
+const mainPinIcon = L.icon({
+  iconUrl: '../img/main-pin.svg',
+  iconSize: [52, 52],
+  iconAnchor: [26, 52],
+});
+
+const iconPin = L.icon({
+  iconUrl: '../img/pin.svg',
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
+
 const ADDRESS = AD_FORM.querySelector('#address');
 const MAP = L.map('map-canvas');
 
@@ -26,12 +38,6 @@ const addMaps = (callback) => {
     },
   ).addTo(MAP);
 };
-
-const mainPinIcon = L.icon({
-  iconUrl: '../img/main-pin.svg',
-  iconSize: [52, 52],
-  iconAnchor: [26, 52],
-});
 
 const pinMarkerRed = L.marker(
   {
@@ -82,11 +88,7 @@ const markers = [];
 const addPins = (points, carts) => {
   points.forEach((point) => {
     const { lat, lng } = point.location;
-    const iconPin = L.icon({
-      iconUrl: '../img/pin.svg',
-      iconSize: [40, 40],
-      iconAnchor: [20, 40],
-    });
+    iconPin;
     const markerPin = L.marker(
       {
         lat,
