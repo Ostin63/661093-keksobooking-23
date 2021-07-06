@@ -28,7 +28,7 @@ const addMaps = (callback) => {
 };
 
 const mainPinIcon = L.icon({
-  iconUrl: 'leaflet/images/main-pin.svg',
+  iconUrl: '../img/main-pin.svg',
   iconSize: [52, 52],
   iconAnchor: [26, 52],
 });
@@ -83,7 +83,7 @@ const addPins = (points, carts) => {
   points.forEach((point) => {
     const { lat, lng } = point.location;
     const iconPin = L.icon({
-      iconUrl: 'leaflet/images/pin.svg',
+      iconUrl: '../img/pin.svg',
       iconSize: [40, 40],
       iconAnchor: [20, 40],
     });
