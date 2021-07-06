@@ -104,43 +104,43 @@ const onError = () => {
   }, SHOW__TIME);
 };
 
-const removeSuccess = () => {
+const onSuccessRemove = () => {
   successElement.remove();
-  document.removeEventListener('click', removeSuccess);
+  document.removeEventListener('click', onSuccessRemove);
 };
 
-const removeElementEsc = () => {
+const onElementEscRemove = () => {
   if (isEscEvent) {
-    removeSuccess();
-    document.removeEventListener('keydown', removeElementEsc);
+    onSuccessRemove();
+    document.removeEventListener('keydown', onElementEscRemove);
   }
 };
 
 const alertSuccess = () => {
   BODY.append(successElement);
-  document.addEventListener('keydown', removeElementEsc);
-  document.addEventListener('click', removeSuccess);
+  document.addEventListener('keydown', onElementEscRemove);
+  document.addEventListener('click', onSuccessRemove);
 };
 
-const removeError = () => {
+const onErrorRemove = () => {
   errorElement.remove();
-  document.removeEventListener('click', removeError);
-  ERROR_BUTTON.removeEventListener('click', removeError);
+  document.removeEventListener('click', onErrorRemove);
+  ERROR_BUTTON.removeEventListener('click', onErrorRemove);
 
 };
 
-const removeErrorEsc = () => {
+const onErrorEscRemove = () => {
   if (isEscEvent) {
-    removeError();
-    document.removeEventListener('keydown', removeErrorEsc);
+    onErrorRemove();
+    document.removeEventListener('keydown', onErrorEscRemove);
   }
 };
 
 const alertError = () => {
   BODY.append(errorElement);
-  document.addEventListener('keydown', removeErrorEsc);
-  document.addEventListener('click', removeError);
-  ERROR_BUTTON.addEventListener('click', removeError);
+  document.addEventListener('keydown', onErrorEscRemove);
+  document.addEventListener('click', onErrorRemove);
+  ERROR_BUTTON.addEventListener('click', onErrorRemove);
 };
 
 export {
