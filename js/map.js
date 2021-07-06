@@ -85,7 +85,7 @@ const resetMap = () => {
 
 const markers = [];
 
-const addPins = (points, carts) => {
+const addPins = (points, getCart) => {
   points.forEach((point) => {
     const { lat, lng } = point.location;
     iconPin;
@@ -100,7 +100,7 @@ const addPins = (points, carts) => {
 
     markerPin
       .addTo(MAP)
-      .bindPopup(carts(point),
+      .bindPopup(getCart(point),
         {
           keepInView: true,
         },
