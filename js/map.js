@@ -9,14 +9,14 @@ const START_COORDS = {
   LNG: 139.75423,
 };
 
-const mainPinIcon = L.icon({
+const MAIN_PIN_ICON = L.icon({
   iconUrl: '../img/main-pin.svg',
   iconSize: [52, 52],
   iconAnchor: [26, 52],
 });
 
-const iconPin = L.icon({
-  iconUrl: '../img/pin.svg',
+const ICON_PIN = L.icon({
+  iconUrl: 'img/pin.svg',
   iconSize: [40, 40],
   iconAnchor: [20, 40],
 });
@@ -46,7 +46,7 @@ const pinMarkerRed = L.marker(
   },
   {
     draggable: true,
-    icon: mainPinIcon,
+    icon: MAIN_PIN_ICON,
   },
 );
 
@@ -65,8 +65,6 @@ const resetPopup = () => {
 const addAddressValue = () => {
   ADDRESS.value = `${START_COORDS.LAT}, ${START_COORDS.LNG}`;
 };
-
-pinMarkerRed.addTo(MAP);
 
 const resetMap = () => {
   pinMarkerRed.setLatLng({
@@ -88,14 +86,13 @@ const markers = [];
 const addPins = (points, getCart) => {
   points.forEach((point) => {
     const { lat, lng } = point.location;
-    iconPin;
     const markerPin = L.marker(
       {
         lat,
         lng,
       },
       {
-        iconPin,
+        icon: ICON_PIN,
       });
 
     markerPin
@@ -112,6 +109,8 @@ const addPins = (points, getCart) => {
 const removePins = () => {
   markers.forEach((marker) => marker.remove());
 };
+
+pinMarkerRed.addTo(MAP);
 
 pinMarkerRed.on('moveend', (evt) => {
   addAddress(evt.target);

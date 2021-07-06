@@ -61,6 +61,13 @@ const getTemplateContent = (block, item) =>
 const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
 
 const isFunction = (arg) => typeof arg === 'function';
+function debounce(callback, timeoutDelay = 500) {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+}
 
 export {
   getRandomFloat,
@@ -72,5 +79,6 @@ export {
   fillBy,
   isEscEvent,
   isFunction,
-  getTemplateContent
+  getTemplateContent,
+  debounce
 };
