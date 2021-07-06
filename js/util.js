@@ -53,6 +53,11 @@ const fillBy = (callBack, number) => {
   return value;
 };
 
+const getTemplateContent = (block, item) =>
+  block.querySelector(`#${item}`)
+    .content
+    .querySelector(`.${item}`);
+
 const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
 
 const isFunction = (arg) => typeof arg === 'function';
@@ -66,5 +71,6 @@ export {
   createPluralNames,
   fillBy,
   isEscEvent,
-  isFunction
+  isFunction,
+  getTemplateContent
 };

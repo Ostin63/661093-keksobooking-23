@@ -21,7 +21,7 @@ import {
   setSelectValue
 } from './filter-map.js';
 
-const сheckingTitle = () => {
+const onTitleCheck = () => {
   const valueLength = TITLE.value.length;
   if (valueLength < NameLength.MIN) {
     TITLE.setCustomValidity(`Еще ${NameLength.MIN - valueLength} символов`);
@@ -33,7 +33,7 @@ const сheckingTitle = () => {
   TITLE.reportValidity();
 };
 
-const сheckingPrice = () => {
+const onPriceCheck = () => {
   const value = PRICE.value;
   if (value >= MAX_PRICE) {
     PRICE.setCustomValidity(`Цена не может превышать ${MAX_PRICE}`);
@@ -43,7 +43,7 @@ const сheckingPrice = () => {
   PRICE.reportValidity();
 };
 
-const сheckingRooms = () => {
+const onRoomsCheck = () => {
   const guests = GUESTS_NUMBER.value;
   const rooms = ROOM_NUMBER.value;
   if (rooms === '100' && guests !== '0') {
@@ -65,16 +65,16 @@ const addPriceValue = () => {
   PRICE.min = PRICE_TYPE[TYPE.value];
 };
 
-const synchronizeType = () => {
+const onTypeSynchronize  = () => {
   PRICE.placeholder = PRICE_TYPE[TYPE.value];
   addPriceValue();
 };
 
-const synchronizeTimein = () => {
+const onTimeinSynchronize = () => {
   TIMEOUT.value = TIMEIN.value;
 };
 
-const synchronizeTimeout = () => {
+const onTimeoutSynchronize = () => {
   TIMEIN.value = TIMEOUT.value;
 };
 
@@ -113,17 +113,17 @@ const resetForm = () => {
   CHECKBOXES.forEach((checkbox) => checkbox.checked = false);
 };
 
-сheckingRooms();
+onRoomsCheck();
 addPriceValue();
 
 const addEventListeners = (onFiltersChange) => {
-  TITLE.addEventListener('input', сheckingTitle);
-  PRICE.addEventListener('input', сheckingPrice);
-  ROOM_NUMBER.addEventListener('change', сheckingRooms);
-  GUESTS_NUMBER.addEventListener('change', сheckingRooms);
-  TYPE.addEventListener('change', synchronizeType);
-  TIMEIN.addEventListener('change', synchronizeTimein);
-  TIMEOUT.addEventListener('change', synchronizeTimeout);
+  TITLE.addEventListener('input', onTitleCheck);
+  PRICE.addEventListener('input', onPriceCheck);
+  ROOM_NUMBER.addEventListener('change', onRoomsCheck);
+  GUESTS_NUMBER.addEventListener('change', onRoomsCheck);
+  TYPE.addEventListener('change', onTypeSynchronize );
+  TIMEIN.addEventListener('change', onTimeinSynchronize);
+  TIMEOUT.addEventListener('change', onTimeoutSynchronize);
 
   const onFilterChange = getOnFilterChange(onFiltersChange);
   const onFeatureChange = getOnFeatureChange(onFiltersChange);

@@ -23,6 +23,12 @@ const features = {
   conditioner: false,
 };
 
+const valuePrice = {
+  min: 'low',
+  middle: 'middle',
+  max: 'high',
+};
+
 const SELECTOR_KEYS = Object.keys(selectValues);
 const FEATURE_KEYS = Object.keys(features);
 
@@ -36,21 +42,21 @@ const setFeatureValue = (name, value) => {
 
 const checkPrice = (value, price) => {
   switch (value) {
-    case 'low':
+    case valuePrice.min:
       if (price > PRICE_MIN) {
         return false;
       }
 
       break;
 
-    case 'middle':
+    case valuePrice.middle:
       if (price < PRICE_MIN || price >= PRICE_MAX) {
         return false;
       }
 
       break;
 
-    case 'high':
+    case valuePrice.max:
       if (price < PRICE_MAX) {
         return false;
       }

@@ -70,7 +70,7 @@ const onLoadData = (data) => {
   addPins(getData(), renderAd);
 };
 
-const reset = (evt) => {
+const onReset = (evt) => {
   evt.preventDefault();
   resetMap();
   resetFilter();
@@ -81,7 +81,7 @@ const reset = (evt) => {
   addPins(getData(), renderAd);
 };
 
-const sendForm = (evt) => {
+const onFormSend = (evt) => {
   evt.preventDefault();
 
   const formData = new FormData(evt.target);
@@ -95,8 +95,8 @@ const onMapOk = () => {
   loadData(onLoadData, onError, DATA_URL);
 };
 
-AD_FORM.addEventListener('submit', sendForm);
-BUTTON_RESET.addEventListener('click', reset);
+AD_FORM.addEventListener('submit', onFormSend);
+BUTTON_RESET.addEventListener('click', onReset);
 
 addEventListenerFotos();
 deactiveForms();
