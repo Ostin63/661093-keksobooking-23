@@ -56,6 +56,8 @@ import {
   debounce
 } from './utils/debounce.js';
 
+const BUTTON_RESET = AD_FORM.querySelector('.ad-form__reset');
+
 const rerenderPins = () => {
   prepareData(filterAds);
   removePins();
@@ -79,8 +81,6 @@ const reset = (evt) => {
   addPins(getData(), renderAd);
 };
 
-const BUTTON_RESET = AD_FORM.querySelector('.ad-form__reset');
-
 const sendForm = (evt) => {
   evt.preventDefault();
 
@@ -89,14 +89,14 @@ const sendForm = (evt) => {
   sendData(formData, alertSuccess, alertError, DATA_SUBMIT_URL);
 };
 
-AD_FORM.addEventListener('submit', sendForm);
-BUTTON_RESET.addEventListener('click', reset);
-
 const onMapOk = () => {
   activeForms();
   addAddress(pinMarkerRed);
   loadData(onLoadData, onError, DATA_URL);
 };
+
+AD_FORM.addEventListener('submit', sendForm);
+BUTTON_RESET.addEventListener('click', reset);
 
 addEventListenerFotos();
 deactiveForms();

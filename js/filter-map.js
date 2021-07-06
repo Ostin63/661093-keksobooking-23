@@ -2,7 +2,9 @@ import {
   HOUSING_TYPE,
   HOUSING_PRICE,
   HOUSING_ROOMS,
-  HOUSING_GUESTS
+  HOUSING_GUESTS,
+  PRICE_MIN,
+  PRICE_MAX
 } from './constants.js';
 
 const selectValues = {
@@ -35,21 +37,21 @@ const setFeatureValue = (name, value) => {
 const checkPrice = (value, price) => {
   switch (value) {
     case 'low':
-      if (price > 10000) {
+      if (price > PRICE_MIN) {
         return false;
       }
 
       break;
 
     case 'middle':
-      if (price < 10000 || price >= 50000) {
+      if (price < PRICE_MIN || price >= PRICE_MAX) {
         return false;
       }
 
       break;
 
     case 'high':
-      if (price < 50000) {
+      if (price < PRICE_MAX) {
         return false;
       }
 
