@@ -92,7 +92,7 @@ const addPins = (points, getCart) => {
         lng,
       },
       {
-        ICON_PIN,
+        icon: ICON_PIN,
       });
 
     markerPin
