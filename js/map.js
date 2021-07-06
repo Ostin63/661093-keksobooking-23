@@ -10,21 +10,21 @@ const START_COORDS = {
 };
 
 const ADDRESS = AD_FORM.querySelector('#address');
+const MAP = L.map('map-canvas');
 
-const map = L.map('map-canvas');
-const addMaps = (activeMap) => {
-  map.on('load', activeMap);
-  map.setView({
-    lat: START_COORDS.LAT,
-    lng: START_COORDS.LNG,
-  }, 12);
+const addMaps = (callback) => {
+  MAP.on('load', callback)
+    .setView({
+      lat: START_COORDS.LAT,
+      lng: START_COORDS.LNG,
+    }, 12);
 
   L.tileLayer(
     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     },
-  ).addTo(map);
+  ).addTo(MAP);
 };
 
 const mainPinIcon = L.icon({
@@ -43,7 +43,7 @@ const pinMarkerRed = L.marker(
     icon: mainPinIcon,
   },
 );
-pinMarkerRed.addTo(map);
+pinMarkerRed.addTo(MAP);
 const addAddress = (markerName) => {
   const pinCoords = markerName.getLatLng();
   ADDRESS.value = `${(pinCoords.lat).toFixed(5)}, ${(pinCoords.lng).toFixed(5)}`;
@@ -70,7 +70,7 @@ const resetMap = () => {
     lng: START_COORDS.LNG,
   });
 
-  map.setView({
+  MAP.setView({
     lat: START_COORDS.LAT,
     lng: START_COORDS.LNG,
   }, 12);
@@ -99,7 +99,7 @@ const addPins = (points, cart) => {
       });
 
     markerPin
-      .addTo(map)
+      .addTo(MAP)
       .bindPopup(cart(point),
         {
           keepInView: true,
