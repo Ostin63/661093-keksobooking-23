@@ -1,5 +1,4 @@
 import {
-  AD_FORM,
   TITLE,
   PRICE,
   NameLength,
@@ -9,10 +8,20 @@ import {
   GUESTS_NUMBER,
   TYPE,
   TIMEIN,
-  TIMEOUT
+  TIMEOUT,
+  FILTER_MAP,
+  MAP_FEATURES,
+  DESCRIPTION,
+  PREVIEW,
+  CHECKBOXES
 } from './constants.js';
 
-const validiteTitle = () => {
+import {
+  setFeatureValue,
+  setSelectValue
+} from './filter-map.js';
+
+const onTitleCheck = () => {
   const valueLength = TITLE.value.length;
   if (valueLength < NameLength.MIN) {
     TITLE.setCustomValidity(`Еще ${NameLength.MIN - valueLength} символов`);
@@ -24,7 +33,7 @@ const validiteTitle = () => {
   TITLE.reportValidity();
 };
 
-const validitePrice = () => {
+const onPriceCheck = () => {
   const value = PRICE.value;
   if (value >= MAX_PRICE) {
     PRICE.setCustomValidity(`Цена не может превышать ${MAX_PRICE}`);
@@ -34,7 +43,7 @@ const validitePrice = () => {
   PRICE.reportValidity();
 };
 
-const validiteRooms = () => {
+const onRoomsCheck = () => {
   const guests = GUESTS_NUMBER.value;
   const rooms = ROOM_NUMBER.value;
   if (rooms === '100' && guests !== '0') {
@@ -49,49 +58,81 @@ const validiteRooms = () => {
     GUESTS_NUMBER.setCustomValidity('');
   }
   GUESTS_NUMBER.reportValidity();
-  // return result;
 };
-validiteRooms();
+
 const addPriceValue = () => {
-  PRICE.value = PRICE_TYPE[TYPE.value];
+  PRICE.placeholder = PRICE_TYPE[TYPE.value];
   PRICE.min = PRICE_TYPE[TYPE.value];
 };
-addPriceValue();
 
-const synchronizeType = () => {
+const onTypeSynchronize  = () => {
   PRICE.placeholder = PRICE_TYPE[TYPE.value];
   addPriceValue();
 };
 
-const synchronizeTimein = () => {
+const onTimeinSynchronize = () => {
   TIMEOUT.value = TIMEIN.value;
 };
 
-const synchronizeTimeout = () => {
+const onTimeoutSynchronize = () => {
   TIMEIN.value = TIMEOUT.value;
 };
 
-const addEventListeners = () => {
-  TITLE.addEventListener('input', validiteTitle);
-  PRICE.addEventListener('input', validitePrice);
-  ROOM_NUMBER.addEventListener('change', validiteRooms);
-  GUESTS_NUMBER.addEventListener('change', validiteRooms);
-  TYPE.addEventListener('change', synchronizeType);
-  TIMEIN.addEventListener('change', synchronizeTimein);
-  TIMEOUT.addEventListener('change', synchronizeTimeout);
+const getOnFeatureChange = (onChange) => (evt) => {
+  const element = evt.target;
+  const name = element.value;
+  const value = element.checked;
+
+  setFeatureValue(name, value);
+  onChange();
 };
 
-const addsFormSubmitHandler = (sendForm, alertSuccess, alertError) => {
-  AD_FORM.addEventListener('submit', (evt) => {
-    evt.preventDefault();
+const getOnFilterChange = (onChange) => (evt) => {
+  const element = evt.target;
 
-    const formData = new FormData(evt.target);
+  if (element.type === 'checkbox') {
+    return;
+  }
+  const name = element.name.split('-')[1];
+  const value = element.value;
+  setSelectValue(name, value);
+  onChange();
+};
 
-    sendForm(formData, alertSuccess, alertError);
-  });
+const resetForm = () => {
+  TITLE.value = '';
+  DESCRIPTION.value = '';
+  PRICE.value = '';
+  ROOM_NUMBER.value = '1';
+  GUESTS_NUMBER.value = '1';
+  TYPE.value = 'flat';
+  TIMEIN.value = '12:00';
+  TIMEOUT.value = '12:00';
+  PREVIEW.src = 'img/muffin-grey.svg';
+
+  CHECKBOXES.forEach((checkbox) => checkbox.checked = false);
+};
+
+onRoomsCheck();
+addPriceValue();
+
+const addEventListeners = (onFiltersChange) => {
+  TITLE.addEventListener('input', onTitleCheck);
+  PRICE.addEventListener('input', onPriceCheck);
+  ROOM_NUMBER.addEventListener('change', onRoomsCheck);
+  GUESTS_NUMBER.addEventListener('change', onRoomsCheck);
+  TYPE.addEventListener('change', onTypeSynchronize );
+  TIMEIN.addEventListener('change', onTimeinSynchronize);
+  TIMEOUT.addEventListener('change', onTimeoutSynchronize);
+
+  const onFilterChange = getOnFilterChange(onFiltersChange);
+  const onFeatureChange = getOnFeatureChange(onFiltersChange);
+
+  FILTER_MAP.addEventListener('change', onFilterChange);
+  MAP_FEATURES.addEventListener('change', onFeatureChange);
 };
 
 export {
   addEventListeners,
-  addsFormSubmitHandler
+  resetForm
 };

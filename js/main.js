@@ -1,13 +1,14 @@
 import {
-  NUMBER_OBJECTS,
-  AD_FORM
+  AD_FORM,
+  DATA_URL,
+  DATA_SUBMIT_URL,
+  RERENDER_DELAY
 } from './constants.js';
 
 import {
-  getAds,
+  loadData,
   sendData
 } from './api.js';
-
 
 import {
   deactiveForms,
@@ -19,7 +20,7 @@ import {
 
 import {
   addEventListeners,
-  addsFormSubmitHandler
+  resetForm
 } from './form.js';
 
 import {
@@ -27,24 +28,77 @@ import {
   addMaps,
   addAddress,
   addPins,
-  resetForm
+  resetMap,
+  removePins
 } from './map.js';
 
 import {
   renderAd
 } from './popup.js';
 
-const renderPins = (data) => addPins(data, renderAd);
+import {
+  getData,
+  storeData,
+  prepareData
+} from './store.js';
+
+import {
+  filterAds,
+  resetFilter
+} from './filter-map.js';
+
+import {
+  addEventListenerFotos,
+  resetImage
+} from './avatar.js';
+
+import {
+  debounce
+} from './utils/debounce.js';
+
 const BUTTON_RESET = AD_FORM.querySelector('.ad-form__reset');
 
+const rerenderPins = () => {
+  prepareData(filterAds);
+  removePins();
+  addPins(getData(), renderAd);
+};
+
+const onLoadData = (data) => {
+  storeData(data);
+  prepareData();
+  addPins(getData(), renderAd);
+};
+
+const onReset = (evt) => {
+  evt.preventDefault();
+  resetMap();
+  resetFilter();
+  resetForm();
+  resetImage();
+  removePins();
+  prepareData();
+  addPins(getData(), renderAd);
+};
+
+const onFormSend = (evt) => {
+  evt.preventDefault();
+
+  const formData = new FormData(evt.target);
+
+  sendData(formData, alertSuccess, alertError, DATA_SUBMIT_URL);
+};
+
+const onMapOk = () => {
+  activeForms();
+  addAddress(pinMarkerRed);
+  loadData(onLoadData, onError, DATA_URL);
+};
+
+AD_FORM.addEventListener('submit', onFormSend);
+BUTTON_RESET.addEventListener('click', onReset);
+
+addEventListenerFotos();
 deactiveForms();
-
-BUTTON_RESET.addEventListener('click', resetForm);
-
-const active = activeForms();
-
-addEventListeners();
-addMaps(active);
-addAddress(pinMarkerRed);
-getAds(renderPins, onError, NUMBER_OBJECTS);
-addsFormSubmitHandler(sendData, alertSuccess, alertError);
+addEventListeners(debounce(rerenderPins), RERENDER_DELAY);
+addMaps(onMapOk);

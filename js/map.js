@@ -1,15 +1,7 @@
 // eslint-disable-next-line no-redeclare
 /* global L:readonly */
 import {
-  AD_FORM,
-  TITLE,
-  DESCRIPTION,
-  PRICE,
-  ROOM_NUMBER,
-  GUESTS_NUMBER,
-  TYPE,
-  TIMEIN,
-  TIMEOUT
+  AD_FORM
 } from './constants.js';
 
 const START_COORDS = {
@@ -17,31 +9,35 @@ const START_COORDS = {
   LNG: 139.75423,
 };
 
-const ADDRESS = AD_FORM.querySelector('#address');
+const mainPinIcon = L.icon({
+  iconUrl: '../img/main-pin.svg',
+  iconSize: [52, 52],
+  iconAnchor: [26, 52],
+});
 
-const map = L.map('map-canvas');
-const addMaps = (active) => {
-  map.on('load', () => {
-    active;
-  });
-  map.setView({
-    lat: START_COORDS.LAT,
-    lng: START_COORDS.LNG,
-  }, 12);
+const iconPin = L.icon({
+  iconUrl: '../img/pin.svg',
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
+
+const ADDRESS = AD_FORM.querySelector('#address');
+const MAP = L.map('map-canvas');
+
+const addMaps = (callback) => {
+  MAP.on('load', callback)
+    .setView({
+      lat: START_COORDS.LAT,
+      lng: START_COORDS.LNG,
+    }, 12);
 
   L.tileLayer(
     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     },
-  ).addTo(map);
+  ).addTo(MAP);
 };
-
-const mainPinIcon = L.icon({
-  iconUrl: '../img/main-pin.svg',
-  iconSize: [52, 52],
-  iconAnchor: [26, 52],
-});
 
 const pinMarkerRed = L.marker(
   {
@@ -53,15 +49,11 @@ const pinMarkerRed = L.marker(
     icon: mainPinIcon,
   },
 );
-pinMarkerRed.addTo(map);
+
 const addAddress = (markerName) => {
   const pinCoords = markerName.getLatLng();
   ADDRESS.value = `${(pinCoords.lat).toFixed(5)}, ${(pinCoords.lng).toFixed(5)}`;
 };
-
-pinMarkerRed.on('moveend', (evt) => {
-  addAddress(evt.target);
-});
 
 const resetPopup = () => {
   const popap = document.querySelector('.leaflet-popup');
@@ -74,40 +66,29 @@ const addAddressValue = () => {
   ADDRESS.value = `${START_COORDS.LAT}, ${START_COORDS.LNG}`;
 };
 
-const resetForm = (evt) => {
-  evt.preventDefault();
+pinMarkerRed.addTo(MAP);
 
+const resetMap = () => {
   pinMarkerRed.setLatLng({
     lat: START_COORDS.LAT,
     lng: START_COORDS.LNG,
   });
 
-  map.setView({
+  MAP.setView({
     lat: START_COORDS.LAT,
     lng: START_COORDS.LNG,
   }, 12);
-
-  TITLE.value = '';
-  DESCRIPTION.value = '';
-  PRICE.value = '';
-  ROOM_NUMBER.value = '1';
-  GUESTS_NUMBER.value = '1';
-  TYPE.value = 'flat';
-  TIMEIN.value = '12:00';
-  TIMEOUT.value = '12:00';
 
   resetPopup();
   addAddressValue();
 };
 
-const addPins = (points, cart) => {
+const markers = [];
+
+const addPins = (points, getCart) => {
   points.forEach((point) => {
     const { lat, lng } = point.location;
-    const iconPin = L.icon({
-      iconUrl: '../img/pin.svg',
-      iconSize: [40, 40],
-      iconAnchor: [20, 40],
-    });
+    iconPin;
     const markerPin = L.marker(
       {
         lat,
@@ -117,18 +98,30 @@ const addPins = (points, cart) => {
         iconPin,
       });
 
-    markerPin.addTo(map).bindPopup(cart(point),
-      {
-        keepInView: true,
-      },
-    );
+    markerPin
+      .addTo(MAP)
+      .bindPopup(getCart(point),
+        {
+          keepInView: true,
+        },
+      );
+    markers.push(markerPin);
   });
 };
+
+const removePins = () => {
+  markers.forEach((marker) => marker.remove());
+};
+
+pinMarkerRed.on('moveend', (evt) => {
+  addAddress(evt.target);
+});
 
 export {
   pinMarkerRed,
   addMaps,
   addAddress,
   addPins,
-  resetForm
+  resetMap,
+  removePins
 };

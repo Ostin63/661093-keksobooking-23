@@ -53,7 +53,14 @@ const fillBy = (callBack, number) => {
   return value;
 };
 
+const getTemplateContent = (block, item) =>
+  block.querySelector(`#${item}`)
+    .content
+    .querySelector(`.${item}`);
+
 const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
+
+const isFunction = (arg) => typeof arg === 'function';
 
 export {
   getRandomFloat,
@@ -63,5 +70,7 @@ export {
   createArrayRandom,
   createPluralNames,
   fillBy,
-  isEscEvent
+  isEscEvent,
+  isFunction,
+  getTemplateContent
 };

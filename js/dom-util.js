@@ -1,23 +1,25 @@
 import {
-  AD_FORM
+  AD_FORM,
+  FILTER_MAP,
+  MAP_FEATURES
 } from './constants.js';
 
 import {
-  isEscEvent
+  isEscEvent,
+  getTemplateContent
 } from './util.js';
 
 const SHOW__TIME = 5000;
 
 const BODY = document.querySelector('body');
 const MAP_FILTERS = BODY.querySelector('.map__filters');
-const ERROR__LOAD = BODY.querySelector('#error-loading').content;
-const SUCCESS = BODY.querySelector('#success')
-  .content
-  .querySelector('.success');
-const ERROR = BODY.querySelector('#error')
-  .content
-  .querySelector('.error');
+const SUCCESS = getTemplateContent(BODY, 'success');
+const ERROR__LOAD = getTemplateContent(BODY, 'error-loading');
+const ERROR = getTemplateContent(BODY, 'error');
 const ERROR_BUTTON = BODY.querySelector('.error__button');
+
+const successElement = SUCCESS.cloneNode(true);
+const errorElement = ERROR.cloneNode(true);
 
 const FORMS = [
   {
@@ -81,50 +83,60 @@ const toggleForms = (enable) => {
 const deactiveForms = () => toggleForms(false);
 const activeForms = () => toggleForms(true);
 
+const deactivateFilters = () => {
+  FILTER_MAP.classList.add('ad-form--disabled');
+  MAP_FEATURES.disabled = true;
+  MAP_FILTERS.forEach((filter) => {
+    filter.disabled = true;
+  });
+};
+
 const onError = () => {
   const cloneError = ERROR__LOAD.cloneNode(true);
-  setTimeout(BODY.append(cloneError), SHOW__TIME);
+  BODY.append(cloneError);
+  deactivateFilters();
+  setTimeout(() => {
+    cloneError.remove();
+  }, SHOW__TIME);
 };
 
-const successElement = SUCCESS.cloneNode(true);
-const removeSuccess = () => {
+const onSuccessRemove = () => {
   successElement.remove();
-  document.removeEventListener('click', removeSuccess);
+  document.removeEventListener('click', onSuccessRemove);
 };
 
-const removeElementEsc = () => {
+const onElementEscRemove = () => {
   if (isEscEvent) {
-    removeSuccess();
-    document.removeEventListener('keydown', removeElementEsc);
+    onSuccessRemove();
+    document.removeEventListener('keydown', onElementEscRemove);
   }
 };
 
 const alertSuccess = () => {
   BODY.append(successElement);
-  document.addEventListener('keydown', removeElementEsc);
-  document.addEventListener('click', removeSuccess);
+  document.addEventListener('keydown', onElementEscRemove);
+  document.addEventListener('click', onSuccessRemove);
 };
 
-const errorElement = ERROR.cloneNode(true);
-const removeError = () => {
+const onErrorRemove = () => {
   errorElement.remove();
-  document.removeEventListener('click', removeError);
-  ERROR_BUTTON.removeEventListener('click', removeError);
+  document.removeEventListener('click', onErrorRemove);
+  ERROR_BUTTON.removeEventListener('click', onErrorRemove);
 
 };
 
-const removeErrorEsc = () => {
+const onErrorEscRemove = () => {
   if (isEscEvent) {
-    removeError();
-    document.removeEventListener('keydown', removeErrorEsc);
+    onErrorRemove();
+    document.removeEventListener('keydown', onErrorEscRemove);
   }
 };
 
 const alertError = () => {
   BODY.append(errorElement);
-  document.addEventListener('keydown', removeErrorEsc);
-  document.addEventListener('click', removeError);
-  ERROR_BUTTON.addEventListener('click', removeError);
+  document.addEventListener('keydown', onErrorEscRemove);
+  document.addEventListener('click', onErrorRemove);
+  ERROR_BUTTON.addEventListener('click', onErrorRemove);
 };
 
 export {

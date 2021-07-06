@@ -1,14 +1,14 @@
-const getAds = (onSuccess, onError, length) => {
-  fetch('https://23.javascript.pages.academy/keksobooking/data')
+const loadData = (onSuccess, onError, url) => {
+  fetch(url)
     .then((response) => response.json())
     .then((similarAds) => {
-      onSuccess(similarAds.slice(0, length));
+      onSuccess(similarAds);
     })
     .catch(() => onError());
 };
 
-const sendData = (bodyForm, alertSuccess, alertError) => {
-  fetch('https://23.javascript.pages.academy/keksobooking', {
+const sendData = (bodyForm, alertSuccess, alertError, url) => {
+  fetch(url, {
     method: 'POST',
     body: bodyForm,
   })
@@ -25,6 +25,6 @@ const sendData = (bodyForm, alertSuccess, alertError) => {
 };
 
 export {
-  getAds,
+  loadData,
   sendData
 };
