@@ -1,5 +1,3 @@
-const MIN_INDEX = 0;
-const NUMBER_MIN = 1;
 const STRUNG_INDEX = 2;
 const ROOM_MAX = 3;
 const GUESTS_MAX = 3;
@@ -10,16 +8,8 @@ const PRICE_MAX = 50000;
 const MAX_PRICE = 1000000;
 const RERENDER_DELAY = 500;
 const LIMIT_SINGS = 5;
-const PHOTO_PATH = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/';
 const DATA_URL = 'https://23.javascript.pages.academy/keksobooking/data';
 const DATA_SUBMIT_URL = 'https://23.javascript.pages.academy/keksobooking';
-const TITLES = [
-  'Уютная квартира',
-  'Квартира в ценре города',
-  'Квартира в тихом районе',
-  'Квартира не далеко от метро',
-  'Квартира рядом школа и детский сад',
-];
 const TYPES = [
   'palace',
   'flat',
@@ -40,27 +30,9 @@ const FEATURES = [
   'elevator',
   'conditioner',
 ];
-const DESCRIPTIONS = [
-  'Офигительное жильё',
-  'Лучше небывает',
-  'Сделан ремонт',
-  'Заменена сантехника',
-  'Все соседи умерли',
-];
-const PHOTOS = [
-  `${PHOTO_PATH}duonguyen-8LrGtIxxa4w.jpg`,
-  `${PHOTO_PATH}brandon-hoogenboom-SNxQGWxZQi0.jpg`,
-  `${PHOTO_PATH}claire-rendall-b6kAwr1i0Iw.jpg`,
-];
 const NameLength = {
   MIN: 30,
   MAX: 100,
-};
-const Location = {
-  LAT_MIN: 35.65000,
-  LAT_MAX: 35.70000,
-  LNG_MIN: 139.70000,
-  LNG_MAX: 139.80000,
 };
 const ITEM_TYPES = {
   palace: 'Дворец',
@@ -108,22 +80,16 @@ const PRICE_TYPE = {
 };
 
 export {
-  MIN_INDEX,
-  NUMBER_MIN,
   STRUNG_INDEX,
   ROOM_MAX,
   GUESTS_MAX,
   NUMBER_OBJECTS,
   ZOOM_START,
   LIMIT_SINGS,
-  DESCRIPTIONS,
-  TITLES,
   TYPES,
   TIMING,
   FEATURES,
-  PHOTOS,
   ITEM_TYPES,
-  Location,
   ROOMS,
   GUESTS,
   NameLength,
