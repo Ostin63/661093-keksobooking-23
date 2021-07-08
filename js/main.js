@@ -81,12 +81,17 @@ const onReset = (evt) => {
   addPins(getData(), renderAd);
 };
 
+const reset = () => {
+  resetForm();
+  resetMap();
+};
+
 const onFormSend = (evt) => {
   evt.preventDefault();
 
   const formData = new FormData(evt.target);
 
-  sendData(formData, alertSuccess, resetForm, alertError, DATA_SUBMIT_URL);
+  sendData(formData, alertSuccess, reset, alertError, DATA_SUBMIT_URL);
 };
 
 const onMapOk = () => {
