@@ -81,7 +81,8 @@ const onReset = (evt) => {
   addPins(getData(), renderAd);
 };
 
-const reset = () => {
+const alert = () => {
+  alertSuccess();
   resetForm();
   resetMap();
 };
@@ -91,7 +92,7 @@ const onFormSend = (evt) => {
 
   const formData = new FormData(evt.target);
 
-  sendData(formData, alertSuccess, reset, alertError, DATA_SUBMIT_URL);
+  sendData(formData, alert, alertError, DATA_SUBMIT_URL);
 };
 
 const onMapOk = () => {
