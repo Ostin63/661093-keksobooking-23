@@ -86,7 +86,7 @@ const onFormSend = (evt) => {
 
   const formData = new FormData(evt.target);
 
-  sendData(formData, alertSuccess, alertError, DATA_SUBMIT_URL);
+  sendData(formData, alertSuccess, resetForm, alertError, DATA_SUBMIT_URL);
 };
 
 const onMapOk = () => {

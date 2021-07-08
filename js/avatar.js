@@ -3,7 +3,7 @@ import {
   PREVIEW
 } from './constants.js';
 
-const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
+const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 
 const FILD_AVATAR = AD_FORM.querySelector('.ad-form-header__input');
 const FILD_HOUSING = AD_FORM.querySelector('.ad-form__input');

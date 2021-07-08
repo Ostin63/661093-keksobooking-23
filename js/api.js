@@ -7,7 +7,7 @@ const loadData = (onSuccess, onError, url) => {
     .catch(() => onError());
 };
 
-const sendData = (bodyForm, alertSuccess, alertError, url) => {
+const sendData = (bodyForm, alertSuccess, resetForm, alertError, url) => {
   fetch(url, {
     method: 'POST',
     body: bodyForm,
@@ -15,6 +15,7 @@ const sendData = (bodyForm, alertSuccess, alertError, url) => {
     .then((response) => {
       if (response.ok) {
         alertSuccess();
+        resetForm();
       } else {
         alertError();
       }
