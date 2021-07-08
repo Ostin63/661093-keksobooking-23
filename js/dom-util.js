@@ -19,6 +19,7 @@ const ERROR = getTemplateContent(BODY, 'error');
 const ERROR_BUTTON = BODY.querySelector('.error__button');
 
 const successElement = SUCCESS.cloneNode(true);
+const cloneError = ERROR__LOAD.cloneNode(true);
 const errorElement = ERROR.cloneNode(true);
 
 const FORMS = [
@@ -92,13 +93,13 @@ const deactivateFilters = () => {
 };
 
 const onError = () => {
-  const cloneError = ERROR__LOAD.cloneNode(true);
   BODY.append(cloneError);
   deactivateFilters();
-  setTimeout(() => {
-    cloneError.remove();
-  }, SHOW__TIME);
 };
+
+setTimeout(() => {
+  cloneError.remove();
+}, SHOW__TIME);
 
 const onSuccessRemove = () => {
   successElement.remove();
