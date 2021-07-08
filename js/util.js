@@ -1,40 +1,16 @@
 import {
   STRUNG_INDEX,
-  NUMBER_MIN
+  RERENDER_DELAY
 } from './constants.js';
 
-const isPositiveNumber = (value) => typeof value === 'number' && value >= 0;
-
-const getRandomFloat = (...args) => {
-  const errorIndex = args.findIndex((value) => !isPositiveNumber(value));
-
-  if (errorIndex >= 0) {
-    throw new Error(`Неверный тип по индексу ${errorIndex}.`);
-  }
-  const [min, max, dec] = args;
-  const pow = Math.pow(10, dec);
-
-  return Math.round((Math.random() * (max - min) + min) * pow) / pow;
+const keys = {
+  escape: 'Escape',
+  esc: 'Escape',
 };
-
-const getRandomNumber = (min, max) => getRandomFloat(min, max, 0);
 
 const padLeft = (index) => String(index).padStart(STRUNG_INDEX, '0');
 
 const createAuthorUrl = (index) => `img/avatars/user${padLeft(index)}.png`;
-
-const getRandomItem = (items) => items[getRandomNumber(NUMBER_MIN, items.length - 1)];
-
-const getRandomBoolean = () => Math.random() < 0.5;
-
-const createArrayRandom = (items) => {
-  const array = items.filter(getRandomBoolean);
-
-  if (array.length < 1) {
-    Math.random() * (items.length);
-  }
-  return array;
-};
 
 const createPluralNames = (value, words) => {
   value = Math.abs(value) % 100;
@@ -45,23 +21,15 @@ const createPluralNames = (value, words) => {
   return words[2];
 };
 
-const fillBy = (callBack, number) => {
-  const value = [];
-  for (let idx = 0; idx < number; idx++) {
-    value.push(callBack(idx + 1));
-  }
-  return value;
-};
-
 const getTemplateContent = (block, item) =>
   block.querySelector(`#${item}`)
     .content
     .querySelector(`.${item}`);
 
-const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
+const isEscEvent = (evt) => evt.key === keys.escape || evt.key === keys.esc;
 
 const isFunction = (arg) => typeof arg === 'function';
-function debounce(callback, timeoutDelay = 500) {
+function debounce(callback, timeoutDelay = RERENDER_DELAY) {
   let timeoutId;
   return (...rest) => {
     clearTimeout(timeoutId);
@@ -70,13 +38,8 @@ function debounce(callback, timeoutDelay = 500) {
 }
 
 export {
-  getRandomFloat,
-  getRandomNumber,
   createAuthorUrl,
-  getRandomItem,
-  createArrayRandom,
   createPluralNames,
-  fillBy,
   isEscEvent,
   isFunction,
   getTemplateContent,

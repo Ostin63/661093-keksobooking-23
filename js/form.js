@@ -13,15 +13,49 @@ import {
   MAP_FEATURES,
   DESCRIPTION,
   PREVIEW,
-  CHECKBOXES
+  IMAGES_PREVIEW,
+  CHECKBOXES,
+  AD_FORM,
+  DATA_SUBMIT_URL
 } from './constants.js';
 
 import {
+  renderAd
+} from './popup.js';
+
+import {
+  getData,
+  prepareData
+} from './store.js';
+
+import {
   setFeatureValue,
-  setSelectValue
+  setSelectValue,
+  resetFilter
 } from './filter-map.js';
 
-const onTitleCheck = () => {
+import {
+  addPins,
+  resetMap,
+  removePins
+} from './map.js';
+
+import {
+  sendData
+} from './api.js';
+
+import {
+  alertError,
+  alertSuccess
+} from './dom-util.js';
+
+import {
+  resetImage
+} from './avatar.js';
+
+const BUTTON_RESET = AD_FORM.querySelector('.ad-form__reset');
+
+const onTitleChange = () => {
   const valueLength = TITLE.value.length;
   if (valueLength < NameLength.MIN) {
     TITLE.setCustomValidity(`Еще ${NameLength.MIN - valueLength} символов`);
@@ -33,7 +67,7 @@ const onTitleCheck = () => {
   TITLE.reportValidity();
 };
 
-const onPriceCheck = () => {
+const onPriceChange = () => {
   const value = PRICE.value;
   if (value >= MAX_PRICE) {
     PRICE.setCustomValidity(`Цена не может превышать ${MAX_PRICE}`);
@@ -43,7 +77,7 @@ const onPriceCheck = () => {
   PRICE.reportValidity();
 };
 
-const onRoomsCheck = () => {
+const onRoomsChange = () => {
   const guests = GUESTS_NUMBER.value;
   const rooms = ROOM_NUMBER.value;
   if (rooms === '100' && guests !== '0') {
@@ -109,18 +143,44 @@ const resetForm = () => {
   TIMEIN.value = '12:00';
   TIMEOUT.value = '12:00';
   PREVIEW.src = 'img/muffin-grey.svg';
+  IMAGES_PREVIEW.style = '';
 
   CHECKBOXES.forEach((checkbox) => checkbox.checked = false);
 };
 
-onRoomsCheck();
+const alert = () => {
+  alertSuccess();
+  resetForm();
+  resetMap();
+};
+
+const onFormSend = (evt) => {
+  evt.preventDefault();
+
+  const formData = new FormData(evt.target);
+
+  sendData(DATA_SUBMIT_URL, formData, alert, alertError);
+};
+
+onRoomsChange();
 addPriceValue();
 
+const onReset = (evt) => {
+  evt.preventDefault();
+  resetMap();
+  resetFilter();
+  resetForm();
+  resetImage();
+  removePins();
+  prepareData();
+  addPins(getData(), renderAd);
+};
+
 const addEventListeners = (onFiltersChange) => {
-  TITLE.addEventListener('input', onTitleCheck);
-  PRICE.addEventListener('input', onPriceCheck);
-  ROOM_NUMBER.addEventListener('change', onRoomsCheck);
-  GUESTS_NUMBER.addEventListener('change', onRoomsCheck);
+  TITLE.addEventListener('input', onTitleChange);
+  PRICE.addEventListener('input', onPriceChange);
+  ROOM_NUMBER.addEventListener('change', onRoomsChange);
+  GUESTS_NUMBER.addEventListener('change', onRoomsChange);
   TYPE.addEventListener('change', onTypeSynchronize );
   TIMEIN.addEventListener('change', onTimeinSynchronize);
   TIMEOUT.addEventListener('change', onTimeoutSynchronize);
@@ -130,6 +190,8 @@ const addEventListeners = (onFiltersChange) => {
 
   FILTER_MAP.addEventListener('change', onFilterChange);
   MAP_FEATURES.addEventListener('change', onFeatureChange);
+  AD_FORM.addEventListener('submit', onFormSend);
+  BUTTON_RESET.addEventListener('click', onReset);
 };
 
 export {

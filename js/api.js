@@ -1,4 +1,4 @@
-const loadData = (onSuccess, onError, url) => {
+const loadData = ( url, onSuccess, onError) => {
   fetch(url)
     .then((response) => response.json())
     .then((similarAds) => {
@@ -7,7 +7,7 @@ const loadData = (onSuccess, onError, url) => {
     .catch(() => onError());
 };
 
-const sendData = (bodyForm, alertSuccess, alertError, url) => {
+const sendData = ( url, bodyForm, alertSuccess, alertError) => {
   fetch(url, {
     method: 'POST',
     body: bodyForm,

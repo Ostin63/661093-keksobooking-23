@@ -1,47 +1,47 @@
 import {
   AD_FORM,
-  PREVIEW
+  PREVIEW,
+  IMAGES_PREVIEW
 } from './constants.js';
 
-const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 
 const FILD_AVATAR = AD_FORM.querySelector('.ad-form-header__input');
 const FILD_HOUSING = AD_FORM.querySelector('.ad-form__input');
-const IMAGES_PREVIEW = AD_FORM.querySelector('.ad-form__photo');
 
-const downloadFotoUser = () => {
-  const file = FILD_AVATAR.files[0];
+const processingAvatar = (reader, preview) => {
+  reader.addEventListener('load', () => {
+    preview.src = reader.result;
+  });
+};
+
+const processingFotoHousing = (reader, preview) => {
+  reader.addEventListener('load', () => {
+    preview.style.backgroundImage = `url(${reader.result})`;
+    preview.style.backgroundSize = '70px 70px';
+  });
+};
+
+const matchesFile = (element, preview, processing) => {
+  const FILE_TYPES = ['jpg', 'jpeg', 'png'];
+  const file = element.files[0];
   const fileName = file.name.toLowerCase();
 
   const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
 
   if (matches) {
     const reader = new FileReader();
-
-    reader.addEventListener('load', () => {
-      PREVIEW.src = reader.result;
-    });
+    processing(reader, preview);
 
     reader.readAsDataURL(file);
   }
 };
 
+const downloadFotoUser = () => {
+  matchesFile(FILD_AVATAR, PREVIEW, processingAvatar);
+};
+
 const downloadFotoHousing = () => {
-  const file = FILD_HOUSING.files[0];
-  const fileName = file.name.toLowerCase();
-
-  const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
-
-  if (matches) {
-    const reader = new FileReader();
-
-    reader.addEventListener('load', () => {
-      IMAGES_PREVIEW.style.backgroundImage = `url(${reader.result})`;
-      IMAGES_PREVIEW.style.backgroundSize = '70px 70px';
-    });
-
-    reader.readAsDataURL(file);
-  }
+  matchesFile(FILD_HOUSING, IMAGES_PREVIEW, processingFotoHousing);
 };
 
 const resetImage = () => {

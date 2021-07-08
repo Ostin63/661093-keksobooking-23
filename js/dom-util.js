@@ -19,8 +19,8 @@ const ERROR = getTemplateContent(BODY, 'error');
 const ERROR_BUTTON = BODY.querySelector('.error__button');
 
 const successElement = SUCCESS.cloneNode(true);
-const cloneError = ERROR__LOAD.cloneNode(true);
-const errorElement = ERROR.cloneNode(true);
+const errorLoading = ERROR__LOAD.cloneNode(true);
+const errorAdCreation = ERROR.cloneNode(true);
 
 const FORMS = [
   {
@@ -93,12 +93,12 @@ const deactivateFilters = () => {
 };
 
 const onError = () => {
-  BODY.append(cloneError);
+  BODY.append(errorLoading);
   deactivateFilters();
 };
 
 setTimeout(() => {
-  cloneError.remove();
+  errorLoading.remove();
 }, SHOW__TIME);
 
 const onSuccessRemove = () => {
@@ -120,7 +120,7 @@ const alertSuccess = () => {
 };
 
 const onErrorRemove = () => {
-  errorElement.remove();
+  errorAdCreation.remove();
   document.removeEventListener('click', onErrorRemove);
   ERROR_BUTTON.removeEventListener('click', onErrorRemove);
 
@@ -134,7 +134,7 @@ const onErrorEscRemove = () => {
 };
 
 const alertError = () => {
-  BODY.append(errorElement);
+  BODY.append(errorAdCreation);
   document.addEventListener('keydown', onErrorEscRemove);
   document.addEventListener('click', onErrorRemove);
   ERROR_BUTTON.addEventListener('click', onErrorRemove);

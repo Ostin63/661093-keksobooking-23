@@ -4,6 +4,7 @@ const STRUNG_INDEX = 2;
 const ROOM_MAX = 3;
 const GUESTS_MAX = 3;
 const NUMBER_OBJECTS = 10;
+const ZOOM_START = 12;
 const PRICE_MIN = 10000;
 const PRICE_MAX = 50000;
 const MAX_PRICE = 1000000;
@@ -81,6 +82,7 @@ const GUESTS = [
 
 const AD_FORM = document.querySelector('.ad-form');
 const PREVIEW = AD_FORM.querySelector('.ad-form-header__preview img');
+const IMAGES_PREVIEW = AD_FORM.querySelector('.ad-form__photo');
 const TITLE = AD_FORM.querySelector('#title');
 const PRICE = AD_FORM.querySelector('#price');
 const DESCRIPTION = AD_FORM.querySelector('#description');
@@ -112,6 +114,7 @@ export {
   ROOM_MAX,
   GUESTS_MAX,
   NUMBER_OBJECTS,
+  ZOOM_START,
   LIMIT_SINGS,
   DESCRIPTIONS,
   TITLES,
@@ -145,6 +148,7 @@ export {
   HOUSING_GUESTS,
   CHECKBOXES,
   PREVIEW,
+  IMAGES_PREVIEW,
   RERENDER_DELAY,
   PRICE_MIN,
   PRICE_MAX

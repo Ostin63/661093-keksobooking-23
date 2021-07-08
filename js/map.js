@@ -1,7 +1,8 @@
 // eslint-disable-next-line no-redeclare
 /* global L:readonly */
 import {
-  AD_FORM
+  AD_FORM,
+  ZOOM_START
 } from './constants.js';
 
 const START_COORDS = {
@@ -16,7 +17,7 @@ const MAIN_PIN_ICON = L.icon({
 });
 
 const ICON_PIN = L.icon({
-  iconUrl: 'img/pin.svg',
+  iconUrl: '../img/pin.svg',
   iconSize: [40, 40],
   iconAnchor: [20, 40],
 });
@@ -29,7 +30,7 @@ const addMaps = (callback) => {
     .setView({
       lat: START_COORDS.LAT,
       lng: START_COORDS.LNG,
-    }, 12);
+    }, ZOOM_START);
 
   L.tileLayer(
     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',

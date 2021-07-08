@@ -1,26 +1,20 @@
 import {
-  AD_FORM,
   DATA_URL,
-  DATA_SUBMIT_URL,
   RERENDER_DELAY
 } from './constants.js';
 
 import {
-  loadData,
-  sendData
+  loadData
 } from './api.js';
 
 import {
   deactiveForms,
   activeForms,
-  onError,
-  alertSuccess,
-  alertError
+  onError
 } from './dom-util.js';
 
 import {
-  addEventListeners,
-  resetForm
+  addEventListeners
 } from './form.js';
 
 import {
@@ -28,7 +22,6 @@ import {
   addMaps,
   addAddress,
   addPins,
-  resetMap,
   removePins
 } from './map.js';
 
@@ -43,20 +36,16 @@ import {
 } from './store.js';
 
 import {
-  filterAds,
-  resetFilter
+  filterAds
 } from './filter-map.js';
 
 import {
-  addEventListenerFotos,
-  resetImage
+  addEventListenerFotos
 } from './avatar.js';
 
 import {
   debounce
 } from './util.js';
-
-const BUTTON_RESET = AD_FORM.querySelector('.ad-form__reset');
 
 const rerenderPins = () => {
   prepareData(filterAds);
@@ -70,40 +59,12 @@ const onLoadData = (data) => {
   addPins(getData(), renderAd);
 };
 
-const onReset = (evt) => {
-  evt.preventDefault();
-  resetMap();
-  resetFilter();
-  resetForm();
-  resetImage();
-  removePins();
-  prepareData();
-  addPins(getData(), renderAd);
-};
-
-const alert = () => {
-  alertSuccess();
-  resetForm();
-  resetMap();
-};
-
-const onFormSend = (evt) => {
-  evt.preventDefault();
-
-  const formData = new FormData(evt.target);
-
-  sendData(formData, alert, alertError, DATA_SUBMIT_URL);
-};
-
 const onMapOk = () => {
   activeForms();
   addAddress(pinMarkerRed);
-  loadData(onLoadData, onError, DATA_URL);
+  loadData(DATA_URL, onLoadData, onError);
   addEventListeners(debounce((rerenderPins), RERENDER_DELAY));
 };
-
-AD_FORM.addEventListener('submit', onFormSend);
-BUTTON_RESET.addEventListener('click', onReset);
 
 addEventListenerFotos();
 deactiveForms();

@@ -29,6 +29,15 @@ const valuePrice = {
   max: 'high',
 };
 
+const valueKeys = {
+  any: 'any',
+  price: 'price',
+};
+
+const param = {
+  any: 'any',
+};
+
 const SELECTOR_KEYS = Object.keys(selectValues);
 const FEATURE_KEYS = Object.keys(features);
 
@@ -71,12 +80,12 @@ const filterAds = (ad) => {
   for (const key of SELECTOR_KEYS) {
     const value = selectValues[key];
 
-    if (value !== 'any') {
-      if (key !== 'price' && String(ad.offer[key]) !== value) {
+    if (value !== valueKeys.any) {
+      if (key !== valueKeys.price && String(ad.offer[key]) !== value) {
         return false;
       }
 
-      if (key === 'price' && !checkPrice(value, ad.offer[key])) {
+      if (key === valueKeys.price && !checkPrice(value, ad.offer[key])) {
         return false;
       }
     }
@@ -94,10 +103,10 @@ const filterAds = (ad) => {
 };
 
 const resetFilter = () => {
-  HOUSING_TYPE.value = 'any';
-  HOUSING_PRICE.value = 'any';
-  HOUSING_ROOMS.value = 'any';
-  HOUSING_GUESTS.value = 'any';
+  HOUSING_TYPE.value = param.any;
+  HOUSING_PRICE.value = param.any;
+  HOUSING_ROOMS.value = param.any;
+  HOUSING_GUESTS.value = param.any;
 };
 
 export {
