@@ -25,7 +25,7 @@ const isEscEvent = (evt) => evt.key === keys.escape || evt.key === keys.esc;
 
 const isFunction = (arg) => typeof arg === 'function';
 
-const debounce = (callback, timeoutDelay = RERENDER_DELAY) =>{
+const debounce = (callback, timeoutDelay = RERENDER_DELAY) => {
   let timeoutId;
   return (...rest) => {
     clearTimeout(timeoutId);
