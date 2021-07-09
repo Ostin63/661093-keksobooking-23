@@ -2,7 +2,6 @@ import {
   TITLE,
   PRICE,
   NameLength,
-  MAX_PRICE,
   PRICE_TYPE,
   ROOM_NUMBER,
   GUESTS_NUMBER,
@@ -16,7 +15,8 @@ import {
   IMAGES_PREVIEW,
   CHECKBOXES,
   AD_FORM,
-  DATA_SUBMIT_URL
+  DATA_SUBMIT_URL,
+  Price
 } from './constants.js';
 
 import {
@@ -69,8 +69,8 @@ const onTitleChange = () => {
 
 const onPriceChange = () => {
   const value = PRICE.value;
-  if (value >= MAX_PRICE) {
-    PRICE.setCustomValidity(`Цена не может превышать ${MAX_PRICE}`);
+  if (value >= Price.max) {
+    PRICE.setCustomValidity(`Цена не может превышать ${Price.max}`);
   } else {
     PRICE.setCustomValidity('');
   }

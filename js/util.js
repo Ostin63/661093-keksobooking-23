@@ -1,5 +1,5 @@
 import {
-  STRUNG_INDEX,
+  STRING_INDEX,
   RERENDER_DELAY
 } from './constants.js';
 
@@ -8,7 +8,7 @@ const keys = {
   esc: 'Escape',
 };
 
-const padLeft = (index) => String(index).padStart(STRUNG_INDEX, '0');
+const padLeft = (index) => String(index).padStart(STRING_INDEX, '0');
 
 const createAuthorUrl = (index) => `img/avatars/user${padLeft(index)}.png`;
 

@@ -45,16 +45,14 @@ const removeExtra = (elements, elementClasses) => {
 };
 
 const fillPhotoOrDelete = (photos, block, element) => {
-  if (!photos || photos.length === 0) {
-    element.remove();
-  } else {
+  if (photos && photos.length > 0) {
     photos.forEach((photo) => {
       const clonePhoto = element.cloneNode(true);
       clonePhoto.src = photo;
       block.appendChild(clonePhoto);
     });
-    element.remove();
   }
+  element.remove();
 };
 
 const toggleForm = (form, className, selector, enable) => {

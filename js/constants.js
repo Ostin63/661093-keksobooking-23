@@ -1,11 +1,9 @@
-const STRUNG_INDEX = 2;
+const STRING_INDEX = 2;
 const ROOM_MAX = 3;
 const GUESTS_MAX = 3;
 const NUMBER_OBJECTS = 10;
+const ACCURACY = 5;
 const ZOOM_START = 12;
-const PRICE_MIN = 10000;
-const PRICE_MAX = 50000;
-const MAX_PRICE = 1000000;
 const RERENDER_DELAY = 500;
 const LIMIT_SINGS = 5;
 const DATA_URL = 'https://23.javascript.pages.academy/keksobooking/data';
@@ -30,6 +28,11 @@ const FEATURES = [
   'elevator',
   'conditioner',
 ];
+const Price = {
+  min: 10000,
+  mid: 50000,
+  max: 1000000,
+};
 const NameLength = {
   MIN: 30,
   MAX: 100,
@@ -80,20 +83,21 @@ const PRICE_TYPE = {
 };
 
 export {
-  STRUNG_INDEX,
+  STRING_INDEX,
   ROOM_MAX,
   GUESTS_MAX,
   NUMBER_OBJECTS,
+  ACCURACY,
   ZOOM_START,
   LIMIT_SINGS,
   TYPES,
   TIMING,
   FEATURES,
+  Price,
   ITEM_TYPES,
   ROOMS,
   GUESTS,
   NameLength,
-  MAX_PRICE,
   AD_FORM,
   TITLE,
   PRICE,
@@ -115,7 +119,5 @@ export {
   CHECKBOXES,
   PREVIEW,
   IMAGES_PREVIEW,
-  RERENDER_DELAY,
-  PRICE_MIN,
-  PRICE_MAX
+  RERENDER_DELAY
 };

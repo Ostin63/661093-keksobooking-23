@@ -2,6 +2,7 @@
 /* global L:readonly */
 import {
   AD_FORM,
+  ACCURACY,
   ZOOM_START
 } from './constants.js';
 
@@ -53,7 +54,7 @@ const pinMarkerRed = L.marker(
 
 const addAddress = (markerName) => {
   const pinCoords = markerName.getLatLng();
-  ADDRESS.value = `${(pinCoords.lat).toFixed(5)}, ${(pinCoords.lng).toFixed(5)}`;
+  ADDRESS.value = `${(pinCoords.lat).toFixed(ACCURACY)}, ${(pinCoords.lng).toFixed(ACCURACY)}`;
 };
 
 const resetPopup = () => {
@@ -76,7 +77,7 @@ const resetMap = () => {
   MAP.setView({
     lat: START_COORDS.LAT,
     lng: START_COORDS.LNG,
-  }, 12);
+  }, ZOOM_START);
 
   resetPopup();
   addAddressValue();

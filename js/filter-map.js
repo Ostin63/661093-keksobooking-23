@@ -3,8 +3,7 @@ import {
   HOUSING_PRICE,
   HOUSING_ROOMS,
   HOUSING_GUESTS,
-  PRICE_MIN,
-  PRICE_MAX
+  Price
 } from './constants.js';
 
 const selectValues = {
@@ -23,18 +22,18 @@ const features = {
   conditioner: false,
 };
 
-const valuePrice = {
+const VALUE_PRICE = {
   min: 'low',
   middle: 'middle',
   max: 'high',
 };
 
-const valueKeys = {
+const VALUE_KEYS = {
   any: 'any',
   price: 'price',
 };
 
-const param = {
+const PARAM = {
   any: 'any',
 };
 
@@ -51,22 +50,22 @@ const setFeatureValue = (name, value) => {
 
 const checkPrice = (value, price) => {
   switch (value) {
-    case valuePrice.min:
-      if (price > PRICE_MIN) {
+    case VALUE_PRICE.min:
+      if (price > Price.min) {
         return false;
       }
 
       break;
 
-    case valuePrice.middle:
-      if (price < PRICE_MIN || price >= PRICE_MAX) {
+    case VALUE_PRICE.middle:
+      if (price < Price.min || price >= Price.mid) {
         return false;
       }
 
       break;
 
-    case valuePrice.max:
-      if (price < PRICE_MAX) {
+    case VALUE_PRICE.max:
+      if (price < Price.mid) {
         return false;
       }
 
@@ -80,12 +79,12 @@ const filterAds = (ad) => {
   for (const key of SELECTOR_KEYS) {
     const value = selectValues[key];
 
-    if (value !== valueKeys.any) {
-      if (key !== valueKeys.price && String(ad.offer[key]) !== value) {
+    if (value !== VALUE_KEYS.any) {
+      if (key !== VALUE_KEYS.price && String(ad.offer[key]) !== value) {
         return false;
       }
 
-      if (key === valueKeys.price && !checkPrice(value, ad.offer[key])) {
+      if (key === VALUE_KEYS.price && !checkPrice(value, ad.offer[key])) {
         return false;
       }
     }
@@ -103,10 +102,10 @@ const filterAds = (ad) => {
 };
 
 const resetFilter = () => {
-  HOUSING_TYPE.value = param.any;
-  HOUSING_PRICE.value = param.any;
-  HOUSING_ROOMS.value = param.any;
-  HOUSING_GUESTS.value = param.any;
+  HOUSING_TYPE.value = PARAM.any;
+  HOUSING_PRICE.value = PARAM.any;
+  HOUSING_ROOMS.value = PARAM.any;
+  HOUSING_GUESTS.value = PARAM.any;
 };
 
 export {
