@@ -1,5 +1,4 @@
 import {
-  STRING_INDEX,
   RERENDER_DELAY
 } from './constants.js';
 
@@ -7,10 +6,6 @@ const keys = {
   escape: 'Escape',
   esc: 'Escape',
 };
-
-const padLeft = (index) => String(index).padStart(STRING_INDEX, '0');
-
-const createAuthorUrl = (index) => `img/avatars/user${padLeft(index)}.png`;
 
 const createPluralNames = (value, words) => {
   value = Math.abs(value) % 100;
@@ -29,16 +24,16 @@ const getTemplateContent = (block, item) =>
 const isEscEvent = (evt) => evt.key === keys.escape || evt.key === keys.esc;
 
 const isFunction = (arg) => typeof arg === 'function';
-function debounce(callback, timeoutDelay = RERENDER_DELAY) {
+
+const debounce = (callback, timeoutDelay = RERENDER_DELAY) =>{
   let timeoutId;
   return (...rest) => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
   };
-}
+};
 
 export {
-  createAuthorUrl,
   createPluralNames,
   isEscEvent,
   isFunction,

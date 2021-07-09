@@ -1,4 +1,3 @@
-const STRING_INDEX = 2;
 const ROOM_MAX = 3;
 const GUESTS_MAX = 3;
 const NUMBER_OBJECTS = 10;
@@ -83,7 +82,6 @@ const PRICE_TYPE = {
 };
 
 export {
-  STRING_INDEX,
   ROOM_MAX,
   GUESTS_MAX,
   NUMBER_OBJECTS,

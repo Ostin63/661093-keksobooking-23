@@ -5,8 +5,8 @@ import {
 } from './constants.js';
 
 
-const FILD_AVATAR = AD_FORM.querySelector('.ad-form-header__input');
-const FILD_HOUSING = AD_FORM.querySelector('.ad-form__input');
+const USER_FOTO_PREVIEW = AD_FORM.querySelector('.ad-form-header__input');
+const HOUSING_FOTO_PREVIEW = AD_FORM.querySelector('.ad-form__input');
 
 const processingAvatar = (reader, preview) => {
   reader.addEventListener('load', () => {
@@ -37,11 +37,11 @@ const matchesFile = (element, preview, processing) => {
 };
 
 const downloadFotoUser = () => {
-  matchesFile(FILD_AVATAR, PREVIEW, processingAvatar);
+  matchesFile(USER_FOTO_PREVIEW, PREVIEW, processingAvatar);
 };
 
 const downloadFotoHousing = () => {
-  matchesFile(FILD_HOUSING, IMAGES_PREVIEW, processingFotoHousing);
+  matchesFile(HOUSING_FOTO_PREVIEW, IMAGES_PREVIEW, processingFotoHousing);
 };
 
 const resetImage = () => {
@@ -49,8 +49,8 @@ const resetImage = () => {
 };
 
 const addEventListenerFotos = () => {
-  FILD_AVATAR.addEventListener('change', downloadFotoUser);
-  FILD_HOUSING.addEventListener('change', downloadFotoHousing);
+  USER_FOTO_PREVIEW.addEventListener('change', downloadFotoUser);
+  HOUSING_FOTO_PREVIEW.addEventListener('change', downloadFotoHousing);
 };
 
 export {
